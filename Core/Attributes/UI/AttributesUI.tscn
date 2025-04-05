@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bha33oov7gjix"]
+
+[node name="Attributes" type="Label"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "sdghasdhasdhasdtfs
+sdahasdhasd"
+horizontal_alignment = 2

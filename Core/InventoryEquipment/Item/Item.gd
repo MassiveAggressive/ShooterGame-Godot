@@ -1,0 +1,7 @@
+extends Resource
+
+class_name Item
+
+var item_id: int = -1
+@export var item_info: ItemInfo
+@export var stack_count: int = 1

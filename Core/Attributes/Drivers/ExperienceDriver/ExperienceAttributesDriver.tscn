@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkelumflfops3"]
+
+[ext_resource type="Script" uid="uid://bjy508jmxcpyq" path="res://Core/Attributes/Drivers/ExperienceDriver/ExperienceAttributesDriver.gd" id="1_26vn3"]
+
+[node name="ExperienceAttributesDriver" type="Node"]
+script = ExtResource("1_26vn3")
+RawName = "ExperienceAttributes"
+InitAttributes = Dictionary[String, float]({
+"Experience": 0.0
+})
+metadata/_custom_type_script = "uid://bjy508jmxcpyq"

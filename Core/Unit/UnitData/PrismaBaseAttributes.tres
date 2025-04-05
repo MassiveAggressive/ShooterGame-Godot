@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3 uid="uid://c8v2jbp2d7xx7"]
+
+[ext_resource type="Script" uid="uid://b5cky4ki6db1e" path="res://Core/Unit/UnitData/UnitData.gd" id="1_t3020"]
+
+[resource]
+script = ExtResource("1_t3020")
+Name = "Prisma"
+Description = "Prisma"
+Level = 1
+BaseAttributes = Dictionary[String, float]({
+"Damage": 50.0,
+"FireRate": 10.0,
+"Health": 1000.0,
+"MaxHealth": 1000.0,
+"MaxShield": 250.0,
+"Shield": 250.0
+})
+metadata/_custom_type_script = "uid://b5cky4ki6db1e"

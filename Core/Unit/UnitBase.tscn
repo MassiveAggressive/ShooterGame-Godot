@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://lsul7y4yw26"]
+
+[ext_resource type="Script" uid="uid://vrcrhslc5j5c" path="res://Core/Unit/UnitBase.gd" id="1_p5y2w"]
+[ext_resource type="Resource" uid="uid://dshufolfqdw5w" path="res://Core/Unit/UnitData/StrunerBaseAttributes.tres" id="2_uafw8"]
+[ext_resource type="Script" uid="uid://cpb46fljmvpjc" path="res://Core/Tools/DynamicPolygon/DynamicPolygon.gd" id="3_do01s"]
+[ext_resource type="Script" uid="uid://cbgksqvtxwari" path="res://Core/Attributes/AttributeContainer.gd" id="4_do01s"]
+[ext_resource type="PackedScene" uid="uid://6kyvda1ujhub" path="res://Core/Attributes/Drivers/DamageDriver/DamageAttributesDriver.tscn" id="6_do01s"]
+[ext_resource type="Script" uid="uid://c1covtipjhbn4" path="res://Core/Tools/Arm/Arm2D.gd" id="7_do01s"]
+[ext_resource type="PackedScene" uid="uid://c6ufkt72npy82" path="res://Core/Attributes/Drivers/HealthDriver/HealthAttributesDriver.tscn" id="7_m24y5"]
+[ext_resource type="PackedScene" uid="uid://dj0iijr4loy28" path="res://Core/Attributes/Drivers/HealthDriver/UI/HealthBar.tscn" id="7_uafw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s225"]
+size = Vector2(100, 100)
+
+[node name="UnitBase" type="Area2D"]
+script = ExtResource("1_p5y2w")
+unit_data = ExtResource("2_uafw8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1s225")
+
+[node name="DynamicPolygon" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(50, 50, 50, -50, -50, -50, -50, 50)
+script = ExtResource("3_do01s")
+rotation_offset = 45.0
+metadata/_custom_type_script = "uid://cpb46fljmvpjc"
+
+[node name="AttributeContainer" type="Node" parent="."]
+script = ExtResource("4_do01s")
+metadata/_custom_type_script = "uid://cbgksqvtxwari"
+
+[node name="HealthAttributesDriver" parent="." instance=ExtResource("7_m24y5")]
+
+[node name="DamageAttributesDriver" parent="." instance=ExtResource("6_do01s")]
+
+[node name="Arm2D" type="Node2D" parent="."]
+script = ExtResource("7_do01s")
+metadata/_custom_type_script = "uid://c1covtipjhbn4"
+
+[node name="HealthBar" parent="Arm2D" instance=ExtResource("7_uafw8")]
+unique_name_in_owner = true
+offset_top = 60.0
+offset_bottom = 80.0

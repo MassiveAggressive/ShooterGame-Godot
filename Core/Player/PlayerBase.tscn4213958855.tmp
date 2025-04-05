@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://crpduft0jsw1g"]
+
+[ext_resource type="PackedScene" uid="uid://lsul7y4yw26" path="res://Core/Unit/UnitBase.tscn" id="1_swl4d"]
+[ext_resource type="Script" uid="uid://5yovslddjv3q" path="res://Core/Player/PlayerBase.gd" id="2_s0iuf"]
+[ext_resource type="PackedScene" uid="uid://bgvku2dtkh142" path="res://Core/Weapon/WeaponBase.tscn" id="3_pmdl8"]
+[ext_resource type="Resource" uid="uid://c8v2jbp2d7xx7" path="res://Core/Unit/UnitData/PrismaBaseAttributes.tres" id="3_ukt1b"]
+[ext_resource type="PackedScene" uid="uid://bkelumflfops3" path="res://Core/Attributes/Drivers/ExperienceDriver/ExperienceAttributesDriver.tscn" id="5_ukt1b"]
+[ext_resource type="PackedScene" uid="uid://nru73hcryt6j" path="res://Core/InventoryEquipment/InventoryEquipment.tscn" id="6_8nsxy"]
+
+[node name="PlayerBase" instance=ExtResource("1_swl4d")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_s0iuf")
+speed = 500.0
+angular_speed = 6.28319
+unit_data = ExtResource("3_ukt1b")
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+
+[node name="WeaponBase" parent="." index="3" instance=ExtResource("3_pmdl8")]
+position = Vector2(50, 0)
+
+[node name="ExperienceAttributesDriver" parent="." index="7" instance=ExtResource("5_ukt1b")]
+
+[node name="InventoryEquipment" parent="." index="9" instance=ExtResource("6_8nsxy")]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://c70j54wftetyk"]
+
+[ext_resource type="Script" uid="uid://c176aei3lat0y" path="res://Core/InventoryEquipment/Item/ItemInfo.gd" id="1_vepam"]
+
+[resource]
+script = ExtResource("1_vepam")
+name = "LF-1"
+description = "Basic Weapon"
+item_primary_type = 0
+item_secondary_type = 0
+level = 1
+stackable = false
+max_stack_count = 1
+attributes = Dictionary[String, float]({})
+metadata/_custom_type_script = "uid://c176aei3lat0y"

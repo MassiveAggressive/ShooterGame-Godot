@@ -1,0 +1,2 @@
+class_name DamageAttributesDriver
+extends AttributesDriver
