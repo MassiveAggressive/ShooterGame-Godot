@@ -12,7 +12,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_released("LeftClick"):
 		$WeaponBase.StopShooting()
 
-func _process(delta: float) -> void:	
+func _process(delta: float) -> void:
 	direction = Vector2.ZERO
 	
 	if Input.is_action_pressed("MoveRight"):

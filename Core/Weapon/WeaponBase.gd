@@ -32,7 +32,6 @@ func _ready():
 
 func OnAttributeChange(Name: String, Value: float):
 	if Name == "FireRate":
-		print(Value)
 		FireRate = Value
 	elif Name == "BarrelCount":
 		BarrelCount = Value

@@ -1,48 +1,51 @@
+class_name AttributeContainer
 extends Node
 
-class_name AttributeContainer
+@export var attributes: Dictionary[String, float]
 
-@export var Attributes: Dictionary[String, float]
-
-@export var RawAttributes: Dictionary[String, Dictionary]
+@export var raw_attributes: Dictionary[String, Dictionary]
 
 signal AttributeChanged(Name: String, Value: float)
 
 func _ready() -> void:
-	print("Attributes")
 	CalculateAttributes()
 
-func AddAttribute(Name: String) -> void:
-	if Attributes.has(Name):
+func AddAttribute(attribute_name: String) -> void:
+	if attributes.has(attribute_name):
 		pass
 	else:
-		Attributes[Name] = 0.0
+		attributes[attribute_name] = 0.0
 	
-func SetAttribute(Name: String, Value: float) -> void:
-	Attributes[Name] = Value
-	AttributeChanged.emit(Name, Value)
+func SetAttribute(attribute_name: String, Value: float) -> void:
+	attributes[attribute_name] = Value
+	AttributeChanged.emit(attribute_name, Value)
 
-func GetAttribute(Name: String) -> float:
-	if Attributes.has(Name):
-		return Attributes[Name]
+func SetAttributeByDriver(attribute_name: String, value: float) -> void:
+	attributes[attribute_name] = value
+
+func GetAttribute(attribute_name: String) -> float:
+	if attributes.has(attribute_name):
+		return attributes[attribute_name]
 	else:
 		return 0
 	
-func HasAttribute(Name: String) -> bool:
-	return Attributes.has(Name)
+func HasAttribute(attribute_name: String) -> bool:
+	return attributes.has(attribute_name)
 	
-func AddAttributesRaw(AttributesFrom: String, NewAttributes: Dictionary):
-	RawAttributes[AttributesFrom] = NewAttributes
+func AddAttributesRaw(attribute_raw_name: String, new_raw_attributes: Dictionary):
+	raw_attributes[attribute_raw_name] = new_raw_attributes
 	CalculateAttributes()
 	
 func CalculateAttributes() -> void:
-	var TempAttributes: Dictionary[String, float]
+	var temp_attributes: Dictionary[String, float]
 	
-	for RawName in RawAttributes:
-		for AttributeName in RawAttributes[RawName]:
-			TempAttributes[AttributeName] = TempAttributes.get(AttributeName, 0) + RawAttributes[RawName][AttributeName]
+	for raw_name in raw_attributes:
+		for attribute_name in raw_attributes[raw_name]:
+			temp_attributes[attribute_name] = temp_attributes.get(attribute_name, 0) + raw_attributes[raw_name][attribute_name]
 			
-	Attributes = TempAttributes
+	attributes = temp_attributes
 	
-	for name in Attributes:
-		AttributeChanged.emit(name, Attributes[name])
+	print(attributes)
+	
+	for attribute_name in attributes:
+		AttributeChanged.emit(attribute_name, attributes[attribute_name])

@@ -4,8 +4,7 @@
 
 [node name="ExperienceAttributesDriver" type="Node"]
 script = ExtResource("1_26vn3")
-RawName = "ExperienceAttributes"
-InitAttributes = Dictionary[String, float]({
+initialized_attributes = Dictionary[String, float]({
 "Experience": 0.0
 })
 metadata/_custom_type_script = "uid://bjy508jmxcpyq"

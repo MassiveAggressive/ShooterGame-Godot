@@ -18,7 +18,7 @@ position = Vector2(521, 303)
 position = Vector2(1188, 270)
 
 [node name="UnitBase3" parent="." instance=ExtResource("2_uhge4")]
-position = Vector2(680, 654)
+position = Vector2(784, 703)
 
 [node name="UnitBase4" parent="." instance=ExtResource("2_uhge4")]
 position = Vector2(1333, 488)

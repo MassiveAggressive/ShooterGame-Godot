@@ -26,6 +26,7 @@ rotation_offset = 45.0
 metadata/_custom_type_script = "uid://cpb46fljmvpjc"
 
 [node name="AttributeContainer" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("4_do01s")
 metadata/_custom_type_script = "uid://cbgksqvtxwari"
 

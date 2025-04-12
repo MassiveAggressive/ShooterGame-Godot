@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://byffou1ig3ymq"]
+
+[ext_resource type="Script" uid="uid://bwf2tynmhn58e" path="res://Core/InventoryEquipment/UI/InventoryEquipmentUI.gd" id="1_wef03"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpira"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="Theme" id="Theme_04alo"]
+MenuButton/colors/font_color = Color(0.258074, 0.765218, 0.268476, 1)
+MenuButton/styles/normal = SubResource("StyleBoxFlat_tpira")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orh6i"]
+bg_color = Color(0, 0, 0, 0)
+
+[node name="InventoryEquipmentUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wef03")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_right = -300.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButton" type="MenuButton" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_04alo")
+text = "Primary Weapon"
+item_count = 5
+popup/item_0/text = "Primary Weapon"
+popup/item_0/id = 0
+popup/item_1/text = "Secondary Weapon"
+popup/item_1/id = 1
+popup/item_2/text = "Shield Generator"
+popup/item_2/id = 2
+popup/item_3/text = "Speed Generator"
+popup/item_3/id = 3
+popup/item_4/text = "Extra"
+popup/item_4/id = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(270, 560)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InventoryPanels" type="TabContainer" parent="Control/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_orh6i")
+tab_alignment = 1
+current_tab = 0
+tabs_visible = false
+
+[node name="EquipmentPanel" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_right = 400.0
+grow_vertical = 2

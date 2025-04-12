@@ -3,18 +3,21 @@ extends AttributesDriver
 
 signal Destroy
 
-var HealthBar: ProgressBar
+var health_bar_ui: ProgressBar
 
 func _enter_tree() -> void:
 	super._enter_tree()
-	HealthBar = get_parent().get_node("%HealthBar")
+	health_bar_ui = get_parent().get_node("%HealthBar")
 	
-func OnAttributeChanged(Name: String, Value: float):
-	if Name == "Health" or Name == "MaxHealth":
-		if ContainerRef.HasAttribute("MaxHealth"):
-			HealthBar.value = ContainerRef.GetAttribute("Health") / ContainerRef.GetAttribute("MaxHealth")
+func OnAttributeChanged(attribute_name: String, Value: float):
+	if attribute_name == "Health" or attribute_name == "MaxHealth":
+		if attribute_container.HasAttribute("MaxHealth"):
+			health_bar_ui.value = attribute_container.GetAttribute("Health") / attribute_container.GetAttribute("MaxHealth")
 		else:
-			HealthBar.value = ContainerRef.GetAttribute("Health") / 1
+			health_bar_ui.value = attribute_container.GetAttribute("Health") / 1
 		
-		if Name == "Health" and Value <= 0.0:
+		if attribute_name == "MaxHealth":
+			attribute_container.SetAttributeByDriver("Health", attribute_container.GetAttribute("MaxHealth"))
+		
+		if attribute_name == "Health" and Value <= 0.0:
 			Destroy.emit()

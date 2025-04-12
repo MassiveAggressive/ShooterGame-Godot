@@ -1,18 +1,18 @@
+@tool
+
 extends Node
 
 enum EItemPrimaryType 
 {
 	WEAPON,
 	GENERATOR,
-	EXTRA,
-	OTHER
+	EXTRA
 }
 
-var EItemPrimaryTypeData: Dictionary[EItemPrimaryType, String] = {
+var ItemPrimaryTypeData: Dictionary[EItemPrimaryType, String] = {
 	EItemPrimaryType.WEAPON: "Weapon",
 	EItemPrimaryType.GENERATOR: "Generator",
-	EItemPrimaryType.EXTRA: "Extra",
-	EItemPrimaryType.OTHER: "Other",
+	EItemPrimaryType.EXTRA: "Extra"
 }
 
 enum EItemSecondaryType 
@@ -21,17 +21,15 @@ enum EItemSecondaryType
 	SECONDARYWEAPON,
 	SHIELDGENERATOR,
 	SPEEDGENERATOR,
-	EXTRA,
-	OTHER
+	EXTRA
 }
 
-var EItemSecondaryTypeData: Dictionary[EItemSecondaryType, String] = {
+var ItemSecondaryTypeData: Dictionary[EItemSecondaryType, String] = {
 	EItemSecondaryType.PRIMARYWEAPON: "Primary Weapon",
 	EItemSecondaryType.SECONDARYWEAPON: "Secondary Weapon",
 	EItemSecondaryType.SHIELDGENERATOR: "Shield Generator",
 	EItemSecondaryType.SPEEDGENERATOR: "Speed Generator",
-	EItemSecondaryType.EXTRA: "Extra",
-	EItemSecondaryType.OTHER: "Other",
+	EItemSecondaryType.EXTRA: "Extra"
 	
 }
 

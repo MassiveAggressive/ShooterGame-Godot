@@ -8,11 +8,8 @@ Name = "Struner"
 Description = "Weakest NPC"
 Level = 1
 BaseAttributes = Dictionary[String, float]({
-"Damage": 10.0,
-"Health": 100.0,
 "MaxDamage": 10.0,
 "MaxHealth": 100.0,
-"MaxShield": 100.0,
-"Shield": 100.0
+"MaxShield": 100.0
 })
 metadata/_custom_type_script = "uid://b5cky4ki6db1e"

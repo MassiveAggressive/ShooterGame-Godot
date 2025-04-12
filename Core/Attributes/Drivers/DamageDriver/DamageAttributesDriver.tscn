@@ -4,8 +4,7 @@
 
 [node name="DamageAttributesDriver" type="Node"]
 script = ExtResource("1_0bx0h")
-RawName = "DamageAttributes"
-InitAttributes = Dictionary[String, float]({
+initialized_attributes = Dictionary[String, float]({
 "Damage": 0.0,
 "MaxDamage": 0.0
 })

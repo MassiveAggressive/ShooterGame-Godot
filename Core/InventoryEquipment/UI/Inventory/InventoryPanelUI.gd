@@ -1,56 +1,59 @@
 @tool
-extends VBoxContainer
 
 class_name InventoryPanelUI
+extends VBoxContainer
 
-@export var PanelType:= Enums.EItemSecondaryType.PRIMARYWEAPON
+@export var panel_type: Enums.EItemSecondaryType
 
-var ItemUIScene: PackedScene = preload("uid://dva8aop20v0ie")
-var SpaceScene: PackedScene = preload("uid://pdsmrkga7far")
+var item_ui_scene: PackedScene = preload("uid://dva8aop20v0ie")
+var space_scene: PackedScene = preload("uid://pdsmrkga7far")
 
-var GridTheme: Theme = preload("uid://buufd48x0pmbc")
+var grid_theme: Theme = preload("uid://buufd48x0pmbc")
 
-var Grids: Array[GridContainer]
-var Spaces: Array[Control]
+var grids: Array[GridContainer]
+var spaces: Array[Control]
 
-var ItemUIs: Array
+var item_uis: Array[ItemUI]
 
 @export_tool_button("Create Panel")
-var CreatePanelBtn = CreatePanel
+var create_panel_button = CreatePanel
 
 @export_tool_button("Destroy Panel")
-var DestroyPanelBtn = DestroyPanel
-
+var destroy_panel_button = DestroyPanel
+	
 func CreatePanel() -> Array:
-	if Grids.size() > 0:
-		var TempSpace: Control = SpaceScene.instantiate()
-		Spaces.append(TempSpace)
+	if grids.size() > 0:
+		var TempSpace: Control = space_scene.instantiate()
+		spaces.append(TempSpace)
 		
 		add_child(TempSpace)
 		
-	var TempGrid: GridContainer = GridContainer.new()
-	TempGrid.columns = 5
-	TempGrid.theme = GridTheme
+	var grid_temp: GridContainer = GridContainer.new()
+	grid_temp.columns = 5
+	grid_temp.theme = grid_theme
 	
-	Grids.append(TempGrid)
+	grids.append(grid_temp)
 	
-	add_child(TempGrid)
+	add_child(grid_temp)
 	
 	for i in range(25):
-		var ItemUIRef: Control = ItemUIScene.instantiate()
-		ItemUIs.append(ItemUIRef)
-		TempGrid.add_child(ItemUIRef)
+		var item_ui_scene_temp: Control = item_ui_scene.instantiate()
+		item_uis.append(item_ui_scene_temp)
+		grid_temp.add_child(item_ui_scene_temp)
 	
-	return ItemUIs
+	return item_uis
 
 func DestroyPanel() -> void:
 	for i in range(25):
-		ItemUIs[ItemUIs.size() - 25 + i].queue_free()
-	ItemUIs = ItemUIs.slice(0, ItemUIs.size() - 25)
+		item_uis[item_uis.size() - 25 + i].queue_free()
+	item_uis = item_uis.slice(0, item_uis.size() - 25)
 	
-	Grids[Grids.size() - 1].queue_free()
-	Grids.remove_at(Grids.size() - 1)
+	grids[grids.size() - 1].queue_free()
+	grids.remove_at(grids.size() - 1)
 	
-	if !Spaces.is_empty():
-		Spaces[Spaces.size() - 1].queue_free()
-		Spaces.remove_at(Spaces.size() - 1)
+	if !spaces.is_empty():
+		spaces[spaces.size() - 1].queue_free()
+		spaces.remove_at(spaces.size() - 1)
+
+func GetItemUIs() -> Array[ItemUI]:
+	return item_uis

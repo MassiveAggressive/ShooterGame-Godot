@@ -1,0 +1,195 @@
+[gd_scene load_steps=5 format=3 uid="uid://byffou1ig3ymq"]
+
+[ext_resource type="Script" uid="uid://bwf2tynmhn58e" path="res://Core/InventoryEquipment/UI/InventoryEquipmentUI.gd" id="1_wef03"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpira"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="Theme" id="Theme_04alo"]
+MenuButton/colors/font_color = Color(0.258074, 0.765218, 0.268476, 1)
+MenuButton/styles/normal = SubResource("StyleBoxFlat_tpira")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orh6i"]
+bg_color = Color(0, 0, 0, 0)
+
+[node name="InventoryEquipmentUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wef03")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_right = -300.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButton" type="MenuButton" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_04alo")
+item_count = 60
+popup/item_0/text = "Primary Weapon"
+popup/item_0/id = 0
+popup/item_1/text = "Secondary Weapon"
+popup/item_1/id = 1
+popup/item_2/text = "Shield Generator"
+popup/item_2/id = 2
+popup/item_3/text = "Speed Generator"
+popup/item_3/id = 3
+popup/item_4/text = "Extra"
+popup/item_4/id = 4
+popup/item_5/text = "Other"
+popup/item_5/id = 5
+popup/item_6/text = "Primary Weapon"
+popup/item_6/id = 0
+popup/item_7/text = "Secondary Weapon"
+popup/item_7/id = 1
+popup/item_8/text = "Shield Generator"
+popup/item_8/id = 2
+popup/item_9/text = "Speed Generator"
+popup/item_9/id = 3
+popup/item_10/text = "Extra"
+popup/item_10/id = 4
+popup/item_11/text = "Other"
+popup/item_11/id = 5
+popup/item_12/text = "Primary Weapon"
+popup/item_12/id = 0
+popup/item_13/text = "Secondary Weapon"
+popup/item_13/id = 1
+popup/item_14/text = "Shield Generator"
+popup/item_14/id = 2
+popup/item_15/text = "Speed Generator"
+popup/item_15/id = 3
+popup/item_16/text = "Extra"
+popup/item_16/id = 4
+popup/item_17/text = "Other"
+popup/item_17/id = 5
+popup/item_18/text = "Primary Weapon"
+popup/item_18/id = 0
+popup/item_19/text = "Secondary Weapon"
+popup/item_19/id = 1
+popup/item_20/text = "Shield Generator"
+popup/item_20/id = 2
+popup/item_21/text = "Speed Generator"
+popup/item_21/id = 3
+popup/item_22/text = "Extra"
+popup/item_22/id = 4
+popup/item_23/text = "Other"
+popup/item_23/id = 5
+popup/item_24/text = "Primary Weapon"
+popup/item_24/id = 0
+popup/item_25/text = "Secondary Weapon"
+popup/item_25/id = 1
+popup/item_26/text = "Shield Generator"
+popup/item_26/id = 2
+popup/item_27/text = "Speed Generator"
+popup/item_27/id = 3
+popup/item_28/text = "Extra"
+popup/item_28/id = 4
+popup/item_29/text = "Other"
+popup/item_29/id = 5
+popup/item_30/text = "Primary Weapon"
+popup/item_30/id = 0
+popup/item_31/text = "Secondary Weapon"
+popup/item_31/id = 1
+popup/item_32/text = "Shield Generator"
+popup/item_32/id = 2
+popup/item_33/text = "Speed Generator"
+popup/item_33/id = 3
+popup/item_34/text = "Extra"
+popup/item_34/id = 4
+popup/item_35/text = "Other"
+popup/item_35/id = 5
+popup/item_36/text = "Primary Weapon"
+popup/item_36/id = 0
+popup/item_37/text = "Secondary Weapon"
+popup/item_37/id = 1
+popup/item_38/text = "Shield Generator"
+popup/item_38/id = 2
+popup/item_39/text = "Speed Generator"
+popup/item_39/id = 3
+popup/item_40/text = "Extra"
+popup/item_40/id = 4
+popup/item_41/text = "Other"
+popup/item_41/id = 5
+popup/item_42/text = "Primary Weapon"
+popup/item_42/id = 0
+popup/item_43/text = "Secondary Weapon"
+popup/item_43/id = 1
+popup/item_44/text = "Shield Generator"
+popup/item_44/id = 2
+popup/item_45/text = "Speed Generator"
+popup/item_45/id = 3
+popup/item_46/text = "Extra"
+popup/item_46/id = 4
+popup/item_47/text = "Other"
+popup/item_47/id = 5
+popup/item_48/text = "Primary Weapon"
+popup/item_48/id = 0
+popup/item_49/text = "Secondary Weapon"
+popup/item_49/id = 1
+popup/item_50/text = "Shield Generator"
+popup/item_50/id = 2
+popup/item_51/text = "Speed Generator"
+popup/item_51/id = 3
+popup/item_52/text = "Extra"
+popup/item_52/id = 4
+popup/item_53/text = "Other"
+popup/item_53/id = 5
+popup/item_54/text = "Primary Weapon"
+popup/item_54/id = 0
+popup/item_55/text = "Secondary Weapon"
+popup/item_55/id = 1
+popup/item_56/text = "Shield Generator"
+popup/item_56/id = 2
+popup/item_57/text = "Speed Generator"
+popup/item_57/id = 3
+popup/item_58/text = "Extra"
+popup/item_58/id = 4
+popup/item_59/text = "Other"
+popup/item_59/id = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(270, 560)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InventoryPanels" type="TabContainer" parent="Control/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_orh6i")
+tab_alignment = 1
+current_tab = 0
+tabs_visible = false
+
+[node name="EquipmentPanel" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_right = 400.0
+grow_vertical = 2

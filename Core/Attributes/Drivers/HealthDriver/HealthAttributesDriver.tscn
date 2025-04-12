@@ -4,8 +4,7 @@
 
 [node name="HealthAttributesDriver" type="Node"]
 script = ExtResource("1_4yovj")
-RawName = "HealthAttributes"
-InitAttributes = Dictionary[String, float]({
+initialized_attributes = Dictionary[String, float]({
 "Health": 0.0,
 "MaxHealth": 0.0
 })
