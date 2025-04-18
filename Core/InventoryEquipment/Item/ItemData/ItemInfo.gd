@@ -10,3 +10,4 @@ class_name ItemInfo
 @export var stackable: bool = false
 @export var max_stack_count: int = 1
 @export var attributes: Dictionary[String, float]
+@export var item_scene: PackedScene

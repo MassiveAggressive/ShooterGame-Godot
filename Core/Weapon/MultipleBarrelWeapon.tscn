@@ -5,8 +5,3 @@
 
 [node name="MultipleBarrelWeapon" instance=ExtResource("1_nixjg")]
 script = ExtResource("2_cqq7s")
-FireRate = null
-BarrelsCount = null
-BarrelsDistance = null
-BarrelspreadAngle = null
-IsShootAvailable = null

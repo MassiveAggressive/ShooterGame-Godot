@@ -25,3 +25,7 @@ func _process(delta: float) -> void:
 		Attributes.SetAttribute("Health", Attributes.GetAttribute("Health") - 10)
 		
 		queue_free()
+
+
+func OnScreenExited() -> void:
+	queue_free()

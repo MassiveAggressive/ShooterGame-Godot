@@ -9,8 +9,7 @@ Description = "Prisma"
 Level = 1
 BaseAttributes = Dictionary[String, float]({
 "MaxDamage": 50.0,
-"MaxFireRate": 10.0,
-"MaxHealth": 1000.0,
-"MaxShield": 250.0
+"MaxFireRate": 0.0,
+"MaxHealth": 1000.0
 })
 metadata/_custom_type_script = "uid://b5cky4ki6db1e"

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bha33oov7gjix"]
+
+[ext_resource type="Script" uid="uid://csm8k4tqo5gsj" path="res://Core/Attributes/UI/AttributeContainerUI.gd" id="1_xyjw6"]
+
+[node name="AttributeContainerUI" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xyjw6")
+exhibited_attributes = Array[String](["MaxHealth", "MaxShield", "MaxDamage", "MaxFireRate"])
+exhibited_attributes_data = Dictionary[String, String]({
+"Max Shield": "Max Shield",
+"MaxDamage": "Max Damage",
+"MaxFireRate": "Max Fire Rate",
+"MaxHealth": "Max Health"
+})

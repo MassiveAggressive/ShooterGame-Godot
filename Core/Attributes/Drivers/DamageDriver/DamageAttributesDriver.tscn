@@ -4,7 +4,5 @@
 
 [node name="DamageAttributesDriver" type="Node"]
 script = ExtResource("1_0bx0h")
-initialized_attributes = Dictionary[String, float]({
-"Damage": 0.0,
-"MaxDamage": 0.0
-})
+raw_name = "Damage"
+initialized_attributes = Array[String](["MaxDamage", "Damage", "MaxFireRate", "FireRate"])

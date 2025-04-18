@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgvku2dtkh142"]
 
 [ext_resource type="Script" uid="uid://bau81177a3c1l" path="res://Core/Weapon/WeaponBase.gd" id="1_sla1o"]
-[ext_resource type="PackedScene" uid="uid://dbs0eusurv26w" path="res://Core/Weapon/ProjectileBase.tscn" id="2_e7dik"]
+[ext_resource type="PackedScene" uid="uid://dbs0eusurv26w" path="res://Core/Weapon/Projectile/ProjectileBase.tscn" id="2_e7dik"]
 
 [node name="WeaponBase" type="Node2D"]
 script = ExtResource("1_sla1o")
-BulletScene = ExtResource("2_e7dik")
+bullet_scene = ExtResource("2_e7dik")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhibut7qj0iid"]
+[gd_scene load_steps=2 format=3 uid="uid://dhibut7qj0iid"]
 
 [ext_resource type="PackedScene" uid="uid://crpduft0jsw1g" path="res://Core/Player/PlayerBase.tscn" id="2_o8ftu"]
-[ext_resource type="PackedScene" uid="uid://lsul7y4yw26" path="res://Core/Unit/UnitBase.tscn" id="2_uhge4"]
 
 [node name="DevMap" type="Node2D"]
 
@@ -9,16 +8,4 @@
 unique_name_in_owner = true
 
 [node name="PlayerBase" parent="." instance=ExtResource("2_o8ftu")]
-position = Vector2(905, 469)
-
-[node name="UnitBase" parent="." instance=ExtResource("2_uhge4")]
-position = Vector2(521, 303)
-
-[node name="UnitBase2" parent="." instance=ExtResource("2_uhge4")]
-position = Vector2(1188, 270)
-
-[node name="UnitBase3" parent="." instance=ExtResource("2_uhge4")]
-position = Vector2(784, 703)
-
-[node name="UnitBase4" parent="." instance=ExtResource("2_uhge4")]
-position = Vector2(1333, 488)
+position = Vector2(858, 503)

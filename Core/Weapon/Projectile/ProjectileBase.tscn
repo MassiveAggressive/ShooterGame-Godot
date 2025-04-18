@@ -1,10 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbs0eusurv26w"]
 
 [ext_resource type="Texture2D" uid="uid://kxwxcrkqee5a" path="res://Assets/Square.png" id="1_0becq"]
-[ext_resource type="Script" uid="uid://d3qra8dg1efc2" path="res://Core/Weapon/ProjectileBase.gd" id="1_q7xtu"]
+[ext_resource type="Script" uid="uid://d3qra8dg1efc2" path="res://Core/Weapon/Projectile/ProjectileBase.gd" id="1_q7xtu"]
 
 [node name="ProjectileBase" type="Sprite2D"]
 modulate = Color(0.633631, 0.0991199, 0.676474, 1)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_0becq")
 script = ExtResource("1_q7xtu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

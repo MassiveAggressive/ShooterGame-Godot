@@ -1,75 +1,111 @@
-extends Node2D
-
 class_name WeaponBase
+extends ItemBase
 
-@export var BulletScene : PackedScene
+@export var bullet_scene: PackedScene
 
-@export var FireRate : float = 1:
+@export var fire_rate: float = 0:
 	set(value):
-		FireRate = value
-		FireDuration = 1 / value
-@export var BarrelCount : int = 1
+		fire_rate = value
+		fire_duration = 1 / value
+		
+var barrels: Array[Node2D]
 
-var FireDuration : float
-var TimePool : float
-var CountThisFrame : bool = false
-var IsShooting : bool = false
-@export var IsShootAvailable : bool = true
+@export var barrel_count: int = 1:
+	set(value):
+		barrel_count = value
+		CreateBarrels()
 
-@onready var CurrentScene : Node
+@export var barrel_angle: float = 0.0:
+	set(value):
+		barrel_angle = value
+		CreateBarrels()
 
-var OwnerAttribute: AttributeContainer
+@export var barrel_space: float = 10:
+	set(value):
+		barrel_space = value
+		CreateBarrels()
+
+var fire_duration: float
+var time_pool: float
+var count_this_frame: bool = false
+var is_shooting: bool = false
+@export var is_shoot_available: bool = true
+
+@onready var current_scene: Node
+
+var owner_attribute_container: AttributeContainer
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("LeftClick"):
+		StartShooting()
+	elif event.is_action_released("LeftClick"):
+		StopShooting()
 
 func _ready():
-	OwnerAttribute = get_parent().get_node("AttributeContainer")
-	if OwnerAttribute:
-		OwnerAttribute.AttributeChanged.connect(OnAttributeChange)
+	owner_attribute_container = owner_unit.get_node("AttributeContainer")
+	if owner_attribute_container:
+		owner_attribute_container.AttributeChanged.connect(OnAttributeChange)
 		
-	CurrentScene = get_tree().current_scene
+	current_scene = get_tree().current_scene
 	
 	set_process(false)
-	FireDuration = 1 / FireRate
-
-func OnAttributeChange(Name: String, Value: float):
-	if Name == "FireRate":
-		FireRate = Value
-	elif Name == "BarrelCount":
-		BarrelCount = Value
+	fire_duration = 1 / fire_rate
 	
+	CreateBarrels()
+
+func CreateBarrels() -> void:
+	if !barrels.is_empty():
+		for barrel in barrels:
+			barrel.queue_free()
+		barrels.clear()	
+		
+	for i in range(barrel_count):
+		var new_barrel: Node2D = Node2D.new()
+		new_barrel.position.y = i * barrel_space - ((barrel_count - 1) * barrel_space / 2)
+		new_barrel.rotation_degrees = i * barrel_angle - ((barrel_count - 1) * barrel_angle / 2)
+		
+		barrels.append(new_barrel)
+		add_child(new_barrel)
+
+func OnAttributeChange(attribute_name: String, value: float):
+	if attribute_name == "FireRate":
+		fire_rate = value
+	elif attribute_name == "BarrelCount":
+		barrel_count = value
+
 func StartShooting():
-	IsShooting = true
-	if IsShootAvailable:
-		Shoot(0.0)
-	set_process(true)
+	if fire_rate > 0.0:
+		is_shooting = true
+		if is_shoot_available:
+			Shoot(0.0)
+		set_process(true)
 	
 func StopShooting():
-	IsShooting = false
-	
+	is_shooting = false
+
 func _process(delta):
-	if CountThisFrame:
-		TimePool += delta
-		if TimePool >= FireDuration:
-			if IsShooting:
-				HandleTimePool()
+	if count_this_frame:
+		time_pool += delta
+		if time_pool >= fire_duration:
+			if is_shooting:
+				Handletime_pool()
 			else:
-				IsShootAvailable = true
-				CountThisFrame = false
-				TimePool = 0
+				is_shoot_available = true
+				count_this_frame = false
+				time_pool = 0
 				set_process(false)
 	else:
-		CountThisFrame = true
+		count_this_frame = true
 
-func HandleTimePool():
-	while TimePool >= FireDuration:
-		TimePool -= FireDuration
-		Shoot(TimePool)
+func Handletime_pool():
+	while time_pool >= fire_duration:
+		time_pool -= fire_duration
+		Shoot(time_pool)
 
 func Shoot(Delta : float):
-	IsShootAvailable = false
-	var Bullet = BulletScene.instantiate()
-	CurrentScene.add_child(Bullet)
-	
-	queue_redraw()
-	Bullet.global_position = global_position + Vector2.RIGHT.rotated(global_rotation) * Delta * 1500
-	Bullet.global_rotation = global_rotation
-	
+	is_shoot_available = false
+	for barrel in barrels:
+		var new_bullet = bullet_scene.instantiate()
+		current_scene.add_child(new_bullet)
+		new_bullet.global_position = barrel.global_position + Vector2.RIGHT.rotated(barrel.global_rotation) * Delta * 1500
+		new_bullet.global_rotation = barrel.global_rotation

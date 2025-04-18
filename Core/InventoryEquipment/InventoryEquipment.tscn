@@ -5,9 +5,9 @@
 [node name="InventoryEquipment" type="Node"]
 script = ExtResource("1_w24md")
 equipment_slot_sizes = Dictionary[int, int]({
-0: 5,
-1: 3,
-2: 3
+0: 1,
+1: 1,
+2: 5
 })
 equipment = Dictionary[int, Dictionary]({
 0: {},

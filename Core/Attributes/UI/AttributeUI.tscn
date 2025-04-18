@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://bax61lplxphv3"]
+
+[ext_resource type="Script" uid="uid://4sdrg0ntfitq" path="res://Core/Attributes/UI/AttributeUI.gd" id="1_dehue"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dehue"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_cqtus"]
+font_size = 25
+
+[node name="AttributeUI" type="HBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+offset_right = 100.0
+offset_bottom = 50.0
+theme_override_constants/separation = 0
+script = ExtResource("1_dehue")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="AttributeName" type="Label" parent="ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Max Fire Rate"
+label_settings = SubResource("LabelSettings_dehue")
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.374139, 0.374139, 0.374139, 1)
+
+[node name="Value" type="Label" parent="ColorRect2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1500"
+label_settings = SubResource("LabelSettings_cqtus")
+horizontal_alignment = 1
+vertical_alignment = 1

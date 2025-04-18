@@ -5,6 +5,9 @@ extends Node
 
 @export var raw_attributes: Dictionary[String, Dictionary]
 
+@export var exhibited_attributes: Dictionary[String, Attribute]
+
+signal AttributesChanged(NewAttributes: Dictionary[String, float])
 signal AttributeChanged(Name: String, Value: float)
 
 func _ready() -> void:
@@ -31,7 +34,16 @@ func GetAttribute(attribute_name: String) -> float:
 	
 func HasAttribute(attribute_name: String) -> bool:
 	return attributes.has(attribute_name)
+
+func InitializeAttributes(attributes_raw_name: String, initialized_attributes: Array[String]):
+	var attributes_temp: Dictionary
+	for attribute_name in initialized_attributes:
+		attributes_temp[attribute_name] = 0.0
+		
+	raw_attributes[attributes_raw_name] = attributes_temp
 	
+	exhibited_attributes.merge(exhibited_attributes)
+
 func AddAttributesRaw(attribute_raw_name: String, new_raw_attributes: Dictionary):
 	raw_attributes[attribute_raw_name] = new_raw_attributes
 	CalculateAttributes()
@@ -45,7 +57,6 @@ func CalculateAttributes() -> void:
 			
 	attributes = temp_attributes
 	
-	print(attributes)
-	
+	AttributesChanged.emit(attributes)
 	for attribute_name in attributes:
 		AttributeChanged.emit(attribute_name, attributes[attribute_name])

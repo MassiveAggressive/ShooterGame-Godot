@@ -6,11 +6,14 @@ var direction: Vector2 = Vector2.ZERO
 
 @export var angular_speed: float = deg_to_rad(360)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("LeftClick"):
-		$WeaponBase.StartShooting()
-	elif event.is_action_released("LeftClick"):
-		$WeaponBase.StopShooting()
+var attribute_container_ui_scene: PackedScene = preload("uid://bha33oov7gjix")
+
+func _ready() -> void:
+	super._ready()
+	var attribute_container_ui: AttributeContainerUI = attribute_container_ui_scene.instantiate()
+	attribute_container_ui.owner_attribute_container = %AttributeContainer
+	
+	Global.AddUIToScreen(attribute_container_ui)
 
 func _process(delta: float) -> void:
 	direction = Vector2.ZERO

@@ -5,17 +5,21 @@ signal Destroy
 
 var health_bar_ui: ProgressBar
 
-func _enter_tree() -> void:
-	super._enter_tree()
+func _ready() -> void:
+	super._ready()
 	health_bar_ui = get_parent().get_node("%HealthBar")
 	
-func OnAttributeChanged(attribute_name: String, Value: float):
+func OnAttributesChanged(new_attributes: Dictionary[String, float]) -> void:
+	if new_attributes["MaxHealth"] != attributes["MaxHealth"]:
+		attribute_container.SetAttributeByDriver("Health", attribute_container.GetAttribute("MaxHealth"))
+	
+	for attribute_name in initialized_attributes:
+		attributes[attribute_name] = new_attributes[attribute_name]
+	
+func OnAttributeChanged(attribute_name: String, Value: float) -> void:
 	if attribute_name == "Health" or attribute_name == "MaxHealth":
-		if attribute_container.HasAttribute("MaxHealth"):
-			health_bar_ui.value = attribute_container.GetAttribute("Health") / attribute_container.GetAttribute("MaxHealth")
-		else:
-			health_bar_ui.value = attribute_container.GetAttribute("Health") / 1
-		
+		health_bar_ui.value = attribute_container.GetAttribute("Health") / attribute_container.GetAttribute("MaxHealth")
+
 		if attribute_name == "MaxHealth":
 			attribute_container.SetAttributeByDriver("Health", attribute_container.GetAttribute("MaxHealth"))
 		

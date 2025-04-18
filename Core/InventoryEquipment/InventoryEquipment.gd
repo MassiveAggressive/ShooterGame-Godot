@@ -1,10 +1,13 @@
 class_name InventoryEquipment
 extends Node
 
+@export var owner_unit: UnitBase
+
 var inventory: Dictionary[int, Item]
 
 @export var equipment_slot_sizes: Dictionary[Enums.EItemPrimaryType, int]
 @export var equipment: Dictionary[Enums.EItemPrimaryType, Dictionary]
+var created_items: Dictionary[int, ItemBase]
 
 @export var owners_attribute_container: AttributeContainer
 var attributes: Dictionary[String, float]
@@ -17,19 +20,25 @@ signal ItemAddedToEquipment(Item)
 signal ItemRemovedFromEquipment(int)
 
 var inventory_equipment_ui_scene: PackedScene = preload("uid://byffou1ig3ymq")
-var item: ItemInfo = preload("uid://c70j54wftetyk")
+
+var item1: ItemInfo = preload("uid://c70j54wftetyk")
+var item2: ItemInfo = preload("uid://cpgfmbc5snce7")
 
 func _enter_tree() -> void:
+	owner_unit = get_parent() as UnitBase
+	owners_attribute_container = owner_unit.get_node("%AttributeContainer")
+	
 	var inventory_equipment_ui: InventoryEquipmentUI = inventory_equipment_ui_scene.instantiate()
 	inventory_equipment_ui.owner_inventory_equipment = self
 	
 	Global.GetCanvasLayer().add_child(inventory_equipment_ui)
-	
-	owners_attribute_container = get_parent().get_node("%AttributeContainer")
-		
+
 func _ready() -> void:
-	for i in range(35):
-		AddNewItemToInventory(item)
+	for i in range(10):
+		AddNewItemToInventory(item1)
+	
+	for i in range(10):
+		AddNewItemToInventory(item2)
 
 func FindItem(item_id: int) -> Enums.EItemLocation:
 	return item_locations[item_id].item_location
@@ -70,6 +79,13 @@ func AddItemToEquipment(new_item: Item) -> bool:
 		item_locations[new_item.item_id] = ItemLocation.new(Enums.EItemLocation.INEQUIPMENT, new_item.item_info.item_primary_type)
 		
 		equipment[item_type] = items
+		
+		if new_item.item_info.item_scene != null:
+			var new_item_base: ItemBase = new_item.item_info.item_scene.instantiate()
+			new_item_base.owner_unit = owner_unit
+			new_item_base.item = new_item
+			
+			owner_unit.get_node("Weapon").add_child(new_item_base)
 		
 		CalculateAttributes()
 		
