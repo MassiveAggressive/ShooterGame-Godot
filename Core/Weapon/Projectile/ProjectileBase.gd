@@ -1,6 +1,8 @@
 class_name ProjectileBase
 extends Node2D
 
+var instigator_unit: UnitBase
+
 @export var bullet_speed: float = 1500
 @export var collision_mask: int = 1  # NPC'lerin ait olduğu collision layer mask'ını buraya girin
 
@@ -20,12 +22,14 @@ func _process(delta: float) -> void:
 	
 	if result.size() > 0:
 		var collider = result[0].collider
-		var Attributes: AttributeContainer = collider.get_node("AttributeContainer")
 		
-		Attributes.SetAttribute("Health", Attributes.GetAttribute("Health") - 10)
+		var damage_effect: EffectBase = preload("uid://brsx0av4frdoh").instantiate()
+		damage_effect.InitializeEffect(instigator_unit, collider)
+		damage_effect.modifiers[0].attribute_magnitude = -10
+		
+		damage_effect.ApplyEffect()
 		
 		queue_free()
-
 
 func OnScreenExited() -> void:
 	queue_free()

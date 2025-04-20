@@ -11,6 +11,7 @@ var attribute_container: AttributeContainer
 func _ready() -> void:
 	attribute_container = get_parent().get_node("%AttributeContainer")
 	attribute_container.AttributeChanged.connect(OnAttributeChanged)
+	attribute_container.AttributeChangedByEffect.connect(OnAttributeChangedByEffect)
 	attribute_container.AttributesChanged.connect(OnAttributesChanged)
 	InitializeAttributes()
 	
@@ -20,6 +21,9 @@ func InitializeAttributes() -> void:
 		attributes[attribute_name] = 0.0
 
 func OnAttributeChanged(attribute_name: String, value: float) -> void:
+	pass
+
+func OnAttributeChangedByEffect(attribute_name: String, value: float, effect: EffectBase) -> void:
 	pass
 
 func OnAttributesChanged(new_attributes: Dictionary[String, float]) -> void:

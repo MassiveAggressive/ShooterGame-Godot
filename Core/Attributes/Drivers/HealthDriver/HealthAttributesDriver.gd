@@ -1,7 +1,7 @@
 class_name HealthAttributesDriver
 extends AttributesDriver
 
-signal Destroy
+signal Destroy(DestroyerUnit: UnitBase)
 
 var health_bar_ui: ProgressBar
 
@@ -16,7 +16,7 @@ func OnAttributesChanged(new_attributes: Dictionary[String, float]) -> void:
 	for attribute_name in initialized_attributes:
 		attributes[attribute_name] = new_attributes[attribute_name]
 	
-func OnAttributeChanged(attribute_name: String, Value: float) -> void:
+func OnAttributeChangedByEffect(attribute_name: String, Value: float, effect: EffectBase) -> void:
 	if attribute_name == "Health" or attribute_name == "MaxHealth":
 		health_bar_ui.value = attribute_container.GetAttribute("Health") / attribute_container.GetAttribute("MaxHealth")
 
@@ -24,4 +24,4 @@ func OnAttributeChanged(attribute_name: String, Value: float) -> void:
 			attribute_container.SetAttributeByDriver("Health", attribute_container.GetAttribute("MaxHealth"))
 		
 		if attribute_name == "Health" and Value <= 0.0:
-			Destroy.emit()
+			Destroy.emit(effect.effect_owner)

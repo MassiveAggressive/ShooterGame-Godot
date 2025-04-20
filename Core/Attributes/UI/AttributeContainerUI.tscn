@@ -8,8 +8,8 @@ offset_bottom = 40.0
 script = ExtResource("1_xyjw6")
 exhibited_attributes = Array[String](["MaxHealth", "MaxShield", "MaxDamage", "MaxFireRate"])
 exhibited_attributes_data = Dictionary[String, String]({
-"Max Shield": "Max Shield",
 "MaxDamage": "Max Damage",
 "MaxFireRate": "Max Fire Rate",
-"MaxHealth": "Max Health"
+"MaxHealth": "Max Health",
+"MaxShield": "Max Shield"
 })

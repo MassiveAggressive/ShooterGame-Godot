@@ -38,3 +38,11 @@ enum EItemLocation
 	ININVENTORY,
 	INEQUIPMENT
 }
+
+enum EOperator
+{
+	ADD,
+	MULTIPLY,
+	DIVIDE,
+	OVERRIDE
+}

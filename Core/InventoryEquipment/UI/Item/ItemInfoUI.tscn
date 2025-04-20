@@ -6,42 +6,43 @@ font_size = 12
 [sub_resource type="LabelSettings" id="LabelSettings_yhl7x"]
 font_size = 12
 
-[node name="ItemInfoUI" type="Control"]
-layout_mode = 3
+[node name="ItemInfoUI" type="ColorRect"]
+custom_minimum_size = Vector2(100, 100)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1102.0
-offset_bottom = -598.0
+offset_right = -1820.0
+offset_bottom = -980.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+color = Color(0.156863, 0.156863, 0.156863, 1)
 
 [node name="NameLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 83.0
+offset_right = 100.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_vertical = 8
 text = "Name"
 label_settings = SubResource("LabelSettings_i0n6g")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LevelLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_right = -3.0
-offset_bottom = 23.0
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 93.0
+offset_right = 100.0
+offset_bottom = 37.0
 grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
 text = "1
 "
 label_settings = SubResource("LabelSettings_yhl7x")

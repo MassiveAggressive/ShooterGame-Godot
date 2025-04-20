@@ -9,6 +9,7 @@ extends Node
 
 signal AttributesChanged(NewAttributes: Dictionary[String, float])
 signal AttributeChanged(Name: String, Value: float)
+signal AttributeChangedByEffect(Name: String, Value: float, Effect: EffectBase)
 
 func _ready() -> void:
 	CalculateAttributes()
@@ -19,9 +20,14 @@ func AddAttribute(attribute_name: String) -> void:
 	else:
 		attributes[attribute_name] = 0.0
 	
-func SetAttribute(attribute_name: String, Value: float) -> void:
-	attributes[attribute_name] = Value
-	AttributeChanged.emit(attribute_name, Value)
+func SetAttribute(attribute_name: String, value: float) -> void:
+	attributes[attribute_name] = value
+	AttributeChanged.emit(attribute_name, value)
+
+func SetAttributeByEffect(attribute_name: String, value: float, effect: EffectBase) -> void:
+	attributes[attribute_name] = value
+	AttributeChanged.emit(attribute_name, value)
+	AttributeChangedByEffect.emit(attribute_name, value, effect)
 
 func SetAttributeByDriver(attribute_name: String, value: float) -> void:
 	attributes[attribute_name] = value

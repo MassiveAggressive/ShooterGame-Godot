@@ -14,7 +14,7 @@ stackable = false
 max_stack_count = 1
 attributes = Dictionary[String, float]({
 "MaxDamage": 35.0,
-"MaxFireRate": 35.0
+"MaxFireRate": 10.0
 })
 item_scene = ExtResource("1_pngg8")
 metadata/_custom_type_script = "uid://c176aei3lat0y"

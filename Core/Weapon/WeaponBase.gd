@@ -105,7 +105,8 @@ func Handletime_pool():
 func Shoot(Delta : float):
 	is_shoot_available = false
 	for barrel in barrels:
-		var new_bullet = bullet_scene.instantiate()
+		var new_bullet: ProjectileBase = bullet_scene.instantiate()
+		new_bullet.instigator_unit = owner_unit
 		current_scene.add_child(new_bullet)
 		new_bullet.global_position = barrel.global_position + Vector2.RIGHT.rotated(barrel.global_rotation) * Delta * 1500
 		new_bullet.global_rotation = barrel.global_rotation

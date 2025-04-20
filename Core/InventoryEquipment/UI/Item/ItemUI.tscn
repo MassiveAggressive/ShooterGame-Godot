@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dva8aop20v0ie"]
+[gd_scene load_steps=3 format=3 uid="uid://dva8aop20v0ie"]
 
 [ext_resource type="Script" uid="uid://c3yss8tb0kpu8" path="res://Core/InventoryEquipment/UI/Item/ItemUI.gd" id="1_pntyp"]
 
-[node name="ItemUI" type="PanelContainer"]
-custom_minimum_size = Vector2(50, 50)
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_pntyp")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wytjt"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
 
-[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[node name="ItemUI" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wytjt")
+script = ExtResource("1_pntyp")

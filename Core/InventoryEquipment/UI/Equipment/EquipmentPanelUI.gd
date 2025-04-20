@@ -31,7 +31,7 @@ func CreatePanel(new_slot_sizes: Dictionary[Enums.EItemPrimaryType, int] = {0: 1
 			add_child(space_temp)
 			
 		var grid_temp: GridContainer = GridContainer.new()
-		grid_temp.columns = 10
+		grid_temp.columns = 5
 		grid_temp.theme = grid_theme
 		
 		var item_uis_temp: Array

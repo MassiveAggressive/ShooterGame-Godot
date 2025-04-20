@@ -27,6 +27,6 @@ func SetAttributesUI(new_attributes: Dictionary[String, float]) -> void:
 func CreateAttributesUI() -> void:
 	for attribute_name in exhibited_attributes:
 		var attribute_ui: AttributeUI = attribute_ui_scene.instantiate()
-		attribute_ui.SetLabels(attribute_name, 0.0)
+		attribute_ui.SetLabels(exhibited_attributes_data[attribute_name], 0.0)
 		attribute_uis[attribute_name] = attribute_ui
 		add_child(attribute_ui)
