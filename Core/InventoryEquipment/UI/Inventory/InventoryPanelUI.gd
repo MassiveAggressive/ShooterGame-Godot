@@ -20,7 +20,7 @@ var create_panel_button = CreatePanel
 
 @export_tool_button("Destroy Panel")
 var destroy_panel_button = DestroyPanel
-	
+
 func CreatePanel() -> Array:
 	if grids.size() > 0:
 		var TempSpace: Control = space_scene.instantiate()

@@ -2,6 +2,8 @@
 class_name ItemUI
 extends PanelContainer
 
+var owner_inventory_equipment: InventoryEquipment
+
 var item_info_ui_scene: PackedScene = preload("uid://d1rhc3yte2wcd")
 
 var item: Item
@@ -24,7 +26,7 @@ func SetItem(new_item: Item = null) -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("LeftClick") and not available:
-		pass#ItemClicked.emit(self)
+		ItemClicked.emit(self)
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	var preview: Control = load("uid://d1rhc3yte2wcd").instantiate()
@@ -35,8 +37,12 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	return item
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	return true
+	return available
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
 	data = data as Item
-	print(data.item_info.name)
+	match owner_inventory_equipment.FindItem(data.item_id):
+		Enums.EItemLocation.ININVENTORY:
+			owner_inventory_equipment.SendItemToEquipment(data.item_id)
+		Enums.EItemLocation.INEQUIPMENT:
+			owner_inventory_equipment.SendItemToInventory(data.item_id)

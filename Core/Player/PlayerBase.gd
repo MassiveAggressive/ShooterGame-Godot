@@ -13,7 +13,7 @@ func _ready() -> void:
 	var attribute_container_ui: AttributeContainerUI = attribute_container_ui_scene.instantiate()
 	attribute_container_ui.owner_attribute_container = %AttributeContainer
 	
-	Global.AddUIToScreen(attribute_container_ui)
+	#Global.AddUIToScreen(attribute_container_ui)
 
 func _process(delta: float) -> void:
 	direction = Vector2.ZERO

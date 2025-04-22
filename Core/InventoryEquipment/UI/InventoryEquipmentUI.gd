@@ -38,6 +38,7 @@ func _enter_tree() -> void:
 		for item_ui in inventory_item_uis[i]:
 			item_ui = item_ui as ItemUI
 			item_ui.ItemClicked.connect(OnItemClicked)
+			item_ui.owner_inventory_equipment = owner_inventory_equipment
 		
 		inventory_panels[i] = inventory_panel_ui_temp
 		%InventoryPanels.add_child(inventory_panel_ui_temp)
@@ -51,6 +52,7 @@ func _enter_tree() -> void:
 		for item_ui in equipment_item_uis[item_type]:
 			item_ui = item_ui as ItemUI
 			item_ui.ItemClicked.connect(OnItemClicked)
+			item_ui.owner_inventory_equipment = owner_inventory_equipment
 	
 	%EquipmentPanel.add_child(equipment_panel_ui)
 	

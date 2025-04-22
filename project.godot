@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Core/Tools/Global.gd"
 Enums="*res://Core/Enums/Enums.gd"
+WindowsManager="*res://Core/WindowsManager/WindowsManager.gd"
 
 [display]
 

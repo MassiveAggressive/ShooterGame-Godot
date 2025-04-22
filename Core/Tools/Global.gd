@@ -1,15 +1,14 @@
 @tool
-
 extends Node
 
-var DefaultCanvasLayer: CanvasLayer
+var default_canvas_layer: CanvasLayer
 
 func _enter_tree() -> void:
-	DefaultCanvasLayer = CanvasLayer.new()
-	get_tree().current_scene.add_child(DefaultCanvasLayer)
+	default_canvas_layer = CanvasLayer.new()
+	get_tree().current_scene.add_child(default_canvas_layer)
 
 func GetCanvasLayer() -> CanvasLayer:
-	return DefaultCanvasLayer
+	return default_canvas_layer
 	
-func AddUIToScreen(UI: Control) -> void:
-	DefaultCanvasLayer.add_child(UI)
+func AddUIToScreen(ui: Control) -> void:
+	default_canvas_layer.add_child(ui)
