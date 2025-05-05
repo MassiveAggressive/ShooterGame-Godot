@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cerov3o34ftgw"]
+
+[ext_resource type="PackedScene" uid="uid://chhue3s3ygy82" path="res://Core/Collectable/CollectableBase.tscn" id="1_xan12"]
+[ext_resource type="Script" uid="uid://cuqq06yg3w07v" path="res://Core/Collectable/CollectableItem/CollectableItem.gd" id="2_5rdt0"]
+[ext_resource type="PackedScene" uid="uid://bsa88x0p720ph" path="res://Core/Collectable/UI/CollectableKeyUI.tscn" id="3_hmfjv"]
+
+[node name="CollectableItem" instance=ExtResource("1_xan12")]
+script = ExtResource("2_5rdt0")
+item_info = null
+
+[node name="CollectableKeyUI" parent="." index="2" instance=ExtResource("3_hmfjv")]
+visible = false
+offset_left = -25.0
+offset_top = -125.0
+offset_right = 25.0
+offset_bottom = -75.0

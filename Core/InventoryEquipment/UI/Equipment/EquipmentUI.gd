@@ -9,7 +9,7 @@ var space_scene: PackedScene = preload("uid://pdsmrkga7far")
 
 var grid_theme: Theme = preload("uid://buufd48x0pmbc")
 
-var slot_sizes: Dictionary[Enums.EItemPrimaryType, int]
+var slot_sizes: Dictionary[Enums.EItemPrimaryType, int] = {0:1, 1:1, 2:5}
 
 var grids: Dictionary[Enums.EItemPrimaryType, GridContainer]
 var spaces: Array[Control]

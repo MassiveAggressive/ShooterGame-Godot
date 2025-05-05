@@ -4,6 +4,7 @@ class_name ItemInfo
 
 @export var name: String = "Name"
 @export var description: String = "Description"
+@export var item_icon: Texture2D
 @export var item_primary_type:= Enums.EItemPrimaryType.WEAPON
 @export var item_secondary_type:= Enums.EItemSecondaryType.PRIMARYWEAPON
 @export var level: int = 1

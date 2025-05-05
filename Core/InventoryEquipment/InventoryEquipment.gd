@@ -19,8 +19,8 @@ signal ItemRemovedFromInventory(int)
 signal ItemAddedToEquipment(Item)
 signal ItemRemovedFromEquipment(int)
 
-var inventory_ui_scene: PackedScene = preload("uid://cd26j4i83nx48")
-var equipment_ui_scene: PackedScene = preload("uid://dyy3p11jb8bj6")
+var inventory_equipment_ui_scene: PackedScene = preload("uid://byffou1ig3ymq")
+var inventory_equipment_ui: InventoryEquipmentUI
 
 var item1: ItemInfo = preload("uid://c70j54wftetyk")
 var item2: ItemInfo = preload("uid://cpgfmbc5snce7")
@@ -29,19 +29,10 @@ func _ready() -> void:
 	owner_unit = get_parent() as UnitBase
 	owners_attribute_container = owner_unit.get_node("%AttributeContainer")
 	
-	var inventory_ui: InventoryUI = inventory_ui_scene.instantiate()
-	inventory_ui.owner_inventory_equipment = self
-	
-	var equipment_ui: EquipmentUI = equipment_ui_scene.instantiate()
-	equipment_ui.owner_inventory_equipment = self
-	
-	WindowsManager.AddWindow("Inventory", inventory_ui)
-	WindowsManager.AddWindow("Equipment", equipment_ui)
-	
-	AddNewItemToInventory(item1)
-	
-	#Global.AddUIToScreen(inventory_ui)
-	#Global.AddUIToScreen(equipment_ui)
+	inventory_equipment_ui = inventory_equipment_ui_scene.instantiate()
+	inventory_equipment_ui.owner_inventory_equipment = self
+	#Global.AddUIToScreen(inventory_equipment_ui)
+	WindowsManager.AddWindow("Inventory Eqpuipment", inventory_equipment_ui)
 
 func FindItem(item_id: int) -> Enums.EItemLocation:
 	return item_locations[item_id].item_location

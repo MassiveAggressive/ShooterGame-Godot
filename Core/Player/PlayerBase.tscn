@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://nru73hcryt6j" path="res://Core/InventoryEquipment/InventoryEquipment.tscn" id="6_8nsxy"]
 
 [node name="PlayerBase" instance=ExtResource("1_swl4d")]
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("2_s0iuf")
 speed = 500.0
 angular_speed = 6.28319
@@ -19,6 +17,7 @@ unit_data = ExtResource("3_ukt1b")
 [node name="ExperienceAttributesDriver" parent="." index="6" instance=ExtResource("5_ukt1b")]
 
 [node name="InventoryEquipment" parent="." index="8" instance=ExtResource("6_8nsxy")]
+unique_name_in_owner = true
 
 [node name="Weapon" type="Node2D" parent="." index="9"]
 position = Vector2(50, 0)

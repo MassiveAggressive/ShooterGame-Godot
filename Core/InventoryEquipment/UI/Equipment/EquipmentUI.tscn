@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://bx6yx5cqw7xfr" path="res://Core/InventoryEquipment/UI/Equipment/EquipmentUI.gd" id="1_fkcjl"]
 
 [node name="EquipmentUI" type="VBoxContainer"]
+size_flags_vertical = 4
 script = ExtResource("1_fkcjl")

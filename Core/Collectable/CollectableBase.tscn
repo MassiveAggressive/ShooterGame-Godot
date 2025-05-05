@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://chhue3s3ygy82"]
+
+[ext_resource type="Script" uid="uid://thqje3o6g416" path="res://Core/Collectable/CollectableBase.gd" id="1_15ayc"]
+[ext_resource type="Texture2D" uid="uid://0pbfg1qeejms" path="res://Assets/InventoryAssets/scifi_inventory01_box.png" id="2_0vr33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15ayc"]
+size = Vector2(100, 100)
+
+[node name="CollectableBase" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_15ayc")
+collectable_icon = ExtResource("2_0vr33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_15ayc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_0vr33")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="area_exited" from="." to="." method="OnAreaExited"]
