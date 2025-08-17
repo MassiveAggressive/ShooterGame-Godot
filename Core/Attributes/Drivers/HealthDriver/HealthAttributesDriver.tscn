@@ -4,5 +4,5 @@
 
 [node name="HealthAttributesDriver" type="Node"]
 script = ExtResource("1_4yovj")
-raw_name = "Health"
+raw_name = "HealthAttributes"
 initialized_attributes = Array[String](["MaxHealth", "Health", "MaxShield", "Shield"])

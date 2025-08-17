@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ShooterGame"
-run/main_scene="res://Maps/DevMap.tscn"
+run/main_scene="uid://c2lx438vy4and"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		
 		var damage_effect: EffectBase = preload("uid://brsx0av4frdoh").instantiate()
 		damage_effect.InitializeEffect(instigator_unit, collider)
-		damage_effect.modifiers[0].attribute_magnitude = -10
+		damage_effect.modifiers[0].attribute_magnitude = instigator_unit.attribute_container.GetAttribute("Damage") * -1
 		
 		damage_effect.ApplyEffect()
 		

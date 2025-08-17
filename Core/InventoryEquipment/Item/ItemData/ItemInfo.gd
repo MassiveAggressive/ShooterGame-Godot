@@ -1,6 +1,5 @@
-extends Resource
-
 class_name ItemInfo
+extends Resource
 
 @export var name: String = "Name"
 @export var description: String = "Description"

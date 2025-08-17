@@ -11,7 +11,10 @@ func _ready() -> void:
 	
 func OnAttributesChanged(new_attributes: Dictionary[String, float]) -> void:
 	if new_attributes["MaxHealth"] != attributes["MaxHealth"]:
-		attribute_container.SetAttributeByDriver("Health", attribute_container.GetAttribute("MaxHealth"))
+		if attributes["Health"] == attributes["MaxHealth"]:
+			attribute_container.SetAttributeByDriver("Health", attribute_container.GetAttribute("MaxHealth"))
+	else:
+		attribute_container.SetAttributeByDriver("Health", attributes["Health"])
 	
 	for attribute_name in initialized_attributes:
 		attributes[attribute_name] = new_attributes[attribute_name]

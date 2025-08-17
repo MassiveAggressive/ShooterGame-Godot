@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Experience" load_steps=2 format=3 uid="uid://dcarfc7t4w3y0"]
+
+[ext_resource type="Script" uid="uid://qb3qja70wybw" path="res://Core/Attributes/Drivers/ExperienceDriver/Experience.gd" id="1_1i4fu"]
+
+[resource]
+script = ExtResource("1_1i4fu")
+Experiences = Dictionary[int, int]({
+1: 100,
+2: 300,
+3: 600
+})
+metadata/_custom_type_script = "uid://qb3qja70wybw"

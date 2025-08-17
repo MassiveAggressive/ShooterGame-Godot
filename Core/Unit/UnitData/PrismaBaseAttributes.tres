@@ -1,15 +1,23 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3 uid="uid://c8v2jbp2d7xx7"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=4 format=3 uid="uid://c8v2jbp2d7xx7"]
 
 [ext_resource type="Script" uid="uid://b5cky4ki6db1e" path="res://Core/Unit/UnitData/UnitData.gd" id="1_t3020"]
+[ext_resource type="Script" uid="uid://daugyebsokcix" path="res://Core/Attributes/Resource/Attributes.gd" id="1_v2l46"]
+
+[sub_resource type="Resource" id="Resource_v2l46"]
+script = ExtResource("1_v2l46")
+attributes = Dictionary[String, float]({
+"Level": 1.0,
+"MaxHealth": 100.0,
+"MaxShield": 100.0
+})
+metadata/_custom_type_script = "uid://daugyebsokcix"
 
 [resource]
 script = ExtResource("1_t3020")
 Name = "Prisma"
 Description = "Prisma"
 Level = 1
-BaseAttributes = Dictionary[String, float]({
-"MaxDamage": 50.0,
-"MaxFireRate": 0.0,
-"MaxHealth": 1000.0
+BaseAttributes = Dictionary[int, ExtResource("1_v2l46")]({
+1: SubResource("Resource_v2l46")
 })
 metadata/_custom_type_script = "uid://b5cky4ki6db1e"

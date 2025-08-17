@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Chapter" load_steps=7 format=3 uid="uid://cp67mmjuhsawm"]
+
+[ext_resource type="Script" uid="uid://dnf8wwkioo333" path="res://Core/ChapterController/Wave/Wave.gd" id="1_nidnk"]
+[ext_resource type="PackedScene" uid="uid://lsul7y4yw26" path="res://Core/Unit/UnitBase.tscn" id="2_1iegx"]
+[ext_resource type="Script" uid="uid://dutweb1iu2jth" path="res://Core/ChapterController/Chapter/Chapter.gd" id="2_xmjmw"]
+
+[sub_resource type="Resource" id="Resource_0pwvp"]
+script = ExtResource("1_nidnk")
+spawned_unit = ExtResource("2_1iegx")
+unit_count = 10
+time_between_spawn = 5.0
+time_offset = 1.0
+metadata/_custom_type_script = "uid://dnf8wwkioo333"
+
+[sub_resource type="Resource" id="Resource_di05w"]
+script = ExtResource("1_nidnk")
+spawned_unit = ExtResource("2_1iegx")
+unit_count = 10
+time_between_spawn = 5.0
+time_offset = 1.0
+metadata/_custom_type_script = "uid://dnf8wwkioo333"
+
+[sub_resource type="Resource" id="Resource_yldlq"]
+script = ExtResource("1_nidnk")
+spawned_unit = ExtResource("2_1iegx")
+unit_count = 10
+time_between_spawn = 5.0
+time_offset = 1.0
+metadata/_custom_type_script = "uid://dnf8wwkioo333"
+
+[resource]
+script = ExtResource("2_xmjmw")
+chapter = Array[ExtResource("1_nidnk")]([SubResource("Resource_0pwvp"), SubResource("Resource_di05w"), SubResource("Resource_yldlq")])
+metadata/_custom_type_script = "uid://dutweb1iu2jth"

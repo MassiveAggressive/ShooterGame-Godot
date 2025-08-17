@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc51s7u7m4hra"]
+
+[ext_resource type="Script" uid="uid://ga4umddfrrel" path="res://Core/ChapterController/ChapterController.gd" id="1_gkukx"]
+
+[node name="ChapterController" type="Node"]
+script = ExtResource("1_gkukx")
