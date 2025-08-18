@@ -1,13 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2lx438vy4and"]
+[gd_scene load_steps=6 format=3 uid="uid://c2lx438vy4and"]
 
-[ext_resource type="PackedScene" uid="uid://d1fin3p1xijyg" path="res://Core/NPCSpawner/NPCSpawner.tscn" id="1_l8wyv"]
 [ext_resource type="PackedScene" uid="uid://cerov3o34ftgw" path="res://Core/Collectable/CollectableItem/CollectableItem.tscn" id="2_bv8d1"]
 [ext_resource type="Resource" uid="uid://c70j54wftetyk" path="res://Core/InventoryEquipment/Item/ItemData/LF1.tres" id="3_7bilv"]
+[ext_resource type="PackedScene" uid="uid://bc51s7u7m4hra" path="res://Core/ChapterController/ChapterController.tscn" id="4_7bilv"]
 [ext_resource type="PackedScene" uid="uid://crpduft0jsw1g" path="res://Core/Player/PlayerBase.tscn" id="4_ptu34"]
+[ext_resource type="Resource" uid="uid://cp67mmjuhsawm" path="res://Core/ChapterController/Chapter/Chapter1.tres" id="5_5gvfm"]
 
 [node name="Level1" type="Node2D"]
-
-[node name="NPCSpawner" parent="." instance=ExtResource("1_l8wyv")]
 
 [node name="CollectableItem" parent="." instance=ExtResource("2_bv8d1")]
 position = Vector2(1206, 551)
@@ -15,3 +14,6 @@ item_info = ExtResource("3_7bilv")
 
 [node name="PlayerBase" parent="." instance=ExtResource("4_ptu34")]
 position = Vector2(955, 547)
+
+[node name="ChapterController" parent="." instance=ExtResource("4_7bilv")]
+chapter = ExtResource("5_5gvfm")

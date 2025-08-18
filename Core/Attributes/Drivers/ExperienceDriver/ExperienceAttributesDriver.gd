@@ -6,7 +6,6 @@ extends AttributesDriver
 var current_level: int = 1
 
 func OnAttributeChangedByEffect(attribute_name: String, value: float, effect: EffectBase) -> void:
-	print("Killed ", effect.effect_target.unit_data.Name, " - Earned: ", value, " experience")
 	if current_level >= experiences.Experiences.size():
 		pass
 	else:
