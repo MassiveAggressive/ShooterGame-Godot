@@ -5,6 +5,7 @@ extends VBoxContainer
 var owner_inventory_equipment: InventoryEquipment
 
 var item_ui_scene: PackedScene = preload("uid://dva8aop20v0ie")
+var expandable_area_scene: PackedScene = preload("uid://bhjqfyil7is5s")
 var space_scene: PackedScene = preload("uid://pdsmrkga7far")
 
 var grid_theme: Theme = preload("uid://buufd48x0pmbc")
@@ -12,6 +13,7 @@ var grid_theme: Theme = preload("uid://buufd48x0pmbc")
 var slot_sizes: Dictionary[Enums.EItemPrimaryType, int] = {0:1, 1:1, 2:5}
 
 var grids: Dictionary[Enums.EItemPrimaryType, GridContainer]
+var expandable_areas: Array[Control]
 var spaces: Array[Control]
 
 var item_uis: Dictionary[Enums.EItemPrimaryType, Array]
@@ -41,6 +43,11 @@ func CreatePanel(new_slot_sizes: Dictionary[Enums.EItemPrimaryType, int] = {0: 1
 		
 			add_child(space_temp)
 			
+		#var expandable_area_temp: Control = expandable_area_scene.instantiate()
+		#expandable_areas.append(expandable_area_temp)
+		
+		#add_child(expandable_area_temp)
+		
 		var grid_temp: GridContainer = GridContainer.new()
 		grid_temp.columns = 5
 		grid_temp.theme = grid_theme

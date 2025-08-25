@@ -1,12 +1,12 @@
 class_name EffectBase
 extends Node
 
-var effect_owner: UnitBase
-var effect_target: UnitBase
+var effect_owner: Node
+var effect_target: Node
 
 @export var modifiers: Array[EffectModifier]
 
-func InitializeEffect(new_effect_owner: UnitBase, new_effect_target: UnitBase) -> void:
+func InitializeEffect(new_effect_owner: Node, new_effect_target: Node) -> void:
 	effect_owner = new_effect_owner
 	effect_target = new_effect_target
 

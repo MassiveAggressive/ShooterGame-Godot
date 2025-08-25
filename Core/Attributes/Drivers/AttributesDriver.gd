@@ -9,7 +9,7 @@ var attributes: Dictionary[String, float]
 var attribute_container: AttributeContainer
 
 func _ready() -> void:
-	attribute_container = get_parent().get_node("%AttributeContainer")
+	attribute_container = get_parent().get_node("AttributeContainer")
 	attribute_container.AttributeChanged.connect(OnAttributeChanged)
 	attribute_container.AttributeChangedByEffect.connect(OnAttributeChangedByEffect)
 	attribute_container.AttributesChanged.connect(OnAttributesChanged)

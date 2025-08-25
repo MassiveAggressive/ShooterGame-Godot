@@ -6,3 +6,4 @@
 script = ExtResource("1_4yovj")
 raw_name = "HealthAttributes"
 initialized_attributes = Array[String](["MaxHealth", "Health", "MaxShield", "Shield"])
+metadata/_custom_type_script = "uid://bhdqwpjo2amv8"

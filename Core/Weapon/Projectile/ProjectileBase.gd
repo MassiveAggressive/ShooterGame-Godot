@@ -4,7 +4,7 @@ extends Node2D
 var instigator_unit: UnitBase
 
 @export var bullet_speed: float = 1500
-@export var collision_mask: int = 1  # NPC'lerin ait olduğu collision layer mask'ını buraya girin
+@export var collision_mask: int = 2  # NPC'lerin ait olduğu collision layer mask'ını buraya girin
 
 func _process(delta: float) -> void:
 	position += Vector2(1, 0).rotated(global_rotation) * bullet_speed * delta

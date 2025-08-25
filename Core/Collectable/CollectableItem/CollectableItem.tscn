@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bsa88x0p720ph" path="res://Core/Collectable/UI/CollectableKeyUI.tscn" id="3_hmfjv"]
 
 [node name="CollectableItem" instance=ExtResource("1_xan12")]
+collision_mask = 1
 script = ExtResource("2_5rdt0")
 item_info = null
 

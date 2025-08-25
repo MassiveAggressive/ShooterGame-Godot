@@ -1,82 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bps0iufmsgugd"]
+[gd_scene load_steps=3 format=3 uid="uid://bhjqfyil7is5s"]
 
-[ext_resource type="PackedScene" uid="uid://dva8aop20v0ie" path="res://Core/InventoryEquipment/UI/Item/ItemUI.tscn" id="1_5d35q"]
-[ext_resource type="Script" uid="uid://c7uc08leh5oj6" path="res://Core/UI/ExpandableArea/ExpandableArea.gd" id="1_hseky"]
+[ext_resource type="Script" uid="uid://c2khp3re3f7k4" path="res://Core/UI/ExpandableArea/expandable_area.gd" id="1_hseky"]
+[ext_resource type="AnimationLibrary" uid="uid://c4fpbukf3r2m2" path="res://Core/UI/UIAnimations/UIAnimations.res" id="2_hseky"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hseky"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 5.0
-bg_color = Color(0.544974, 0.544974, 0.544974, 1)
-
-[node name="ExpandableArea" type="VBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1320.0
-offset_bottom = -830.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
+[node name="ExpandableArea" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
 script = ExtResource("1_hseky")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Weapon"
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 200.0
+grow_vertical = 2
+theme_override_constants/separation = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-clip_contents = true
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hseky")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": ExtResource("2_hseky")
+}
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer"]
-clip_contents = true
-layout_mode = 2
-columns = 10
-
-[node name="ItemUI" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI2" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI3" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI4" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI5" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI6" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI7" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI8" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI9" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI10" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI11" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI12" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI13" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI14" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-
-[node name="ItemUI15" parent="PanelContainer/GridContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

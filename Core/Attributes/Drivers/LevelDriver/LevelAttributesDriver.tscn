@@ -6,3 +6,4 @@
 script = ExtResource("1_2aap2")
 raw_name = "LevelAttributes"
 initialized_attributes = Array[String](["Level"])
+metadata/_custom_type_script = "uid://dtbr15qp562q4"

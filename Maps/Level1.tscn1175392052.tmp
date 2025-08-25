@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2lx438vy4and"]
+[gd_scene load_steps=6 format=3 uid="uid://c2lx438vy4and"]
 
 [ext_resource type="Texture2D" uid="uid://kxwxcrkqee5a" path="res://Assets/Square.png" id="4_ptu34"]
+[ext_resource type="PackedScene" uid="uid://dk72sbij4lchn" path="res://Core/NPC/NPCBase.tscn" id="5_5gvfm"]
 [ext_resource type="PackedScene" uid="uid://b0a4dp1nmjlfx" path="res://Core/Tools/SpawnPoint/SpawnPoint.tscn" id="5_7bilv"]
 [ext_resource type="PackedScene" uid="uid://cerov3o34ftgw" path="res://Core/Collectable/CollectableItem/CollectableItem.tscn" id="5_xd1hl"]
 [ext_resource type="Resource" uid="uid://c70j54wftetyk" path="res://Core/InventoryEquipment/Item/ItemData/LF1.tres" id="6_qqmji"]
@@ -8,7 +9,6 @@
 [node name="Level1" type="Node2D"]
 
 [node name="SpawnPoint" parent="." instance=ExtResource("5_7bilv")]
-position = Vector2(361, 231)
 
 [node name="Square" type="Sprite2D" parent="."]
 position = Vector2(90, 91)
@@ -17,3 +17,6 @@ texture = ExtResource("4_ptu34")
 [node name="CollectableItem" parent="." instance=ExtResource("5_xd1hl")]
 position = Vector2(238, 120)
 item_info = ExtResource("6_qqmji")
+
+[node name="NPCBase" parent="." instance=ExtResource("5_5gvfm")]
+position = Vector2(229, 376)

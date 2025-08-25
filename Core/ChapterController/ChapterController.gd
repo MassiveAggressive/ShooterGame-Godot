@@ -9,8 +9,24 @@ var current_spawned_unit: PackedScene
 
 var count: int = 0
 
+func GetRandomPositionFromCircle() -> Vector2:
+	var angle: float = randf() * TAU
+	
+	var offset: Vector2 = Vector2.RIGHT.rotated(angle) * 1000
+	
+	return offset
+		
+func GetRandomPositionInSight() -> Vector2:
+	var viewport_size: Vector2 = get_viewport().size
+	var top_left: Vector2 = GameManager.players[0].find_child("Camera").global_position - (viewport_size / 2)
+	
+	var rand_x: float = randf_range(0, viewport_size.x)
+	var rand_y: float = randf_range(0, viewport_size.y)
+	
+	return Vector2(top_left.x + rand_x, top_left.y + rand_y)
+	
 func _ready() -> void:
-	StartChapter()
+	get_tree().create_timer(1).timeout.connect(StartChapter)
 
 func StartChapter():
 	StartWaves()
@@ -39,9 +55,8 @@ func IterateUnitCount():
 		.timeout.connect(IterateWaves)
 
 func SpawnUnit():
-	count += 1
-	print(count)
 	var temp_unit: UnitBase = current_spawned_unit.instantiate()
+	temp_unit.global_position = GetRandomPositionFromCircle()
 	get_tree().current_scene.add_child(temp_unit)
 	
 	get_tree().create_timer(current_wave.time_between_spawn + \

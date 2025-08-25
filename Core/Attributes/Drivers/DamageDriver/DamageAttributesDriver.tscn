@@ -6,3 +6,4 @@
 script = ExtResource("1_0bx0h")
 raw_name = "DamageAttributes"
 initialized_attributes = Array[String](["MaxDamage", "Damage", "MaxFireRate", "FireRate"])
+metadata/_custom_type_script = "uid://dqxhtb5vykrhv"

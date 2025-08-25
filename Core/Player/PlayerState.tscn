@@ -1,0 +1,24 @@
+[gd_scene load_steps=8 format=3 uid="uid://x444mo5mj2ne"]
+
+[ext_resource type="PackedScene" uid="uid://droroh1gf6yt7" path="res://Core/GameManagementSystem/PlayerState/PlayerStateBase.tscn" id="1_farwd"]
+[ext_resource type="Script" uid="uid://whrykf718rrp" path="res://Core/Player/PlayerState.gd" id="2_51x1y"]
+[ext_resource type="Script" uid="uid://cbgksqvtxwari" path="res://Core/Attributes/AttributeContainer.gd" id="2_pw2p4"]
+[ext_resource type="PackedScene" uid="uid://c6ufkt72npy82" path="res://Core/Attributes/Drivers/HealthDriver/HealthAttributesDriver.tscn" id="3_64tky"]
+[ext_resource type="PackedScene" uid="uid://6kyvda1ujhub" path="res://Core/Attributes/Drivers/DamageDriver/DamageAttributesDriver.tscn" id="4_pf4bu"]
+[ext_resource type="PackedScene" uid="uid://b3lmepbe2tb0x" path="res://Core/Attributes/Drivers/LevelDriver/LevelAttributesDriver.tscn" id="5_p8tlh"]
+[ext_resource type="PackedScene" uid="uid://bkelumflfops3" path="res://Core/Attributes/Drivers/ExperienceDriver/ExperienceAttributesDriver.tscn" id="6_ngfpa"]
+
+[node name="PlayerState" instance=ExtResource("1_farwd")]
+script = ExtResource("2_51x1y")
+
+[node name="AttributeContainer" type="Node" parent="." index="0"]
+script = ExtResource("2_pw2p4")
+metadata/_custom_type_script = "uid://cbgksqvtxwari"
+
+[node name="HealthAttributesDriver" parent="." index="1" instance=ExtResource("3_64tky")]
+
+[node name="DamageAttributesDriver" parent="." index="2" instance=ExtResource("4_pf4bu")]
+
+[node name="LevelAttributesDriver" parent="." index="3" instance=ExtResource("5_p8tlh")]
+
+[node name="ExperienceAttributesDriver" parent="." index="4" instance=ExtResource("6_ngfpa")]

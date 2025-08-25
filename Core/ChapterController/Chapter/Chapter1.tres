@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Chapter" load_steps=7 format=3 uid="uid://cp67mmjuhsawm"]
 
 [ext_resource type="Script" uid="uid://dnf8wwkioo333" path="res://Core/ChapterController/Wave/Wave.gd" id="1_nidnk"]
-[ext_resource type="PackedScene" uid="uid://lsul7y4yw26" path="res://Core/Unit/UnitBase.tscn" id="2_1iegx"]
 [ext_resource type="Script" uid="uid://dutweb1iu2jth" path="res://Core/ChapterController/Chapter/Chapter.gd" id="2_xmjmw"]
+[ext_resource type="PackedScene" uid="uid://dk72sbij4lchn" path="res://Core/NPC/NPCBase.tscn" id="3_xmjmw"]
 
 [sub_resource type="Resource" id="Resource_xmjmw"]
 script = ExtResource("1_nidnk")
-spawned_unit = ExtResource("2_1iegx")
+spawned_unit = ExtResource("3_xmjmw")
 unit_count = 3
 time_between_spawn = 1.0
 time_offset = 0.0
@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://dnf8wwkioo333"
 
 [sub_resource type="Resource" id="Resource_1iegx"]
 script = ExtResource("1_nidnk")
-spawned_unit = ExtResource("2_1iegx")
+spawned_unit = ExtResource("3_xmjmw")
 unit_count = 3
 time_between_spawn = 1.0
 time_offset = 0.0
@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://dnf8wwkioo333"
 
 [sub_resource type="Resource" id="Resource_0pwvp"]
 script = ExtResource("1_nidnk")
-spawned_unit = ExtResource("2_1iegx")
+spawned_unit = ExtResource("3_xmjmw")
 unit_count = 3
 time_between_spawn = 1.0
 time_offset = 0.0
