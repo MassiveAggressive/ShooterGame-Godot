@@ -2,7 +2,7 @@
 class_name EquipmentUI
 extends VBoxContainer
 
-var owner_inventory_equipment: InventoryEquipment
+var owner_inventory_equipment: MenuInventoryEquipment
 
 var item_ui_scene: PackedScene = preload("uid://dva8aop20v0ie")
 var expandable_area_scene: PackedScene = preload("uid://bhjqfyil7is5s")
@@ -32,7 +32,7 @@ func _enter_tree() -> void:
 		
 		slot_sizes = owner_inventory_equipment.equipment_slot_sizes
 		
-	CreatePanel(slot_sizes)
+	#CreatePanel(slot_sizes)
 
 func CreatePanel(new_slot_sizes: Dictionary[Enums.EItemPrimaryType, int] = {0: 1, 1: 1, 2:5}) -> Dictionary[Enums.EItemPrimaryType, Array]:
 	slot_sizes = new_slot_sizes
@@ -42,11 +42,6 @@ func CreatePanel(new_slot_sizes: Dictionary[Enums.EItemPrimaryType, int] = {0: 1
 			spaces.append(space_temp)
 		
 			add_child(space_temp)
-			
-		#var expandable_area_temp: Control = expandable_area_scene.instantiate()
-		#expandable_areas.append(expandable_area_temp)
-		
-		#add_child(expandable_area_temp)
 		
 		var grid_temp: GridContainer = GridContainer.new()
 		grid_temp.columns = 5

@@ -1,7 +1,7 @@
 class_name GameManagerBase
 extends Node
 
-@export var default_player_state_scene: PackedScene
+@export var default_player_state_scene: PackedScene = preload("uid://droroh1gf6yt7")
 @export var default_player_scene: PackedScene
 
 var player_state_node: PlayerStateBase
@@ -14,6 +14,7 @@ func _ready() -> void:
 	var player_node_temp: Node2D = default_player_scene.instantiate()
 	player_node = player_node_temp
 	player_state_node.add_child(player_node_temp)
-	player_node_temp.global_position = SpawnPoints.spawn_points[0].global_position
+	if !SpawnPoints.spawn_points.is_empty():
+		player_node_temp.global_position = SpawnPoints.spawn_points[0].global_position
 	
 	player_state_node.SetPlayerNode(player_node)

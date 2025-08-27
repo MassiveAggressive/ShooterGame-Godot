@@ -1,13 +1,16 @@
-class_name InventoryEquipment
-extends Node
+class_name MenuInventoryEquipment extends Node
 
-@export var owner_unit: UnitBase
+@export var owner_unit: Node
 
 var inventory: Dictionary[int, Item]
 
-@export var equipment_slot_sizes: Dictionary[Enums.EItemPrimaryType, int]
+@export var equipment_slot_sizes: Dictionary[Enums.EItemPrimaryType, int]:
+	set(value):
+		equipment_slot_sizes = value
+		for key in equipment_slot_sizes.keys():
+			equipment.set(key, {})
+		
 @export var equipment: Dictionary[Enums.EItemPrimaryType, Dictionary]
-var created_items: Dictionary[int, ItemBase]
 
 @export var owners_attribute_container: AttributeContainer
 var attributes: Dictionary[String, float]
@@ -26,12 +29,19 @@ var item1: ItemInfo = preload("uid://c70j54wftetyk")
 var item2: ItemInfo = preload("uid://cpgfmbc5snce7")
 
 func _ready() -> void:
-	owner_unit = get_parent() as UnitBase
-	owners_attribute_container = owner_unit.get_node("%AttributeContainer")
+	owner_unit = get_parent()
+	owners_attribute_container = owner_unit.get_node("AttributeContainer")
 	
 	inventory_equipment_ui = inventory_equipment_ui_scene.instantiate()
 	inventory_equipment_ui.owner_inventory_equipment = self
-	#Global.AddUIToScreen(inventory_equipment_ui)
+	
+	Global.AddUIToScreen(inventory_equipment_ui)
+	
+	var new_item = Item.new()
+	new_item.item_info = item1
+	new_item.item_id = CreateNewItemID()
+	AddItemToInventory(new_item)
+	
 	WindowsManager.AddWindow("Inventory Eqpuipment", inventory_equipment_ui)
 
 func FindItem(item_id: int) -> Enums.EItemLocation:
@@ -73,13 +83,6 @@ func AddItemToEquipment(new_item: Item) -> bool:
 		item_locations[new_item.item_id] = ItemLocation.new(Enums.EItemLocation.INEQUIPMENT, new_item.item_info.item_primary_type)
 		
 		equipment[item_type] = items
-		
-		if new_item.item_info.item_scene != null:
-			var new_item_base: ItemBase = new_item.item_info.item_scene.instantiate()
-			new_item_base.owner_unit = owner_unit
-			new_item_base.item = new_item
-			
-			owner_unit.get_node("Weapon").add_child(new_item_base)
 		
 		CalculateAttributes()
 		

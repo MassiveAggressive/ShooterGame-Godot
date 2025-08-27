@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba6wdfgpr036r"]
+
+[ext_resource type="Script" uid="uid://bx6voplf3c27v" path="res://Core/Map/MapBase.gd" id="1_0kbny"]
+[ext_resource type="PackedScene" uid="uid://crpduft0jsw1g" path="res://Game/Player/InGamePlayer/PlayerBase.tscn" id="2_m7ah3"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_0kbny")
+metadata/_custom_type_script = "uid://bx6voplf3c27v"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="PlayerBase" parent="." instance=ExtResource("2_m7ah3")]
+position = Vector2(988, 551)

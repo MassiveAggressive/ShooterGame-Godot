@@ -2,7 +2,7 @@
 class_name ItemUI
 extends PanelContainer
 
-var owner_inventory_equipment: InventoryEquipment
+var owner_inventory_equipment: MenuInventoryEquipment
 
 var item_info_ui_scene: PackedScene = preload("uid://d1rhc3yte2wcd")
 

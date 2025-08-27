@@ -2,7 +2,7 @@
 class_name InventoryUI
 extends VBoxContainer
 
-var owner_inventory_equipment: InventoryEquipment
+var owner_inventory_equipment: MenuInventoryEquipment
 
 var inventory_panel_ui_scene: PackedScene = preload("uid://2xwyli2wd2uv")
 var inventory_panels: Dictionary[Enums.EItemSecondaryType, InventoryPanelUI]

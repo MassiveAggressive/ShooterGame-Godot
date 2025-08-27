@@ -9,13 +9,11 @@ var windows: Dictionary[String, CustomWindowUI]
 
 func _ready() -> void:
 	window_manager_ui = window_manager_ui_scene.instantiate()
-	Global.AddUIToScreen(window_manager_ui)
 
 func AddWindow(window_name: String, node: Node) -> void:
 	var custom_window_ui: CustomWindowUI = custom_window_ui_scene.instantiate()
 	custom_window_ui.add_child(node)
 	windows[window_name] = custom_window_ui
-	Global.AddUIToScreen(custom_window_ui)
 	
 	window_manager_ui.AddWindowIcon(window_name).IconClicked.connect(OnWindowIconClicked)
 

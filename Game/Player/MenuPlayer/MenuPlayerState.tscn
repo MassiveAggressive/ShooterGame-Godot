@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dye3bx5xu8we5"]
+
+[ext_resource type="Script" uid="uid://dupiys5ea45hd" path="res://Game/Player/MenuPlayer/MenuPlayerState.gd" id="1_ul1iy"]
+[ext_resource type="Script" uid="uid://cbgksqvtxwari" path="res://Core/Attributes/MenuAttributeContainer/AttributeContainer.gd" id="3_h1o0o"]
+[ext_resource type="PackedScene" uid="uid://nru73hcryt6j" path="res://Core/InventoryEquipment/MenuInventoryEquipment/MenuInventoryEquipment.tscn" id="3_l5wdn"]
+
+[node name="MenuPlayerState" type="Node"]
+script = ExtResource("1_ul1iy")
+metadata/_custom_type_script = "uid://whrykf718rrp"
+
+[node name="AttributeContainer" type="Node" parent="."]
+script = ExtResource("3_h1o0o")
+metadata/_custom_type_script = "uid://cbgksqvtxwari"
+
+[node name="MenuInventoryEquipment" parent="." instance=ExtResource("3_l5wdn")]

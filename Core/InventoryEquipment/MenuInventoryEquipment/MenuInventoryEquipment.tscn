@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://nru73hcryt6j"]
+
+[ext_resource type="Script" uid="uid://c1fkoxicdvq0c" path="res://Core/InventoryEquipment/MenuInventoryEquipment/MenuInventoryEquipment.gd" id="1_sl8p6"]
+
+[node name="MenuInventoryEquipment" type="Node"]
+script = ExtResource("1_sl8p6")
+equipment_slot_sizes = Dictionary[int, int]({
+0: 1,
+1: 1,
+2: 1
+})

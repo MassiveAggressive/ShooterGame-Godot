@@ -3,7 +3,7 @@ extends Control
 
 class_name InventoryEquipmentUI
 
-var owner_inventory_equipment: InventoryEquipment
+var owner_inventory_equipment: MenuInventoryEquipment
 
 var inventory_ui_scene: PackedScene = preload("uid://cd26j4i83nx48")
 var inventory_ui: InventoryUI

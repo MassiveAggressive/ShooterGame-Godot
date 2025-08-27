@@ -11,16 +11,17 @@ config_version=5
 [application]
 
 config/name="ShooterGame"
-run/main_scene="uid://c2lx438vy4and"
+run/main_scene="uid://dhdbpj3pucp2t"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+GameInstance="*res://Core/GameManagementSystem/GameInstance/GameInstanceBase.tscn"
+SceneManager="*res://Core/GameManagementSystem/SceneManager/SceneManager.gd"
 Global="*res://Core/Tools/Global.gd"
 Enums="*res://Core/Enums/Enums.gd"
 WindowsManager="*res://Core/WindowsManager/WindowsManager.gd"
-GameManager="*res://Core/GameManagementSystem/GameManager/GameManagerBase.tscn"
 SpawnPoints="*res://Core/Tools/SpawnPoint/SpawnPointHandler.gd"
 
 [display]

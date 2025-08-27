@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvt0eveuft2fj"]
+
+[ext_resource type="PackedScene" uid="uid://c12fgejkbij4y" path="res://Core/GameManagementSystem/GameManager/GameManagerBase.tscn" id="1_fbkek"]
+[ext_resource type="Script" uid="uid://bc1hf6jjc767b" path="res://Game/GameManager/MenuGameManager.gd" id="2_rh3tj"]
+[ext_resource type="PackedScene" uid="uid://dye3bx5xu8we5" path="res://Game/Player/MenuPlayer/MenuPlayerState.tscn" id="3_tk8nx"]
+
+[node name="MenuGameManager" instance=ExtResource("1_fbkek")]
+script = ExtResource("2_rh3tj")
+default_player_state_scene = ExtResource("3_tk8nx")

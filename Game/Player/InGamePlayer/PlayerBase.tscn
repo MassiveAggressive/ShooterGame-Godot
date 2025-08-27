@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://crpduft0jsw1g"]
 
 [ext_resource type="PackedScene" uid="uid://lsul7y4yw26" path="res://Core/Unit/UnitBase.tscn" id="1_swl4d"]
-[ext_resource type="Script" uid="uid://5yovslddjv3q" path="res://Core/Player/PlayerBase.gd" id="2_s0iuf"]
+[ext_resource type="Script" uid="uid://5yovslddjv3q" path="res://Game/Player/InGamePlayer/PlayerBase.gd" id="2_s0iuf"]
 
 [node name="PlayerBase" instance=ExtResource("1_swl4d")]
 collision_mask = 6

@@ -18,7 +18,7 @@ func GetRandomPositionFromCircle() -> Vector2:
 		
 func GetRandomPositionInSight() -> Vector2:
 	var viewport_size: Vector2 = get_viewport().size
-	var top_left: Vector2 = GameManager.players[0].find_child("Camera").global_position - (viewport_size / 2)
+	var top_left: Vector2 = Vector2.ZERO
 	
 	var rand_x: float = randf_range(0, viewport_size.x)
 	var rand_y: float = randf_range(0, viewport_size.y)
