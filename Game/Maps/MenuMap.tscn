@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2bh6y3ngnes1"]
+[gd_scene load_steps=4 format=3 uid="uid://d2bh6y3ngnes1"]
 
 [ext_resource type="Script" uid="uid://bx6voplf3c27v" path="res://Core/Map/MapBase.gd" id="1_6kd5o"]
 [ext_resource type="PackedScene" uid="uid://dvt0eveuft2fj" path="res://Game/GameManager/MenuGameManager.tscn" id="2_3u2mf"]
+[ext_resource type="PackedScene" uid="uid://bhjqfyil7is5s" path="res://Core/UI/ExpandableArea/ExpandableArea.tscn" id="3_3u2mf"]
 
 [node name="MenuMap" type="Node"]
 script = ExtResource("1_6kd5o")
@@ -9,9 +10,9 @@ default_game_manager_scene = ExtResource("2_3u2mf")
 metadata/_custom_type_script = "uid://bx6voplf3c27v"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,3 +92,9 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 text = "Quit"
+
+[node name="ExpandableArea" parent="." instance=ExtResource("3_3u2mf")]
+offset_left = 1037.0
+offset_top = 484.0
+offset_right = 1137.0
+offset_bottom = 584.0

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://crpduft0jsw1g" path="res://Game/Player/InGamePlayer/PlayerBase.tscn" id="2_o8ftu"]
 [ext_resource type="PackedScene" uid="uid://lsul7y4yw26" path="res://Core/Unit/UnitBase.tscn" id="2_uhge4"]
 [ext_resource type="PackedScene" uid="uid://cerov3o34ftgw" path="res://Core/Collectable/CollectableItem/CollectableItem.tscn" id="3_uhge4"]
-[ext_resource type="Resource" uid="uid://c70j54wftetyk" path="res://Core/InventoryEquipment/Item/ItemData/LF1.tres" id="4_m0kle"]
+[ext_resource type="Resource" uid="uid://c70j54wftetyk" path="res://Core/InventoryEquipmentOld/Item/ItemData/LF1.tres" id="4_m0kle"]
 
 [node name="DevMap" type="Node2D"]
 

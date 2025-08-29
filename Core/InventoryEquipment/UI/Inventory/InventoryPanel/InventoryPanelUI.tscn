@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://8qvx1213p1kd"]
+
+[ext_resource type="Script" uid="uid://d2ragkd3tqmth" path="res://Core/InventoryEquipment/UI/Inventory/InventoryPanel/InventoryPanelUI.gd" id="1_ghfx7"]
+
+[sub_resource type="Theme" id="Theme_p36vs"]
+VBoxContainer/constants/separation = 0
+
+[node name="InventoryPanelUI" type="VBoxContainer"]
+offset_right = 520.0
+offset_bottom = 520.0
+theme = SubResource("Theme_p36vs")
+script = ExtResource("1_ghfx7")

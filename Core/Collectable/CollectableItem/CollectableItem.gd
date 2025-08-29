@@ -8,7 +8,7 @@ var interacting_node: Node
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interacting") and interacting_node:
-		var interacting_inventory_equipment: MenuInventoryEquipment = interacting_node.find_child("InventoryEquipment")
+		var interacting_inventory_equipment: InventoryEquipmentBase = interacting_node.find_child("InventoryEquipment")
 		if interacting_inventory_equipment:
 			interacting_inventory_equipment.AddNewItemToInventory(item_info)
 

@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://kxwxcrkqee5a" path="res://Assets/Square.png" id="4_ptu34"]
 [ext_resource type="PackedScene" uid="uid://b0a4dp1nmjlfx" path="res://Core/Tools/SpawnPoint/SpawnPoint.tscn" id="5_7bilv"]
 [ext_resource type="PackedScene" uid="uid://cerov3o34ftgw" path="res://Core/Collectable/CollectableItem/CollectableItem.tscn" id="5_xd1hl"]
-[ext_resource type="Resource" uid="uid://c70j54wftetyk" path="res://Core/InventoryEquipment/Item/ItemData/LF1.tres" id="6_qqmji"]
+
+[sub_resource type="Resource" id="Resource_bv8d1"]
+metadata/__load_path__ = "res://Core/InventoryEquipmentOld/Item/ItemData/LF1.tres"
 
 [node name="Level1" type="Node2D"]
 
@@ -16,4 +18,4 @@ texture = ExtResource("4_ptu34")
 
 [node name="CollectableItem" parent="." instance=ExtResource("5_xd1hl")]
 position = Vector2(238, 120)
-item_info = ExtResource("6_qqmji")
+item_info = SubResource("Resource_bv8d1")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ghi0vyalffk"]
+
+[ext_resource type="Script" uid="uid://bbdmi7vdou3kj" path="res://Core/InventoryEquipment/UI/Inventory/InventoryNavigateButton/InventoryNavigateButton.gd" id="1_kehow"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kehow"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kehow")
+text = "P"
+script = ExtResource("1_kehow")

@@ -2,9 +2,9 @@
 class_name ItemUI
 extends PanelContainer
 
-var owner_inventory_equipment: MenuInventoryEquipment
+var owner_inventory_equipment: InventoryEquipmentBase
 
-var item_info_ui_scene: PackedScene = preload("uid://d1rhc3yte2wcd")
+var item_info_ui_scene: PackedScene = preload("uid://dp7u4bls52ny0")
 
 var item: Item
 var available: bool = true
@@ -42,7 +42,7 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 func _drop_data(at_position: Vector2, data: Variant) -> void:
 	data = data as Item
 	match owner_inventory_equipment.FindItem(data.item_id):
-		Enums.EItemLocation.ININVENTORY:
+		Util.EItemLocation.ININVENTORY:
 			owner_inventory_equipment.SendItemToEquipment(data.item_id)
-		Enums.EItemLocation.INEQUIPMENT:
+		Util.EItemLocation.INEQUIPMENT:
 			owner_inventory_equipment.SendItemToInventory(data.item_id)

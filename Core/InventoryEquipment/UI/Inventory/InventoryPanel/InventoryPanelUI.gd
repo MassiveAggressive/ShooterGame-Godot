@@ -1,11 +1,10 @@
 @tool
 
-class_name InventoryPanelUI
-extends VBoxContainer
+class_name InventoryPanelUI extends VBoxContainer
 
-@export var panel_type: Enums.EItemSecondaryType
+@export var panel_type: Util.EItemSecondaryType
 
-var item_ui_scene: PackedScene = preload("uid://dva8aop20v0ie")
+var item_ui_scene: PackedScene = preload("uid://ba8x8eovoqcka")
 var space_scene: PackedScene = preload("uid://pdsmrkga7far")
 
 var grid_theme: Theme = preload("uid://buufd48x0pmbc")

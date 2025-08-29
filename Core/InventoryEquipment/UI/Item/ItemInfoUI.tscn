@@ -1,4 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1rhc3yte2wcd"]
+[gd_scene load_steps=4 format=3 uid="uid://dp7u4bls52ny0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jqlw"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_i0n6g"]
 font_size = 12
@@ -6,28 +13,16 @@ font_size = 12
 [sub_resource type="LabelSettings" id="LabelSettings_yhl7x"]
 font_size = 12
 
-[node name="ItemInfoUI" type="ColorRect"]
+[node name="PanelContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(100, 100)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1820.0
-offset_bottom = -980.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
-color = Color(0.156863, 0.156863, 0.156863, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jqlw")
 
 [node name="NameLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_top = 83.0
-offset_right = 100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 0
 size_flags_vertical = 8
 text = "Name"
 label_settings = SubResource("LabelSettings_i0n6g")
@@ -37,10 +32,6 @@ vertical_alignment = 1
 [node name="LevelLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 93.0
-offset_right = 100.0
-offset_bottom = 37.0
-grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "1

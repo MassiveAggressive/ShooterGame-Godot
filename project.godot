@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 GameInstance="*res://Core/GameManagementSystem/GameInstance/GameInstanceBase.tscn"
 SceneManager="*res://Core/GameManagementSystem/SceneManager/SceneManager.gd"
 Global="*res://Core/Tools/Global.gd"
-Enums="*res://Core/Enums/Enums.gd"
+Util="*res://Core/Enums/Util.gd"
 WindowsManager="*res://Core/WindowsManager/WindowsManager.gd"
 SpawnPoints="*res://Core/Tools/SpawnPoint/SpawnPointHandler.gd"
 
@@ -30,6 +30,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

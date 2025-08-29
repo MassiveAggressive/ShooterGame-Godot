@@ -1,22 +1,18 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=4 format=3 uid="uid://c70j54wftetyk"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://b0o2f61dp7y7p"]
 
-[ext_resource type="Script" uid="uid://c176aei3lat0y" path="res://Core/InventoryEquipment/Item/ItemData/ItemInfo.gd" id="1_b6t8l"]
-[ext_resource type="PackedScene" uid="uid://bgvku2dtkh142" path="res://Core/Weapon/WeaponBase.tscn" id="1_pngg8"]
-[ext_resource type="Texture2D" uid="uid://0pbfg1qeejms" path="res://Assets/InventoryAssets/scifi_inventory01_box.png" id="1_q03o8"]
+[ext_resource type="Script" uid="uid://dkcmokljaq5hn" path="res://Core/InventoryEquipment/Item/ItemData/ItemInfo.gd" id="1_b6t8l"]
 
 [resource]
 script = ExtResource("1_b6t8l")
 name = "LF-1"
 description = "Basic Weapon"
-item_icon = ExtResource("1_q03o8")
 item_primary_type = 0
 item_secondary_type = 0
 level = 1
 stackable = false
 max_stack_count = 1
 attributes = Dictionary[String, float]({
-"MaxDamage": 35.0,
-"MaxFireRate": 10.0
+"MaxDamage": 10.0,
+"MaxFireRate": 1.0
 })
-item_scene = ExtResource("1_pngg8")
-metadata/_custom_type_script = "uid://c176aei3lat0y"
+metadata/_custom_type_script = "uid://dkcmokljaq5hn"

@@ -6,13 +6,13 @@ enum EItemPrimaryType
 {
 	WEAPON,
 	GENERATOR,
-	EXTRA
+	ARTIFACT
 }
 
 var ItemPrimaryTypeData: Dictionary[EItemPrimaryType, String] = {
 	EItemPrimaryType.WEAPON: "Weapon",
 	EItemPrimaryType.GENERATOR: "Generator",
-	EItemPrimaryType.EXTRA: "Extra"
+	EItemPrimaryType.ARTIFACT: "Artifact"
 }
 
 enum EItemSecondaryType 
@@ -21,7 +21,7 @@ enum EItemSecondaryType
 	SECONDARYWEAPON,
 	SHIELDGENERATOR,
 	SPEEDGENERATOR,
-	EXTRA
+	ARTIFACT
 }
 
 var ItemSecondaryTypeData: Dictionary[EItemSecondaryType, String] = {
@@ -29,7 +29,7 @@ var ItemSecondaryTypeData: Dictionary[EItemSecondaryType, String] = {
 	EItemSecondaryType.SECONDARYWEAPON: "Secondary Weapon",
 	EItemSecondaryType.SHIELDGENERATOR: "Shield Generator",
 	EItemSecondaryType.SPEEDGENERATOR: "Speed Generator",
-	EItemSecondaryType.EXTRA: "Extra"
+	EItemSecondaryType.ARTIFACT: "Artifact"
 	
 }
 

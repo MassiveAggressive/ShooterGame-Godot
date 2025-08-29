@@ -18,13 +18,13 @@ func ApplyEffect() -> void:
 			var final_attribute_result: float = 0.0
 			
 			match modifier.modifier_operator:
-				Enums.EOperator.ADD:
+				Util.EOperator.ADD:
 					final_attribute_result = target_attribute_value + modifier.attribute_magnitude * modifier.magnitude_coefficient
-				Enums.EOperator.MULTIPLY:
+				Util.EOperator.MULTIPLY:
 					final_attribute_result = target_attribute_value * modifier.attribute_magnitude * modifier.magnitude_coefficient
-				Enums.EOperator.DIVIDE:
+				Util.EOperator.DIVIDE:
 					final_attribute_result = target_attribute_value / modifier.attribute_magnitude * modifier.magnitude_coefficient
-				Enums.EOperator.OVERRIDE:
+				Util.EOperator.OVERRIDE:
 					final_attribute_result = modifier.attribute_magnitude * modifier.magnitude_coefficient
 			
 			target_attribute_container.SetAttributeByEffect(modifier.attribute_name, final_attribute_result, self)
