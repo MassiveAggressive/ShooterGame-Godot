@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpr72rfdiax2u"]
+
+[ext_resource type="Script" uid="uid://cuqlrebknemoh" path="res://Core/InventoryEquipment/UI/Equipment/EquipmentPanelUI/EquipmentPanelUI.gd" id="1_7fqln"]
+[ext_resource type="PackedScene" uid="uid://bhjqfyil7is5s" path="res://Core/UI/ExpandableArea/ExpandableArea.tscn" id="1_v6it3"]
+
+[node name="EquipmentPanelUI" type="VBoxContainer"]
+custom_minimum_size = Vector2(1110, 0)
+offset_right = 1110.0
+offset_bottom = 31.0
+theme_override_constants/separation = 0
+script = ExtResource("1_7fqln")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "Weapon"
+
+[node name="ExpandableArea" parent="." instance=ExtResource("1_v6it3")]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ExpandableArea"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="ExpandableArea/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 10

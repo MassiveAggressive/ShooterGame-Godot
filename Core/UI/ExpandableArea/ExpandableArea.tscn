@@ -1,46 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhjqfyil7is5s"]
+[gd_scene load_steps=2 format=3 uid="uid://bhjqfyil7is5s"]
 
-[ext_resource type="PackedScene" uid="uid://ba8x8eovoqcka" path="res://Core/InventoryEquipment/UI/Item/ItemUI.tscn" id="1_5d35q"]
 [ext_resource type="Script" uid="uid://c4cvj4khuh633" path="res://Core/UI/ExpandableArea/ExpandableArea.gd" id="1_hseky"]
 
 [node name="ExpandableArea" type="Control"]
 clip_contents = true
-custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 100.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_hseky")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_right = 650.0
-offset_bottom = 100.0
-theme_override_constants/separation = 10
-
-[node name="ItemUI" parent="HBoxContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ItemUI2" parent="HBoxContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ItemUI3" parent="HBoxContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ItemUI4" parent="HBoxContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ItemUI5" parent="HBoxContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ItemUI6" parent="HBoxContainer" instance=ExtResource("1_5d35q")]
-layout_mode = 2
-mouse_filter = 2
-
-[connection signal="mouse_entered" from="HBoxContainer" to="." method="OnMouseEntered"]
-[connection signal="mouse_exited" from="HBoxContainer" to="." method="OnMouseExited"]
+shrink_duration = 0.5

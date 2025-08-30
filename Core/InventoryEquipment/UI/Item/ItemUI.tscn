@@ -14,5 +14,6 @@ corner_radius_bottom_left = 10
 custom_minimum_size = Vector2(100, 100)
 offset_right = 100.0
 offset_bottom = 100.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_wytjt")
 script = ExtResource("1_wytjt")
