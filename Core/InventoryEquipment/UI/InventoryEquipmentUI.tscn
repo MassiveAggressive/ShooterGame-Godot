@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cma6hfh4v44w3"]
+
+[ext_resource type="Script" uid="uid://duh106hlad0ij" path="res://Core/InventoryEquipment/UI/InventoryEquipmentUI.gd" id="1_tpira"]
+[ext_resource type="PackedScene" uid="uid://dnnbqwy7us6yy" path="res://Core/InventoryEquipment/UI/Equipment/EquipmentUI.tscn" id="2_04alo"]
+[ext_resource type="PackedScene" uid="uid://dktjunjhoifdj" path="res://Core/InventoryEquipment/UI/Inventory/InventoryUI.tscn" id="3_orh6i"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tpira")
+
+[node name="EquipmentUI" parent="." instance=ExtResource("2_04alo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InventoryUI" parent="." instance=ExtResource("3_orh6i")]
+unique_name_in_owner = true
+layout_mode = 2

@@ -1,6 +1,5 @@
 @tool
-class_name InventoryUI
-extends VBoxContainer
+class_name InventoryUI extends VBoxContainer
 
 var owner_inventory_equipment: InventoryEquipmentBase
 
@@ -13,14 +12,9 @@ var item_locations: Dictionary[int, ItemUI]
 var inventory_navigate_button_scene: PackedScene = preload("uid://c4ghi0vyalffk")
 
 func _enter_tree() -> void:
-	if owner_inventory_equipment:
-		owner_inventory_equipment.ItemAddedToInventory.connect(OnItemAddedToInventory)
-		owner_inventory_equipment.ItemRemovedFromInventory.connect(OnItemRemovedFromInventory)
-		
 	CreateNavigateButtons()
-	CreatePanel()
 
-func CreatePanel() -> void:
+func CreatePanel() -> Dictionary[Util.EItemSecondaryType, Array]:
 	for key in range(Util.EItemSecondaryType.keys().size()):
 		var inventory_panel_ui_temp: InventoryPanelUI = inventory_panel_ui_scene.instantiate()
 		inventory_panel_ui_temp.panel_type = key
@@ -29,11 +23,12 @@ func CreatePanel() -> void:
 		
 		for item_ui in item_uis[key]:
 			item_ui = item_ui as ItemUI
-			item_ui.ItemClicked.connect(OnItemClicked)
 			item_ui.owner_inventory_equipment = owner_inventory_equipment
 		
 		inventory_panels[key] = inventory_panel_ui_temp
 		%InventoryPanels.add_child(inventory_panel_ui_temp)
+		
+	return item_uis
 
 func CreateNavigateButtons() -> void:
 	for child in %NavigateButtonsPanel.get_children():
@@ -55,16 +50,9 @@ func OnNavigate(panel_type: Util.EItemSecondaryType) -> void:
 func GetItemUIs() -> Dictionary[Util.EItemSecondaryType, Array]:
 	return item_uis
 
-func OnItemClicked(item_ui: ItemUI) -> void:
-	match owner_inventory_equipment.FindItem(item_ui.item.item_id):
-		Util.EItemLocation.ININVENTORY:
-			owner_inventory_equipment.SendItemToEquipment(item_ui.item.item_id)
-		Util.EItemLocation.INEQUIPMENT:
-			owner_inventory_equipment.SendItemToInventory(item_ui.item.item_id)
-
 func OnItemAddedToInventory(item: Item) -> void:
 	var added: bool = false
-	for item_ref in item_uis[item.item_info.item_secondary_type]:
+	for item_ref in item_uis[item.item_info.secondary_type]:
 		if item_ref.available:
 			item_ref.SetItem(item)
 			item_locations[item.item_id] = item_ref

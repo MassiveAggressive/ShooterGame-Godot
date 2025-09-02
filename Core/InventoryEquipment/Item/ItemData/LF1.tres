@@ -6,8 +6,8 @@
 script = ExtResource("1_b6t8l")
 name = "LF-1"
 description = "Basic Weapon"
-item_primary_type = 0
-item_secondary_type = 0
+primary_type = 0
+secondary_type = 0
 level = 1
 stackable = false
 max_stack_count = 1

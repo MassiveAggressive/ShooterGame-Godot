@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnnbqwy7us6yy"]
+[gd_scene load_steps=3 format=3 uid="uid://dnnbqwy7us6yy"]
 
 [ext_resource type="Texture2D" uid="uid://b8rxwi4ldtbg3" path="res://icon.svg" id="1_fkcjl"]
 [ext_resource type="Script" uid="uid://cqm2a87tbrlp1" path="res://Core/InventoryEquipment/UI/Equipment/EquipmentUI.gd" id="1_mhwd8"]
-[ext_resource type="PackedScene" uid="uid://bpr72rfdiax2u" path="res://Core/InventoryEquipment/UI/Equipment/EquipmentPanelUI/EquipmentPanelUI.tscn" id="2_oug30"]
 
 [node name="EquipmentUI" type="HBoxContainer"]
 anchors_preset = 15
@@ -23,19 +22,8 @@ stretch_mode = 2
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="EquipmentPanelContainer" type="VBoxContainer" parent="ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/separation = 0
-
-[node name="EquipmentPanelUI" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_oug30")]
-layout_mode = 2
-
-[node name="EquipmentPanelUI2" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_oug30")]
-layout_mode = 2
-
-[node name="EquipmentPanelUI3" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_oug30")]
-layout_mode = 2
-
-[node name="EquipmentPanelUI4" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_oug30")]
-layout_mode = 2

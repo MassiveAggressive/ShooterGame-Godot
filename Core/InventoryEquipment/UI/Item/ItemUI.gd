@@ -26,7 +26,7 @@ func SetItem(new_item: Item = null) -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("LeftClick") and not available:
-		ItemClicked.emit(self)
+		ItemClicked.emit(item)
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	var preview: Control = load("uid://d1rhc3yte2wcd").instantiate()

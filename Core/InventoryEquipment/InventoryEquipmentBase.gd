@@ -17,15 +17,15 @@ signal ItemRemovedFromEquipment(int)
 
 var item_locations: Dictionary[int, ItemLocation]
 
-var inventory_ui_scene: PackedScene = preload("uid://dktjunjhoifdj")
-var inventory_ui: InventoryUI
+var inventory_equipment_ui_scene: PackedScene = preload("uid://cma6hfh4v44w3")
+var inventory_equipment_ui: InventoryEquipmentUI
 
 @export var item1: ItemInfo
 
 func _ready() -> void:
-	inventory_ui = inventory_ui_scene.instantiate()
-	inventory_ui.owner_inventory_equipment = self
-	Global.GetCanvasLayer().add_child(inventory_ui)
+	inventory_equipment_ui = inventory_equipment_ui_scene.instantiate()
+	inventory_equipment_ui.owner_inventory_equipment = self
+	WindowsManager.AddWindow("Inventory Equipment", inventory_equipment_ui)
 	
 	AddNewItemToInventory(item1)
 	AddNewItemToInventory(item1)
@@ -48,7 +48,7 @@ func AddNewItemToInventory(new_item_info: ItemInfo) -> void:
 	
 func AddItemToInventory(new_item: Item) -> bool:
 	inventory[new_item.item_id] = new_item
-	item_locations[new_item.item_id] = ItemLocation.new(Util.EItemLocation.ININVENTORY, new_item.item_info.item_primary_type)
+	item_locations[new_item.item_id] = ItemLocation.new(Util.EItemLocation.ININVENTORY, new_item.item_info.primary_type)
 	
 	ItemAddedToInventory.emit(new_item)
 	
@@ -63,11 +63,11 @@ func SendItemToEquipment(item_id: int) -> void:
 			ItemRemovedFromInventory.emit(item_id)
 
 func AddItemToEquipment(new_item: Item) -> bool:
-	var item_type = new_item.item_info.item_primary_type
+	var item_type = new_item.item_info.primary_type
 	if equipment[item_type].keys().size() < equipment_slot_sizes[item_type]:
 		var items: Dictionary = equipment[item_type]
 		items[new_item.item_id] = new_item
-		item_locations[new_item.item_id] = ItemLocation.new(Util.EItemLocation.INEQUIPMENT, new_item.item_info.item_primary_type)
+		item_locations[new_item.item_id] = ItemLocation.new(Util.EItemLocation.INEQUIPMENT, new_item.item_info.primary_type)
 		
 		equipment[item_type] = items
 		
@@ -81,7 +81,7 @@ func SendItemToInventory(item_id: int) -> void:
 	var item_location: ItemLocation = item_locations[item_id]
 	
 	if item_location.item_location == Util.EItemLocation.INEQUIPMENT:
-		if AddItemToInventory(equipment[item_location.item_primary_type][item_id]):
-			equipment[item_location.item_primary_type].erase(item_id)
+		if AddItemToInventory(equipment[item_location.primary_type][item_id]):
+			equipment[item_location.primary_type].erase(item_id)
 			
 			ItemRemovedFromEquipment.emit(item_id)

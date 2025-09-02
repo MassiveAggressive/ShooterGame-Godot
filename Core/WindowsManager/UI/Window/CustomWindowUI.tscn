@@ -6,7 +6,6 @@
 bg_color = Color(0.532611, 0.0542409, 0.0676424, 1)
 
 [node name="CustomWindowUI" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
