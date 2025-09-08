@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8iqhrq4udcnp"]
+
+[ext_resource type="Script" uid="uid://blny4gi7c5rkp" path="res://Core/InventoryEquipment/InGameInventoryEquipment/InGameInventoryEquipment.gd" id="1_32wdt"]
+
+[node name="InGameInventoryEquipment" type="Node"]
+script = ExtResource("1_32wdt")
+metadata/_custom_type_script = "uid://blny4gi7c5rkp"

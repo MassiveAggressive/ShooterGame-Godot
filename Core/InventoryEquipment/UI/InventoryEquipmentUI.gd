@@ -1,6 +1,6 @@
 class_name InventoryEquipmentUI extends HBoxContainer
 
-var owner_inventory_equipment: InventoryEquipmentBase
+var owner_inventory_equipment: MenuInventoryEquipment
 
 @onready var equipment_ui: EquipmentUI = %EquipmentUI
 @onready var inventory_ui: InventoryUI = %InventoryUI
@@ -32,9 +32,9 @@ func _ready() -> void:
 func OnItemClicked(item: Item) -> void:
 	match owner_inventory_equipment.FindItem(item.item_id):
 		Util.EItemLocation.ININVENTORY:
-			owner_inventory_equipment.SendItemToEquipment(item.item_id)
+			owner_inventory_equipment.MoveItem(item.item_id, Util.EItemLocation.INEQUIPMENT)
 		Util.EItemLocation.INEQUIPMENT:
-			owner_inventory_equipment.SendItemToInventory(item.item_id)
+			owner_inventory_equipment.MoveItem(item.item_id, Util.EItemLocation.ININVENTORY)
 
 func OnItemAddedToInventory(item: Item) -> void:
 	var added: bool = false

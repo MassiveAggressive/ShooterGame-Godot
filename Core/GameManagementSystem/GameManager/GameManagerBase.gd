@@ -1,13 +1,13 @@
 class_name GameManagerBase
 extends Node
 
-@export var default_player_state_scene: PackedScene = preload("uid://droroh1gf6yt7")
+@export var default_player_state_scene: PackedScene
 @export var default_player_scene: PackedScene
 
 var player_state_node: PlayerStateBase
 var player_node: Node
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	var player_state_node: PlayerStateBase = default_player_state_scene.instantiate()
 	get_tree().current_scene.add_child(player_state_node)
 	

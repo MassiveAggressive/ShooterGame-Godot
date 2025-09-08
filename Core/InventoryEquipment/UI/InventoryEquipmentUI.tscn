@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dnnbqwy7us6yy" path="res://Core/InventoryEquipment/UI/Equipment/EquipmentUI.tscn" id="2_04alo"]
 [ext_resource type="PackedScene" uid="uid://dktjunjhoifdj" path="res://Core/InventoryEquipment/UI/Inventory/InventoryUI.tscn" id="3_orh6i"]
 
-[node name="HBoxContainer" type="HBoxContainer"]
+[node name="InventoryEquipmentUI" type="HBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

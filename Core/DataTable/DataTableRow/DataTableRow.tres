@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DataTableRow" load_steps=2 format=3 uid="uid://p6yalf1vmx0b"]
+
+[ext_resource type="Script" uid="uid://cxkhqpernu4c6" path="res://Core/DataTable/DataTableRow/DataTableRow.gd" id="1_abtec"]
+
+[resource]
+script = ExtResource("1_abtec")
+row = ""

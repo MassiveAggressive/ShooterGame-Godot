@@ -16,7 +16,7 @@ func SetItem(new_item: Item = null) -> void:
 		item = new_item
 		var TempitemInfoUI: Control = item_info_ui_scene.instantiate()
 		TempitemInfoUI.get_node("%NameLabel").set_text(item.item_info.name)
-		TempitemInfoUI.get_node("%LevelLabel").set_text(str(item.item_info.level))
+		TempitemInfoUI.get_node("%LevelLabel").set_text(str(item.level))
 		add_child(TempitemInfoUI)
 		available = false
 	else:

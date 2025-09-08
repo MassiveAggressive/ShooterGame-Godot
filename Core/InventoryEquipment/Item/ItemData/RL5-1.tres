@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://y3tx33qjhvf6"]
+
+[ext_resource type="Script" uid="uid://dkcmokljaq5hn" path="res://Core/InventoryEquipment/Item/ItemData/ItemInfo.gd" id="1_x46pe"]
+
+[resource]
+script = ExtResource("1_x46pe")
+name = "RL5-1"
+description = "Basic Rocket Launcher"
+primary_type = 0
+secondary_type = 1
+stackable = false
+max_stack_count = 1
+attributes = Dictionary[String, float]({})
+metadata/_custom_type_script = "uid://dkcmokljaq5hn"

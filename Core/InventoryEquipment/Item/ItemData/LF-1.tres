@@ -8,7 +8,6 @@ name = "LF-1"
 description = "Basic Weapon"
 primary_type = 0
 secondary_type = 0
-level = 1
 stackable = false
 max_stack_count = 1
 attributes = Dictionary[String, float]({

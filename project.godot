@@ -17,13 +17,15 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameInstance="*res://Core/GameManagementSystem/GameInstance/GameInstanceBase.tscn"
+Util="*res://Core/Util/Util.gd"
 SceneManager="*res://Core/GameManagementSystem/SceneManager/SceneManager.gd"
+GameInstance="*res://Core/GameManagementSystem/GameInstance/GameInstanceBase.tscn"
+DataCarrier="*res://Core/GameManagementSystem/DataCarrier/DataCarrier.gd"
 Canvas="*res://Core/GameManagementSystem/Canvas/Canvas.gd"
 Global="*res://Core/GameManagementSystem/Global/Global.gd"
-Util="*res://Core/Enums/Util.gd"
 WindowsManager="*res://Core/WindowsManager/WindowsManager.gd"
 SpawnPoints="*res://Core/Tools/SpawnPoint/SpawnPointHandler.gd"
+SaveManager="*res://Core/SaveManager/SaveManager.gd"
 
 [display]
 
@@ -31,6 +33,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
+
+[global_group]
+
+SaveGame=""
 
 [gui]
 

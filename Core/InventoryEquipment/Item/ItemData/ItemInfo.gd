@@ -6,7 +6,6 @@ extends Resource
 @export var icon: Texture2D
 @export var primary_type:= Util.EItemPrimaryType.WEAPON
 @export var secondary_type:= Util.EItemSecondaryType.PRIMARYWEAPON
-@export var level: int = 1
 @export var stackable: bool = false
 @export var max_stack_count: int = 1
 @export var attributes: Dictionary[String, float]

@@ -35,6 +35,7 @@ var ItemSecondaryTypeData: Dictionary[EItemSecondaryType, String] = {
 
 enum EItemLocation
 {
+	UNASSIGNED,
 	ININVENTORY,
 	INEQUIPMENT
 }

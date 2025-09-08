@@ -5,6 +5,8 @@ signal ItemRemovedFromInventory(int)
 signal ItemAddedToEquipment(Item)
 signal ItemRemovedFromEquipment(int)
 
+var items: Dictionary[int, Item]
+
 @export var inventory: Dictionary[int, Item]
 
 @export var equipment: Dictionary[Util.EItemPrimaryType, Dictionary]
@@ -15,73 +17,117 @@ signal ItemRemovedFromEquipment(int)
 		for key in equipment_slot_sizes.keys():
 			equipment.set(key, {})
 
-var item_locations: Dictionary[int, ItemLocation]
-
-var inventory_equipment_ui_scene: PackedScene = preload("uid://cma6hfh4v44w3")
-var inventory_equipment_ui: InventoryEquipmentUI
-
-@export var item1: ItemInfo
-
 func _ready() -> void:
-	inventory_equipment_ui = inventory_equipment_ui_scene.instantiate()
-	inventory_equipment_ui.owner_inventory_equipment = self
-	WindowsManager.AddWindow("Inventory Equipment", inventory_equipment_ui)
-	
-	AddNewItemToInventory(item1)
-	AddNewItemToInventory(item1)
-	AddNewItemToInventory(item1)
+	for key in Util.EItemPrimaryType.values():
+		equipment[key] = {}
 
 func FindItem(item_id: int) -> Util.EItemLocation:
-	return item_locations[item_id].item_location
+	return items[item_id].item_location
 
 func CreateNewItemID() -> int:
-	if inventory.is_empty():
+	if items.is_empty():
 		return 0
 	else:
-		return (inventory.keys().max() + 1)
-		
-func AddNewItemToInventory(new_item_info: ItemInfo) -> void:
-	var new_item = Item.new()
-	new_item.item_info = new_item_info
-	new_item.item_id = CreateNewItemID()
-	AddItemToInventory(new_item)
-	
-func AddItemToInventory(new_item: Item) -> bool:
-	inventory[new_item.item_id] = new_item
-	item_locations[new_item.item_id] = ItemLocation.new(Util.EItemLocation.ININVENTORY, new_item.item_info.primary_type)
-	
-	ItemAddedToInventory.emit(new_item)
-	
-	return true
-	
-func SendItemToEquipment(item_id: int) -> void:
-	var item_location: ItemLocation = item_locations[item_id]
-	
-	if item_location.item_location == Util.EItemLocation.ININVENTORY:
-		if AddItemToEquipment(inventory[item_id]):
-			inventory.erase(item_id)
-			ItemRemovedFromInventory.emit(item_id)
+		return (items.keys().max() + 1)
 
-func AddItemToEquipment(new_item: Item) -> bool:
-	var item_type = new_item.item_info.primary_type
-	if equipment[item_type].keys().size() < equipment_slot_sizes[item_type]:
-		var items: Dictionary = equipment[item_type]
-		items[new_item.item_id] = new_item
-		item_locations[new_item.item_id] = ItemLocation.new(Util.EItemLocation.INEQUIPMENT, new_item.item_info.primary_type)
+func CreateNewItem(new_item_info: ItemInfo) -> int:
+	var new_item = Item.new()
+	var new_item_id = CreateNewItemID()
+	
+	new_item.item_id = new_item_id
+	new_item.item_info = new_item_info
+	items[new_item_id] = new_item
+	
+	Save()
+	
+	return new_item_id
+
+func AddNewItem(new_item: Item) -> int:
+	var new_item_id = CreateNewItemID()
+	
+	new_item.item_id = new_item_id
+	items[new_item_id] = new_item
+	
+	return new_item_id
+
+func IsInventoryAvailable() -> bool:
+	return true
+
+func AddItemToInventory(item_id: int) -> void:
+	inventory[item_id] = items[item_id]
+	items[item_id].item_location = Util.EItemLocation.ININVENTORY
+	
+	ItemAddedToInventory.emit(items[item_id])
+
+func IsEquipmentAvailableForItemType(item_type: Util.EItemPrimaryType) -> bool:
+	return equipment[item_type].keys().size() < equipment_slot_sizes[item_type]
+
+func AddItemToEquipment(item_id: int) -> bool:
+	var item_type = items[item_id].item_info.primary_type
+	
+	if IsEquipmentAvailableForItemType(item_type):
+		var equipment_items: Dictionary = equipment[item_type]
+		equipment_items[item_id] = items[item_id]
+		equipment[item_type] = equipment_items
+		items[item_id].item_location = Util.EItemLocation.INEQUIPMENT
 		
-		equipment[item_type] = items
-		
-		ItemAddedToEquipment.emit(new_item)
-		
+		ItemAddedToEquipment.emit(items[item_id])
+
 		return true
 		
 	return false
 
-func SendItemToInventory(item_id: int) -> void:
-	var item_location: ItemLocation = item_locations[item_id]
+func MoveItem(item_id: int, new_item_location: Util.EItemLocation) -> bool:
+	var item: Item = items[item_id]
+	var item_location: Util.EItemLocation = item.item_location
 	
-	if item_location.item_location == Util.EItemLocation.INEQUIPMENT:
-		if AddItemToInventory(equipment[item_location.primary_type][item_id]):
-			equipment[item_location.primary_type].erase(item_id)
-			
+	if  item_location == new_item_location:
+		return false
+	
+	match new_item_location:
+		Util.EItemLocation.INEQUIPMENT:
+			if IsEquipmentAvailableForItemType(item.item_info.primary_type):
+				RemoveItem(item_id)
+				AddItemToEquipment(item_id)
+		Util.EItemLocation.ININVENTORY:
+			if IsInventoryAvailable():
+				RemoveItem(item_id)
+				AddItemToInventory(item_id)
+	return true
+
+func RemoveItem(item_id) -> void:
+	var item_location: Util.EItemLocation = items[item_id].item_location
+	
+	match item_location:
+		Util.EItemLocation.ININVENTORY:
+			inventory.erase(item_id)
+			ItemRemovedFromInventory.emit(item_id)
+		Util.EItemLocation.INEQUIPMENT:
+			equipment[items[item_id].item_info.primary_type].erase(item_id)
 			ItemRemovedFromEquipment.emit(item_id)
+
+func Save() -> void:
+	var data: Array[Dictionary]
+	
+	for item in items.values():
+		item = item as Item
+		data.append(item.ToDict())
+	
+	SaveManager.Save("InventoryEquipment", JSON.stringify(data, "\t"))
+
+func Load() -> void:
+	if SaveManager.loads.has("InventoryEquipment"):
+		var data: Array = JSON.parse_string(SaveManager.loads["InventoryEquipment"])
+		
+		for item_data in data:
+			var item_info: ItemInfo = load(item_data["item"])
+			var new_item_id = CreateNewItem(item_info)
+			
+			items[new_item_id].level = item_data["level"]
+			items[new_item_id].stack_count = item_data["stack_count"]
+			
+			MoveItem(new_item_id, Util.EItemLocation.keys().find(item_data["item_location"]))
+
+func OnSceneAboutToChange() -> void:
+	DataCarrier.data["items"] = items.values()
+	DataCarrier.data["equipment_slot_sizes"] = equipment_slot_sizes

@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvt0eveuft2fj"]
+[gd_scene load_steps=4 format=3 uid="uid://cc3nnfxejs76q"]
 
-[ext_resource type="PackedScene" uid="uid://c12fgejkbij4y" path="res://Core/GameManagementSystem/GameManager/GameManagerBase.tscn" id="1_fbkek"]
-[ext_resource type="Script" uid="uid://bc1hf6jjc767b" path="res://Game/GameManager/MenuGameManager.gd" id="2_rh3tj"]
+[ext_resource type="Script" uid="uid://bx4nb5r11kdpj" path="res://Core/GameManagementSystem/GameManager/GameManagerBase.gd" id="1_fbkek"]
 [ext_resource type="PackedScene" uid="uid://dye3bx5xu8we5" path="res://Game/Player/MenuPlayer/MenuPlayerState.tscn" id="3_tk8nx"]
 
-[node name="MenuGameManager" instance=ExtResource("1_fbkek")]
-script = ExtResource("2_rh3tj")
+[sub_resource type="PackedScene" id="PackedScene_rh3tj"]
+
+[node name="GameManagerBase" type="Node"]
+script = ExtResource("1_fbkek")
 default_player_state_scene = ExtResource("3_tk8nx")
+default_player_scene = SubResource("PackedScene_rh3tj")
+metadata/_custom_type_script = "uid://bx4nb5r11kdpj"

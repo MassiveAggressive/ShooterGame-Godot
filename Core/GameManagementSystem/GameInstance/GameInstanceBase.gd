@@ -5,5 +5,5 @@ extends Node
 
 var map_node: MapBase
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	SceneManager.ChangeScene(default_map_scene)

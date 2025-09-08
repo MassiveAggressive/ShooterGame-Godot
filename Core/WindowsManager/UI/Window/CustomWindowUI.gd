@@ -1,9 +1,8 @@
 class_name CustomWindowUI
 extends Control
 
-func OnChildEnteredTree(node: Node) -> void:
-	remove_child(node)
+func AddChild(node: Node) -> void:
 	%ContentContainer.add_child(node)
-	
+
 func OnCloseRequested() -> void:
 	visible = false

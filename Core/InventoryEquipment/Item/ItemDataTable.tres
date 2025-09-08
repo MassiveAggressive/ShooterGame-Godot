@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DataTable" load_steps=5 format=3 uid="uid://cyskcfqntc5ri"]
+
+[ext_resource type="Script" uid="uid://cjb6otdv3gk2e" path="res://Core/DataTable/DataTable.gd" id="1_1ny1i"]
+[ext_resource type="Resource" uid="uid://b0o2f61dp7y7p" path="res://Core/InventoryEquipment/Item/ItemData/LF-1.tres" id="2_4gx1v"]
+[ext_resource type="Resource" uid="uid://3s2bliew323" path="res://Core/InventoryEquipment/Item/ItemData/SH-1.tres" id="2_jls2u"]
+[ext_resource type="Resource" uid="uid://y3tx33qjhvf6" path="res://Core/InventoryEquipment/Item/ItemData/RL5-1.tres" id="3_5gqwj"]
+
+[resource]
+script = ExtResource("1_1ny1i")
+data = Dictionary[String, Variant]({
+"LF-1": ExtResource("2_4gx1v"),
+"RL5-1": ExtResource("3_5gqwj"),
+"SH-1": ExtResource("2_jls2u")
+})
+metadata/_custom_type_script = "uid://cjb6otdv3gk2e"

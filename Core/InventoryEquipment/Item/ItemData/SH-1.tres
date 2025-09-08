@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://3s2bliew323"]
+
+[ext_resource type="Script" uid="uid://dkcmokljaq5hn" path="res://Core/InventoryEquipment/Item/ItemData/ItemInfo.gd" id="1_gp5l1"]
+
+[resource]
+script = ExtResource("1_gp5l1")
+name = "SH-1"
+description = "Basic Shield"
+primary_type = 1
+secondary_type = 2
+stackable = false
+max_stack_count = 1
+attributes = Dictionary[String, float]({
+"MaxShield": 100.0
+})
+metadata/_custom_type_script = "uid://dkcmokljaq5hn"

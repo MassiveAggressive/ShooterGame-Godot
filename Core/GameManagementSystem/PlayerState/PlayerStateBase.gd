@@ -1,5 +1,4 @@
-class_name PlayerStateBase
-extends Node
+class_name PlayerStateBase extends Node
 
 var player_node: Node
 

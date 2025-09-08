@@ -1,19 +1,23 @@
 extends Node
 
+signal CanvasCreated(canvas: CanvasLayer)
+
 var canvas: CanvasLayer
 
 func _enter_tree() -> void:
-	CreateCanvas()
-	
 	SceneManager.SceneChanged.connect(OnSceneChanged)
-	
+	CreateCanvas()
+
 func CreateCanvas() -> void:
 	canvas = CanvasLayer.new()
 	canvas.name = "DefaultCanvasLayer"
 	
-	print(get_tree().current_scene)
-	
 	get_tree().current_scene.add_child(canvas)
+	
+	CanvasCreated.emit(canvas)
+
+func GetCanvas() -> CanvasLayer:
+	return canvas
 
 func OnSceneChanged() -> void:
 	CreateCanvas()

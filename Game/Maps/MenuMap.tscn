@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2bh6y3ngnes1"]
+[gd_scene load_steps=6 format=3 uid="uid://d2bh6y3ngnes1"]
 
 [ext_resource type="Script" uid="uid://bx6voplf3c27v" path="res://Core/Map/MapBase.gd" id="1_6kd5o"]
-[ext_resource type="PackedScene" uid="uid://dvt0eveuft2fj" path="res://Game/GameManager/MenuGameManager.tscn" id="2_3u2mf"]
+[ext_resource type="PackedScene" uid="uid://cc3nnfxejs76q" path="res://Game/GameManager/MenuGameManager.tscn" id="2_3u2mf"]
+[ext_resource type="Texture2D" uid="uid://c854u22crlfip" path="res://Assets/Darkorbit.jpg" id="3_3u2mf"]
+[ext_resource type="Script" uid="uid://djqakk3yxjlsp" path="res://Game/Maps/button.gd" id="4_1i0mg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u2mf"]
+bg_color = Color(0.233644, 0.580943, 0.216163, 1)
 
 [node name="MenuMap" type="Node"]
 script = ExtResource("1_6kd5o")
@@ -11,7 +16,6 @@ metadata/_custom_type_script = "uid://bx6voplf3c27v"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,75 +23,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -773.5
+offset_top = -512.0
+offset_right = 773.5
+offset_bottom = 512.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.144063, 0.144063, 0.144063, 1)
+texture = ExtResource("3_3u2mf")
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/ColorRect"]
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/ColorRect/CenterContainer"]
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-color = Color(0.350143, 0.00140041, 0.604601, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ColorRect/CenterContainer/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/ColorRect/CenterContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Button" type="Button" parent="CanvasLayer/Control/ColorRect/CenterContainer/ColorRect/VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_3u2mf")
 text = "Start"
+script = ExtResource("4_1i0mg")
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/ColorRect/CenterContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Button" type="Button" parent="CanvasLayer/Control/ColorRect/CenterContainer/ColorRect/VBoxContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 50
-text = "Options"
-
-[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/Control/ColorRect/CenterContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Button" type="Button" parent="CanvasLayer/Control/ColorRect/CenterContainer/ColorRect/VBoxContainer/MarginContainer3"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 50
-text = "Quit"
+[connection signal="button_down" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/Button" method="OnPressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/Button" method="OnPressed"]
