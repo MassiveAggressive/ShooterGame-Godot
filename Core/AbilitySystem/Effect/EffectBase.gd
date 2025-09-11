@@ -12,7 +12,7 @@ func InitializeEffect(new_effect_owner: Node, new_effect_target: Node) -> void:
 
 func ApplyEffect() -> void:
 	for modifier in modifiers:
-		var target_attribute_container: AttributeContainerBase = effect_target.find_child("AttributeContainerBase")
+		var target_attribute_container: AttributeManagerBase = GameManager.GetPlayerState().find_children("", "AttributeManagerBase")[0]
 		if target_attribute_container.HasAttribute(modifier.attribute_name):
 			var target_attribute_value: float = target_attribute_container.GetAttribute(modifier.attribute_name)
 			var final_attribute_result: float = 0.0

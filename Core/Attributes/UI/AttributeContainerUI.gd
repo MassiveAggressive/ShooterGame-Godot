@@ -4,7 +4,7 @@ extends VBoxContainer
 @export var exhibited_attributes: Array[String]
 @export var exhibited_attributes_data: Dictionary[String, String]
 
-var owner_attribute_container: AttributeContainerBase
+var owner_attribute_container: AttributeManagerBase
 
 @export var attribute_ui_scene: PackedScene = preload("uid://bax61lplxphv3")
 var attribute_uis: Dictionary[String, AttributeUI]

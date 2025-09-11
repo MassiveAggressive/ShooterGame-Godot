@@ -1,4 +1,4 @@
-class_name AttributeContainerBase extends Node
+class_name AttributeManagerBase extends Node
 
 signal AttributesChanged(new_attributes: Dictionary[String, float])
 signal AttributeChanged(name: String, value: float)
@@ -6,9 +6,8 @@ signal AttributeChangedByEffect(name: String, value: float, effect: EffectBase)
 
 @export var attributes: Dictionary[String, float]
 
-@export var raw_attributes: Dictionary[String, Dictionary]
+@export var default_attributes: Dictionary[String, Dictionary]
 
-#Sergilemek istediğin nitelikleri taşıyan değişken. MaxHealth, MaxDamage gibi değişkenler, Health ve Damage değil.
 @export var exhibited_attributes: Dictionary[String, Attribute]
 
 func AddAttribute(attribute_name: String) -> void:
@@ -16,7 +15,7 @@ func AddAttribute(attribute_name: String) -> void:
 		pass
 	else:
 		attributes[attribute_name] = 0.0
-	
+
 func SetAttribute(attribute_name: String, value: float) -> void:
 	attributes[attribute_name] = value
 	AttributeChanged.emit(attribute_name, value)
@@ -34,31 +33,33 @@ func GetAttribute(attribute_name: String) -> float:
 		return attributes[attribute_name]
 	else:
 		return 0
-	
+
 func HasAttribute(attribute_name: String) -> bool:
 	return attributes.has(attribute_name)
 
 func InitializeAttributes(attributes_raw_name: String, initialized_attributes: Array[String]):
 	var attributes_temp: Dictionary
+	
 	for attribute_name in initialized_attributes:
 		attributes_temp[attribute_name] = 0.0
 		
-	raw_attributes[attributes_raw_name] = attributes_temp
+	default_attributes[attributes_raw_name] = attributes_temp
 	
 	exhibited_attributes.merge(exhibited_attributes)
 	
 	CalculateAttributes()
 
 func AddAttributesRaw(attribute_raw_name: String, new_raw_attributes: Dictionary):
-	raw_attributes[attribute_raw_name] = new_raw_attributes
-	CalculateAttributes()
+	default_attributes[attribute_raw_name] = new_raw_attributes
 	
+	CalculateAttributes()
+
 func CalculateAttributes() -> void:
 	var temp_attributes: Dictionary[String, float]
-	
-	for raw_name in raw_attributes:
-		for attribute_name in raw_attributes[raw_name]:
-			temp_attributes[attribute_name] = temp_attributes.get(attribute_name, 0) + raw_attributes[raw_name][attribute_name]
+
+	for raw_name in default_attributes:
+		for attribute_name in default_attributes[raw_name]:
+			temp_attributes[attribute_name] = temp_attributes.get(attribute_name, 0) + default_attributes[raw_name][attribute_name]
 			
 	attributes = temp_attributes
 	

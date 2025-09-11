@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://3nxkdj0f5yuq"]
+
+[ext_resource type="PackedScene" uid="uid://chhue3s3ygy82" path="res://Core/Collectable/CollectableBase.tscn" id="1_j5ie7"]
+[ext_resource type="Script" uid="uid://dg2j51wp7chqy" path="res://Core/Collectable/CollectableEffect/CollectableEffect.gd" id="2_vmbs4"]
+
+[node name="CollectableEffect" instance=ExtResource("1_j5ie7")]
+script = ExtResource("2_vmbs4")
+effect_scene = null

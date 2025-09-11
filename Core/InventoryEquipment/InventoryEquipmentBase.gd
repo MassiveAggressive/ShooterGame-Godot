@@ -128,7 +128,7 @@ func CalculateAttributes() -> void:
 	
 	print(attributes)
 	
-	var attribute_container: AttributeContainerBase = GameManager.GetPlayerState().find_children("", "AttributeContainerBase")[0]
+	var attribute_container: AttributeManagerBase = GameManager.GetPlayerState().find_children("", "AttributeManagerBase")[0]
 	attribute_container.AddAttributesRaw("InventoryEquipment", attributes)
 
 func Save() -> void:
