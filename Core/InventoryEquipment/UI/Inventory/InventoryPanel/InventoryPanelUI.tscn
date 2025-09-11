@@ -6,7 +6,10 @@
 VBoxContainer/constants/separation = 0
 
 [node name="InventoryPanelUI" type="VBoxContainer"]
-offset_right = 520.0
-offset_bottom = 520.0
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 540.0
+offset_bottom = -540.0
+grow_vertical = 2
 theme = SubResource("Theme_p36vs")
 script = ExtResource("1_ghfx7")

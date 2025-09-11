@@ -1,5 +1,4 @@
-class_name DamageAttributesDriver
-extends AttributesDriver
+class_name DamageAttributesDriver extends AttributesDriver
 
 func OnAttributesChanged(new_attributes: Dictionary[String, float]) -> void:
 	if new_attributes["MaxDamage"] != attributes["MaxDamage"]:

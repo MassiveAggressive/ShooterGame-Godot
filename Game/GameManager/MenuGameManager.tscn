@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc3nnfxejs76q"]
 
 [ext_resource type="Script" uid="uid://bx4nb5r11kdpj" path="res://Core/GameManagementSystem/GameManager/GameManagerBase.gd" id="1_fbkek"]
-[ext_resource type="PackedScene" uid="uid://dye3bx5xu8we5" path="res://Game/Player/MenuPlayer/MenuPlayerState.tscn" id="3_tk8nx"]
+[ext_resource type="PackedScene" uid="uid://dye3bx5xu8we5" path="res://Core/GameManagementSystem/PlayerState/MenuPlayerState/MenuPlayerState.tscn" id="3_tk8nx"]
 
 [sub_resource type="PackedScene" id="PackedScene_rh3tj"]
 

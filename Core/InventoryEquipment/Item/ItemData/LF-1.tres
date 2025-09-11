@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://b0o2f61dp7y7p"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://b0o2f61dp7y7p"]
 
+[ext_resource type="PackedScene" uid="uid://b4ndqvrfnku4r" path="res://Core/Weapon/MultipleBarrelWeapon.tscn" id="1_6e5xs"]
 [ext_resource type="Script" uid="uid://dkcmokljaq5hn" path="res://Core/InventoryEquipment/Item/ItemData/ItemInfo.gd" id="1_b6t8l"]
 
 [resource]
@@ -14,4 +15,6 @@ attributes = Dictionary[String, float]({
 "MaxDamage": 10.0,
 "MaxFireRate": 1.0
 })
+item_scene = ExtResource("1_6e5xs")
+item_socket_name = "Weapon"
 metadata/_custom_type_script = "uid://dkcmokljaq5hn"

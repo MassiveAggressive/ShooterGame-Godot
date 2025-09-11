@@ -9,6 +9,7 @@ bg_color = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(50, 50)
 offset_right = 8.0
 offset_bottom = 8.0
+theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_kehow")
 text = "P"
 script = ExtResource("1_kehow")

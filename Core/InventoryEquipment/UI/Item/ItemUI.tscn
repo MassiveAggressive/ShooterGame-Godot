@@ -1,19 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba8x8eovoqcka"]
+[gd_scene load_steps=2 format=3 uid="uid://ba8x8eovoqcka"]
 
 [ext_resource type="Script" uid="uid://d3bvuf1gjcyfr" path="res://Core/InventoryEquipment/UI/Item/ItemUI.gd" id="1_wytjt"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wytjt"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_color = Color(0.489622, 0.489622, 0.489622, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [node name="ItemUI" type="PanelContainer"]
 custom_minimum_size = Vector2(100, 100)
 offset_right = 100.0
 offset_bottom = 100.0
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_wytjt")
 script = ExtResource("1_wytjt")

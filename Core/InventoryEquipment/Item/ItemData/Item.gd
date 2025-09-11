@@ -5,6 +5,7 @@ var item_id: int
 var item_location: Util.EItemLocation
 @export var level: int = 1
 @export var stack_count: int = 1
+var item_node: ItemBase
 
 func ToDict() -> Dictionary:
 	var data: Dictionary[String, Variant]

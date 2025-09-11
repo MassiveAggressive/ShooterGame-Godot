@@ -1,5 +1,4 @@
-class_name WeaponBase
-extends ItemBase
+class_name WeaponBase extends ItemBase
 
 @export var bullet_scene: PackedScene
 
@@ -33,8 +32,6 @@ var is_shooting: bool = false
 
 @onready var current_scene: Node
 
-var owner_attribute_container: AttributeContainer
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("LeftClick"):
 		StartShooting()
@@ -42,10 +39,8 @@ func _input(event: InputEvent) -> void:
 		StopShooting()
 
 func _ready():
-	owner_attribute_container = owner_unit.get_node("AttributeContainer")
-	if owner_attribute_container:
-		owner_attribute_container.AttributeChanged.connect(OnAttributeChange)
-		
+	super._ready()
+	
 	current_scene = get_tree().current_scene
 	
 	set_process(false)
@@ -67,7 +62,7 @@ func CreateBarrels() -> void:
 		barrels.append(new_barrel)
 		add_child(new_barrel)
 
-func OnAttributeChange(attribute_name: String, value: float):
+func OnAttributeChanged(attribute_name: String, value: float):
 	if attribute_name == "FireRate":
 		fire_rate = value
 	elif attribute_name == "BarrelCount":
@@ -88,7 +83,7 @@ func _process(delta):
 		time_pool += delta
 		if time_pool >= fire_duration:
 			if is_shooting:
-				Handletime_pool()
+				HandleTimePool()
 			else:
 				is_shoot_available = true
 				count_this_frame = false
@@ -97,7 +92,7 @@ func _process(delta):
 	else:
 		count_this_frame = true
 
-func Handletime_pool():
+func HandleTimePool():
 	while time_pool >= fire_duration:
 		time_pool -= fire_duration
 		Shoot(time_pool)
@@ -106,7 +101,7 @@ func Shoot(Delta : float):
 	is_shoot_available = false
 	for barrel in barrels:
 		var new_bullet: ProjectileBase = bullet_scene.instantiate()
-		new_bullet.instigator_unit = owner_unit
+		new_bullet.instigator_unit = owner_node
 		current_scene.add_child(new_bullet)
 		new_bullet.global_position = barrel.global_position + Vector2.RIGHT.rotated(barrel.global_rotation) * Delta * 1500
 		new_bullet.global_rotation = barrel.global_rotation

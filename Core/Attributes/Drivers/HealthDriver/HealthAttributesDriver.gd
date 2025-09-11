@@ -1,5 +1,4 @@
-class_name HealthAttributesDriver
-extends AttributesDriver
+class_name HealthAttributesDriver extends AttributesDriver
 
 signal Destroy(DestroyerUnit: UnitBase)
 

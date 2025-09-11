@@ -1,24 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp7u4bls52ny0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jqlw"]
-bg_color = Color(0.156863, 0.156863, 0.156863, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[gd_scene load_steps=3 format=3 uid="uid://dp7u4bls52ny0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i0n6g"]
-font_size = 12
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_yhl7x"]
-font_size = 12
+font_size = 20
 
 [node name="PanelContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(100, 100)
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5jqlw")
 
 [node name="NameLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -34,7 +26,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-text = "1
-"
+text = "1"
 label_settings = SubResource("LabelSettings_yhl7x")
 horizontal_alignment = 2

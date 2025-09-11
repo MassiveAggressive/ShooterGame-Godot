@@ -10,3 +10,4 @@ extends Resource
 @export var max_stack_count: int = 1
 @export var attributes: Dictionary[String, float]
 @export var item_scene: PackedScene
+@export var item_socket_name: String

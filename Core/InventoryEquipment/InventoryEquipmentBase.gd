@@ -7,9 +7,9 @@ signal ItemRemovedFromEquipment(int)
 
 var items: Dictionary[int, Item]
 
-@export var inventory: Dictionary[int, Item]
+@export var inventory: Array[int]
 
-@export var equipment: Dictionary[Util.EItemPrimaryType, Dictionary]
+@export var equipment: Dictionary[Util.EItemPrimaryType, Array]
 
 @export var equipment_slot_sizes: Dictionary[Util.EItemPrimaryType, int]:
 	set(value):
@@ -17,9 +17,11 @@ var items: Dictionary[int, Item]
 		for key in equipment_slot_sizes.keys():
 			equipment.set(key, {})
 
+@export var attributes: Dictionary[String, float]
+
 func _ready() -> void:
 	for key in Util.EItemPrimaryType.values():
-		equipment[key] = {}
+		equipment[key] = []
 
 func FindItem(item_id: int) -> Util.EItemLocation:
 	return items[item_id].item_location
@@ -54,20 +56,20 @@ func IsInventoryAvailable() -> bool:
 	return true
 
 func AddItemToInventory(item_id: int) -> void:
-	inventory[item_id] = items[item_id]
+	inventory.append(item_id)
 	items[item_id].item_location = Util.EItemLocation.ININVENTORY
 	
 	ItemAddedToInventory.emit(items[item_id])
 
 func IsEquipmentAvailableForItemType(item_type: Util.EItemPrimaryType) -> bool:
-	return equipment[item_type].keys().size() < equipment_slot_sizes[item_type]
+	return equipment[item_type].size() < equipment_slot_sizes[item_type]
 
 func AddItemToEquipment(item_id: int) -> bool:
 	var item_type = items[item_id].item_info.primary_type
 	
 	if IsEquipmentAvailableForItemType(item_type):
-		var equipment_items: Dictionary = equipment[item_type]
-		equipment_items[item_id] = items[item_id]
+		var equipment_items: Array = equipment[item_type]
+		equipment_items.append(item_id)
 		equipment[item_type] = equipment_items
 		items[item_id].item_location = Util.EItemLocation.INEQUIPMENT
 		
@@ -100,11 +102,34 @@ func RemoveItem(item_id) -> void:
 	
 	match item_location:
 		Util.EItemLocation.ININVENTORY:
-			inventory.erase(item_id)
-			ItemRemovedFromInventory.emit(item_id)
+			RemoveItemFromInventory(item_id)
 		Util.EItemLocation.INEQUIPMENT:
-			equipment[items[item_id].item_info.primary_type].erase(item_id)
-			ItemRemovedFromEquipment.emit(item_id)
+			RemoveItemFromEquipment(item_id)
+
+func RemoveItemFromEquipment(item_id) -> void:
+	equipment[items[item_id].item_info.primary_type].erase(item_id)
+	ItemRemovedFromEquipment.emit(item_id)
+
+func RemoveItemFromInventory(item_id) -> void:
+	inventory.erase(item_id)
+	ItemRemovedFromInventory.emit(item_id)
+
+func CalculateAttributes() -> void:
+	var temp_attributes: Dictionary[String, float]
+	
+	for item_type in equipment:
+		for item_id in equipment[item_type]:
+			var item_info: ItemInfo = items[item_id].item_info
+			
+			for attribute_name in item_info.attributes:
+				temp_attributes[attribute_name] = temp_attributes.get(attribute_name, 0) + item_info.attributes[attribute_name]
+				
+	attributes = temp_attributes
+	
+	print(attributes)
+	
+	var attribute_container: AttributeContainerBase = GameManager.GetPlayerState().find_children("", "AttributeContainerBase")[0]
+	attribute_container.AddAttributesRaw("InventoryEquipment", attributes)
 
 func Save() -> void:
 	var data: Array[Dictionary]

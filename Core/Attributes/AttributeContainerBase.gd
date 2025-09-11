@@ -1,18 +1,15 @@
-class_name AttributeContainer
-extends Node
+class_name AttributeContainerBase extends Node
+
+signal AttributesChanged(new_attributes: Dictionary[String, float])
+signal AttributeChanged(name: String, value: float)
+signal AttributeChangedByEffect(name: String, value: float, effect: EffectBase)
 
 @export var attributes: Dictionary[String, float]
 
 @export var raw_attributes: Dictionary[String, Dictionary]
 
+#Sergilemek istediğin nitelikleri taşıyan değişken. MaxHealth, MaxDamage gibi değişkenler, Health ve Damage değil.
 @export var exhibited_attributes: Dictionary[String, Attribute]
-
-signal AttributesChanged(NewAttributes: Dictionary[String, float])
-signal AttributeChanged(Name: String, Value: float)
-signal AttributeChangedByEffect(Name: String, Value: float, Effect: EffectBase)
-
-func _ready() -> void:
-	CalculateAttributes()
 
 func AddAttribute(attribute_name: String) -> void:
 	if attributes.has(attribute_name):
@@ -49,6 +46,8 @@ func InitializeAttributes(attributes_raw_name: String, initialized_attributes: A
 	raw_attributes[attributes_raw_name] = attributes_temp
 	
 	exhibited_attributes.merge(exhibited_attributes)
+	
+	CalculateAttributes()
 
 func AddAttributesRaw(attribute_raw_name: String, new_raw_attributes: Dictionary):
 	raw_attributes[attribute_raw_name] = new_raw_attributes
@@ -66,3 +65,6 @@ func CalculateAttributes() -> void:
 	AttributesChanged.emit(attributes)
 	for attribute_name in attributes:
 		AttributeChanged.emit(attribute_name, attributes[attribute_name])
+
+func OnSceneAboutToChange() -> void:
+	DataCarrier.data["attributes"] = attributes

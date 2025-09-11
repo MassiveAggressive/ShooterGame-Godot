@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgfoa34d4q7vy"]
+
+[ext_resource type="Script" uid="uid://cbgksqvtxwari" path="res://Core/Attributes/AttributeContainerBase.gd" id="1_w3lqs"]
+
+[node name="AttributeContainer" type="Node"]
+script = ExtResource("1_w3lqs")

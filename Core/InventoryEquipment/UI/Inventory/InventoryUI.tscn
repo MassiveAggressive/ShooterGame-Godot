@@ -5,8 +5,10 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa8qp"]
 
 [node name="InventoryUI" type="VBoxContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
 offset_right = 540.0
-offset_bottom = 600.0
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 0
@@ -32,6 +34,5 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_oa8qp")
-current_tab = 0
 clip_tabs = false
 tabs_visible = false
