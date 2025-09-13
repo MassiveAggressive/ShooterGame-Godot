@@ -22,7 +22,6 @@ metadata/_custom_type_script = "uid://cth5v4ekj8c7k"
 
 [node name="MenuAttributeContainer" type="Node" parent="."]
 script = ExtResource("5_fegjr")
-attributes = null
 metadata/_custom_type_script = "uid://deac33wyu6doi"
 
 [node name="MenuInventoryEquipment" parent="." instance=ExtResource("3_l5wdn")]

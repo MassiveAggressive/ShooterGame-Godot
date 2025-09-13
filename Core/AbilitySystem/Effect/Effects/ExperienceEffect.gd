@@ -1,5 +1,4 @@
-class_name ExperienceEffect
-extends EffectBase
+class_name ExperienceEffect extends EffectBase
 
 func ApplyEffect() -> void:
 	super.ApplyEffect()

@@ -6,8 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_vj3qy"]
 script = ExtResource("3_v1dfk")
-attribute_name = ""
-base_value = 100.0
 modifiers = Array[ExtResource("2_q4leo")]([])
 metadata/_custom_type_script = "uid://bojo40kf3arv2"
 

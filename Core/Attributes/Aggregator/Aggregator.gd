@@ -1,12 +1,14 @@
 class_name Aggregator extends Resource
 
-@export var attribute_name: String
-@export var base_value: float
+@export var attribute: Attribute
 @export var modifiers: Array[AttributeModifierInfo]
 
 var additive_modifiers: Array[float]
 var multiplicative_modifiers: Array[float]
 var overrider_modifiers: Array[float]
+
+func _init(_attribute: Attribute) -> void:
+	attribute = _attribute
 
 func AddModifier(modifier: AttributeModifierInfo) -> void:
 	modifiers.append(modifier)
@@ -42,7 +44,7 @@ func Calculate() -> float:
 	for modifier in multiplicative_modifiers:
 		multiplicative_total *= modifier
 	
-	value_result = (base_value + additive_total) * multiplicative_total
+	value_result = (attribute.base_value + additive_total) * multiplicative_total
 	
 	if overrider_modifiers.size() > 0:
 		value_result = overrider_modifiers[overrider_modifiers.size() - 1]

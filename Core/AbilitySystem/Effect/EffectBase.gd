@@ -4,42 +4,58 @@ var effect_owner: Node
 var effect_target: Node
 
 @export var duration_policy: Util.EDurationPolicy
-@export var modifiers: Array[AttributeModifier]
+@export var modifiers: Dictionary[String, AttributeModifierInfoArray]
+
+var aggregators: Dictionary[String, Aggregator]
 
 func InitializeEffect(new_effect_owner: Node, new_effect_target: Node) -> void:
 	effect_owner = new_effect_owner
 	effect_target = new_effect_target
 
 func AddModifier(attribute_name: String, modifier: AttributeModifierInfo) -> void:
-	var new_attribute_modifier: AttributeModifier = AttributeModifier.new()
-	
-	new_attribute_modifier.attribute_name = attribute_name
-	new_attribute_modifier.modifier_info = modifier
-	
-	modifiers.append(new_attribute_modifier)
+	if !modifiers.has(attribute_name):
+		modifiers[attribute_name] = AttributeModifierInfoArray.new()
+		
+	modifiers[attribute_name].array.append(modifier)
+
+func ClearModifiers() -> void:
+	for attribute_name in modifiers:
+		for modifier in modifiers[attribute_name].array:
+			aggregators[attribute_name].RemoveModifier(modifier)
+			
+	modifiers.clear()
 
 func ApplyEffect() -> void:
 	var target_attribute_manager: AttributeManagerBase = effect_target.find_children("", "AttributeManagerBase")[0]
 	
-	for modifier in modifiers:
-		if target_attribute_manager.HasAttribute(modifier.attribute_name):
-			var aggregator: Aggregator
-			
-			match duration_policy:
-				Util.EDurationPolicy.INSTANT:
-					aggregator = Aggregator.new()
-					aggregator.AddModifier(modifier.modifier_info)
-					
-					target_attribute_manager.SetAttributeBaseValue(modifier.attribute_name, aggregator.Calculate())
-				Util.EDurationPolicy.DURATION:
-					if target_attribute_manager.HasAggregator(modifier.attribute_name):
-						aggregator = target_attribute_manager.GetAggregator(modifier.attribute_name)
-						
-						aggregator.AddModifier(modifier.modifier_info)
-					else:
-						aggregator = Aggregator.new()
-						aggregator.AddModifier(modifier.modifier_info)
+	for attribute_name in modifiers:
+		if target_attribute_manager.HasAttribute(attribute_name):
+			for modifier in modifiers[attribute_name].array:
+				var aggregator: Aggregator
 				
-						target_attribute_manager.AddAggregator(modifier.attribute_name, aggregator)
+				match duration_policy:
+					Util.EDurationPolicy.INSTANT:
+						aggregator = Aggregator.new(target_attribute_manager.GetAttribute(attribute_name))
+						aggregator.AddModifier(modifier)
 						
-						target_attribute_manager.SetAttributeCurrentValue(modifier.attribute_name, aggregator.Calculate())
+						target_attribute_manager.SetAttributeBaseValue(attribute_name, aggregator.Calculate())
+					Util.EDurationPolicy.DURATION:
+						if target_attribute_manager.HasAggregator(attribute_name):
+							aggregator = target_attribute_manager.GetAggregator(attribute_name)
+							aggregator.AddModifier(modifier)
+						else:
+							aggregator = target_attribute_manager.CreateAggregator(attribute_name) 
+							aggregator.AddModifier(modifier)
+							
+							target_attribute_manager.SetAttributeCurrentValue(attribute_name, aggregator.Calculate())
+					Util.EDurationPolicy.INFINITE:
+						if target_attribute_manager.HasAggregator(attribute_name):
+							aggregator = target_attribute_manager.GetAggregator(attribute_name)
+							aggregator.AddModifier(modifier)
+						else:
+							aggregator = target_attribute_manager.CreateAggregator(attribute_name) 
+							aggregator.AddModifier(modifier)
+							
+						target_attribute_manager.SetAttributeCurrentValue(attribute_name, aggregator.Calculate())
+				
+				aggregators[attribute_name] = aggregator

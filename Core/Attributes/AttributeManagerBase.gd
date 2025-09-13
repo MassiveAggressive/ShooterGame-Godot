@@ -35,6 +35,13 @@ func SetAttributeCurrentValue(attribute_name: String, new_value: float) -> void:
 func GetAttributeCurrentValue(attribute_name: String) -> float:
 	return attributes[attribute_name].current_value
 
+func CreateAggregator(attribute_name: String) -> Aggregator:
+	var new_aggregator: Aggregator = Aggregator.new(attributes[attribute_name])
+	
+	aggregators[attribute_name] = new_aggregator
+	
+	return new_aggregator
+
 func AddAggregator(attribute_name: String, aggregator: Aggregator) -> void:
 	aggregators[attribute_name] = aggregator
 
