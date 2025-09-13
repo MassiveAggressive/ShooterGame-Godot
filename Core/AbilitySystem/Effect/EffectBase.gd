@@ -4,6 +4,8 @@ var effect_owner: Node
 var effect_target: Node
 
 @export var duration_policy: Util.EDurationPolicy
+var duration: float
+
 @export var modifiers: Dictionary[String, AttributeModifierInfoArray]
 
 var aggregators: Dictionary[String, Aggregator]
@@ -59,3 +61,6 @@ func ApplyEffect() -> void:
 						target_attribute_manager.SetAttributeCurrentValue(attribute_name, aggregator.Calculate())
 				
 				aggregators[attribute_name] = aggregator
+
+func EndEffect() -> void:
+	pass

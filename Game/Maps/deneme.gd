@@ -20,5 +20,3 @@ func _ready() -> void:
 	
 	aggregator.AddModifier(modifier3)
 	print(aggregator.Calculate())
-	
-	

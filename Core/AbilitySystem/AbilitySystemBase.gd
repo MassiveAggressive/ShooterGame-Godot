@@ -10,16 +10,22 @@ func _ready() -> void:
 func ApplyEffectSceneToSelf(effect_scene: PackedScene) -> void:
 	var new_effect: EffectBase = effect_scene.instantiate()
 	
-	new_effect.effect_owner = owner_node
-	new_effect.effect_target = owner_node
-	
-	new_effect.ApplyEffect()
+	ApplyEffectToSelf(new_effect)
 
 func ApplyEffectToSelf(effect: EffectBase) -> void:
 	effect.effect_owner = owner_node
 	effect.effect_target = owner_node
 	
+	match effect.duration_policy:
+		Util.EDurationPolicy.DURATION:
+			active_effects.append(effect)
+		Util.EDurationPolicy.INFINITE:
+			active_effects.append(effect)
+	
 	effect.ApplyEffect()
 
 func ApplyEffectToTarget() -> void:
+	pass
+
+func RemoveActiveEffect(effect: EffectBase) -> void:
 	pass
