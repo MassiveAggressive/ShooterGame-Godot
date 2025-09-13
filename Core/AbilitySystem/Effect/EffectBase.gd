@@ -1,30 +1,45 @@
-class_name EffectBase
-extends Node
+class_name EffectBase extends Node
 
 var effect_owner: Node
 var effect_target: Node
 
-@export var modifiers: Array[EffectModifier]
+@export var duration_policy: Util.EDurationPolicy
+@export var modifiers: Array[AttributeModifier]
 
 func InitializeEffect(new_effect_owner: Node, new_effect_target: Node) -> void:
 	effect_owner = new_effect_owner
 	effect_target = new_effect_target
 
+func AddModifier(attribute_name: String, modifier: AttributeModifierInfo) -> void:
+	var new_attribute_modifier: AttributeModifier = AttributeModifier.new()
+	
+	new_attribute_modifier.attribute_name = attribute_name
+	new_attribute_modifier.modifier_info = modifier
+	
+	modifiers.append(new_attribute_modifier)
+
 func ApplyEffect() -> void:
+	var target_attribute_manager: AttributeManagerBase = effect_target.find_children("", "AttributeManagerBase")[0]
+	
 	for modifier in modifiers:
-		var target_attribute_container: AttributeManagerBase = GameManager.GetPlayerState().find_children("", "AttributeManagerBase")[0]
-		if target_attribute_container.HasAttribute(modifier.attribute_name):
-			var target_attribute_value: float = target_attribute_container.GetAttribute(modifier.attribute_name)
-			var final_attribute_result: float = 0.0
+		if target_attribute_manager.HasAttribute(modifier.attribute_name):
+			var aggregator: Aggregator
 			
-			match modifier.modifier_operator:
-				Util.EOperator.ADD:
-					final_attribute_result = target_attribute_value + modifier.attribute_magnitude * modifier.magnitude_coefficient
-				Util.EOperator.MULTIPLY:
-					final_attribute_result = target_attribute_value * modifier.attribute_magnitude * modifier.magnitude_coefficient
-				Util.EOperator.DIVIDE:
-					final_attribute_result = target_attribute_value / modifier.attribute_magnitude * modifier.magnitude_coefficient
-				Util.EOperator.OVERRIDE:
-					final_attribute_result = modifier.attribute_magnitude * modifier.magnitude_coefficient
-			
-			target_attribute_container.SetAttributeByEffect(modifier.attribute_name, final_attribute_result, self)
+			match duration_policy:
+				Util.EDurationPolicy.INSTANT:
+					aggregator = Aggregator.new()
+					aggregator.AddModifier(modifier.modifier_info)
+					
+					target_attribute_manager.SetAttributeBaseValue(modifier.attribute_name, aggregator.Calculate())
+				Util.EDurationPolicy.DURATION:
+					if target_attribute_manager.HasAggregator(modifier.attribute_name):
+						aggregator = target_attribute_manager.GetAggregator(modifier.attribute_name)
+						
+						aggregator.AddModifier(modifier.modifier_info)
+					else:
+						aggregator = Aggregator.new()
+						aggregator.AddModifier(modifier.modifier_info)
+				
+						target_attribute_manager.AddAggregator(modifier.attribute_name, aggregator)
+						
+						target_attribute_manager.SetAttributeCurrentValue(modifier.attribute_name, aggregator.Calculate())

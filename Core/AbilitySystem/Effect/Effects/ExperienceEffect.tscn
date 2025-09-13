@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://5o0rsnpxfx0s"]
 
 [ext_resource type="Script" uid="uid://b58tp835ct0ks" path="res://Core/AbilitySystem/Effect/Effects/ExperienceEffect.gd" id="1_4cxiq"]
-[ext_resource type="Script" uid="uid://bilv2gx7r17he" path="res://Core/AbilitySystem/Effect/Modifier/EffectModifier.gd" id="2_4cxiq"]
+[ext_resource type="Script" uid="uid://bilv2gx7r17he" path="res://Core/AbilitySystem/Effect/Modifier/AttributeModifier.gd" id="2_4cxiq"]
 
 [sub_resource type="Resource" id="Resource_v02a5"]
 script = ExtResource("2_4cxiq")

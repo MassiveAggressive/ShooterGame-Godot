@@ -21,6 +21,9 @@ func AddItemToEquipment(item_id: int) -> bool:
 		if GameManager.GetPlayer():
 			CreateItemScene(item_id)
 		super.AddItemToEquipment(item_id)
+		CalculateAttributes()
+		
+		return true
 	return false
 
 func MoveItem(item_id: int, new_item_location: Util.EItemLocation) -> bool:
@@ -43,3 +46,17 @@ func CreateItemScenes(player_node: Node) -> void:
 	for item_type in equipment:
 		for item_id in equipment[item_type]:
 			CreateItemScene(item_id)
+
+func CalculateAttributes() -> void:
+	super.CalculateAttributes()
+	
+	var inventory_equipment_effect: EffectBase = EffectBase.new()
+	inventory_equipment_effect.duration_policy = Util.EDurationPolicy.DURATION
+	
+	for attribute_name in attributes:
+		var attribute_modifier_info: AttributeModifierInfo = AttributeModifierInfo.new(Util.EOperator.ADD, attributes[attribute_name])
+		
+		inventory_equipment_effect.AddModifier(attribute_name, attribute_modifier_info)
+		
+	var owner_ability_system: AbilitySystemBase = get_parent().find_children("", "AbilitySystemBase")[0]
+	owner_ability_system.ApplyEffectToSelf(inventory_equipment_effect)

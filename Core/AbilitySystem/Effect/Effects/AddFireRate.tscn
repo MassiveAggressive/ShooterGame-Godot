@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1hbby8dujlaa"]
+
+[ext_resource type="Script" uid="uid://c3v1jdslp7q5" path="res://Core/AbilitySystem/Effect/EffectBase.gd" id="1_qvpr4"]
+[ext_resource type="Script" uid="uid://bilv2gx7r17he" path="res://Core/AbilitySystem/Effect/Modifier/AttributeModifier.gd" id="2_fvknv"]
+
+[sub_resource type="Resource" id="Resource_hgjrb"]
+script = ExtResource("2_fvknv")
+attribute_name = "FireRate"
+metadata/_custom_type_script = "uid://bilv2gx7r17he"
+
+[node name="AddFireRate" type="Node"]
+script = ExtResource("1_qvpr4")
+duration_policy = 1
+modifiers = Array[ExtResource("2_fvknv")]([SubResource("Resource_hgjrb")])
+metadata/_custom_type_script = "uid://c3v1jdslp7q5"

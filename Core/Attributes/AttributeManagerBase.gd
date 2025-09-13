@@ -1,71 +1,54 @@
 class_name AttributeManagerBase extends Node
 
-signal AttributesChanged(new_attributes: Dictionary[String, float])
+signal AttributesCalculated(new_attributes: Dictionary[String, float])
 signal AttributeChanged(name: String, value: float)
 signal AttributeChangedByEffect(name: String, value: float, effect: EffectBase)
 
-@export var attributes: Dictionary[String, float]
+@export var attributes: Dictionary[String, Attribute]
+var aggregators: Dictionary[String, Aggregator]
 
-@export var default_attributes: Dictionary[String, Dictionary]
-
-@export var exhibited_attributes: Dictionary[String, Attribute]
-
-func AddAttribute(attribute_name: String) -> void:
-	if attributes.has(attribute_name):
-		pass
-	else:
-		attributes[attribute_name] = 0.0
-
-func SetAttribute(attribute_name: String, value: float) -> void:
-	attributes[attribute_name] = value
-	AttributeChanged.emit(attribute_name, value)
-
-func SetAttributeByEffect(attribute_name: String, value: float, effect: EffectBase) -> void:
-	attributes[attribute_name] = value
-	AttributeChanged.emit(attribute_name, value)
-	AttributeChangedByEffect.emit(attribute_name, value, effect)
-
-func SetAttributeByDriver(attribute_name: String, value: float) -> void:
-	attributes[attribute_name] = value
-
-func GetAttribute(attribute_name: String) -> float:
+func InitializeAttribute(attribute_name: String, value: float = 0.0) -> Attribute:
 	if attributes.has(attribute_name):
 		return attributes[attribute_name]
 	else:
-		return 0
+		var new_attribute: Attribute = Attribute.new(attribute_name, value)
+		
+		attributes[attribute_name] = new_attribute
+		
+		return new_attribute
 
 func HasAttribute(attribute_name: String) -> bool:
 	return attributes.has(attribute_name)
 
-func InitializeAttributes(attributes_raw_name: String, initialized_attributes: Array[String]):
-	var attributes_temp: Dictionary
-	
-	for attribute_name in initialized_attributes:
-		attributes_temp[attribute_name] = 0.0
-		
-	default_attributes[attributes_raw_name] = attributes_temp
-	
-	exhibited_attributes.merge(exhibited_attributes)
-	
-	CalculateAttributes()
+func GetAttribute(attribute_name: String) -> Attribute:
+	return attributes[attribute_name]
 
-func AddAttributesRaw(attribute_raw_name: String, new_raw_attributes: Dictionary):
-	default_attributes[attribute_raw_name] = new_raw_attributes
-	
-	CalculateAttributes()
+func SetAttributeBaseValue(attribute_name: String, new_value: float) -> void:
+	attributes[attribute_name].base_value
 
-func CalculateAttributes() -> void:
-	var temp_attributes: Dictionary[String, float]
+func GetAttributeBaseValue(attribute_name: String) -> float:
+	return attributes[attribute_name].base_value
 
-	for raw_name in default_attributes:
-		for attribute_name in default_attributes[raw_name]:
-			temp_attributes[attribute_name] = temp_attributes.get(attribute_name, 0) + default_attributes[raw_name][attribute_name]
-			
-	attributes = temp_attributes
-	
-	AttributesChanged.emit(attributes)
-	for attribute_name in attributes:
-		AttributeChanged.emit(attribute_name, attributes[attribute_name])
+func SetAttributeCurrentValue(attribute_name: String, new_value: float) -> void:
+	attributes[attribute_name].current_value = new_value
 
-func OnSceneAboutToChange() -> void:
-	DataCarrier.data["attributes"] = attributes
+func GetAttributeCurrentValue(attribute_name: String) -> float:
+	return attributes[attribute_name].current_value
+
+func AddAggregator(attribute_name: String, aggregator: Aggregator) -> void:
+	aggregators[attribute_name] = aggregator
+
+func HasAggregator(attribute_name: String) -> bool:
+	return aggregators.has(attribute_name)
+
+func GetAggregator(attribute_name: String) -> Aggregator:
+	return aggregators[attribute_name]
+
+func PreAttributeBaseChange(attribute_name: String, new_value: float) -> void:
+	pass
+
+func PreAttributeChange(attribute_name: String, new_value: float) -> void:
+	pass
+
+func PostAttributeChange(attribute_name: String, new_value: float, old_value) -> void:
+	pass

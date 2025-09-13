@@ -10,7 +10,7 @@ func _ready() -> void:
 	
 func OnAttributeChangedByEffect(attribute_name: String, Value: float, effect: EffectBase) -> void:
 	if attribute_name == "Health" or attribute_name == "MaxHealth":
-		health_bar_ui.value = attribute_container.GetAttribute("Health") / attribute_container.GetAttribute("MaxHealth")
+		health_bar_ui.value = attribute_container.GetAttributeValue("Health") / attribute_container.GetAttributeValue("MaxHealth")
 
 		if attribute_name == "MaxHealth":
 			attribute_container.SetAttributeByDriver("Health", attribute_container.GetAttribute("MaxHealth"))

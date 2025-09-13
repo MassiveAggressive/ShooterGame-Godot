@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ble406lfbsn1m"]
+
+[ext_resource type="Script" uid="uid://c3v1jdslp7q5" path="res://Core/AbilitySystem/Effect/EffectBase.gd" id="1_vujql"]
+
+[node name="AttributeInitiliazer" type="Node"]
+script = ExtResource("1_vujql")
+metadata/_custom_type_script = "uid://c3v1jdslp7q5"

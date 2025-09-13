@@ -125,11 +125,6 @@ func CalculateAttributes() -> void:
 				temp_attributes[attribute_name] = temp_attributes.get(attribute_name, 0) + item_info.attributes[attribute_name]
 				
 	attributes = temp_attributes
-	
-	print(attributes)
-	
-	var attribute_container: AttributeManagerBase = GameManager.GetPlayerState().find_children("", "AttributeManagerBase")[0]
-	attribute_container.AddAttributesRaw("InventoryEquipment", attributes)
 
 func Save() -> void:
 	var data: Array[Dictionary]

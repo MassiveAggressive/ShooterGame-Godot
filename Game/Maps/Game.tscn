@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bx6voplf3c27v" path="res://Core/Map/MapBase.gd" id="1_0kbny"]
 [ext_resource type="PackedScene" uid="uid://w4q2y8tot845" path="res://Game/GameManager/GameGameManager.tscn" id="2_vq01i"]
 [ext_resource type="PackedScene" uid="uid://3nxkdj0f5yuq" path="res://Core/Collectable/CollectableEffect/CollectableEffect.tscn" id="3_ghb57"]
-[ext_resource type="PackedScene" uid="uid://b1hbby8dujlaa" path="res://Core/AbilitySystem/Effect/Effects/AddMaxFireRate.tscn" id="4_st3dc"]
+[ext_resource type="PackedScene" uid="uid://b1hbby8dujlaa" path="res://Core/AbilitySystem/Effect/Effects/AddFireRate.tscn" id="4_st3dc"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_0kbny")

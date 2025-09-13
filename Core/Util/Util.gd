@@ -47,3 +47,10 @@ enum EOperator
 	DIVIDE,
 	OVERRIDE
 }
+
+enum EDurationPolicy
+{
+	INSTANT,
+	DURATION,
+	INFINITE
+}

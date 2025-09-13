@@ -14,7 +14,7 @@ func OnAttributeChangedByEffect(attribute_name: String, value: float, effect: Ef
 				var temp_effect: EffectBase = experience_effect.instantiate() as EffectBase
 				temp_effect.InitializeEffect(owner, owner)
 				temp_effect.ApplyEffect()
-				attribute_container.SetAttributeByDriver("Experience", attribute_container.GetAttribute("Experience") - experiences.Experiences[current_level - 1])
+				attribute_container.SetAttributeByDriver("Experience", attribute_container.GetAttributeValue("Experience") - experiences.Experiences[current_level - 1])
 
 func OnAttributeChanged(attribute_name: String, value: float) -> void:
 	if attribute_name == "Level":

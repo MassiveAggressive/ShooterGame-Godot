@@ -10,7 +10,7 @@ func _ready() -> void:
 	owner_attribute_container = owner_node.find_children("", "AttributeManagerBase")[0]
 	
 	for attribute_name in owner_attribute_container.attributes:
-		OnAttributeChanged(attribute_name, owner_attribute_container.attributes[attribute_name])
+		OnAttributeChanged(attribute_name, owner_attribute_container.attributes[attribute_name].current_value)
 	
 	owner_attribute_container.AttributeChanged.connect(OnAttributeChanged)
 	
