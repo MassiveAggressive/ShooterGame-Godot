@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkelumflfops3"]
 
-[ext_resource type="Script" uid="uid://bjy508jmxcpyq" path="res://Core/Attributes/Drivers/ExperienceDriver/ExperienceAttributesDriver.gd" id="1_26vn3"]
+[ext_resource type="Script" uid="uid://bjy508jmxcpyq" path="res://Core/AbilitySystem/Attributes/Drivers/ExperienceDriver/ExperienceAttributesDriver.gd" id="1_26vn3"]
 
 [node name="ExperienceAttributesDriver" type="Node"]
 script = ExtResource("1_26vn3")

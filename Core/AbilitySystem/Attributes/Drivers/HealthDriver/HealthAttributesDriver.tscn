@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6ufkt72npy82"]
 
-[ext_resource type="Script" uid="uid://bhdqwpjo2amv8" path="res://Core/Attributes/Drivers/HealthDriver/HealthAttributesDriver.gd" id="1_4yovj"]
+[ext_resource type="Script" uid="uid://bhdqwpjo2amv8" path="res://Core/AbilitySystem/Attributes/Drivers/HealthDriver/HealthAttributesDriver.gd" id="1_4yovj"]
 
 [node name="HealthAttributesDriver" type="Node"]
 script = ExtResource("1_4yovj")

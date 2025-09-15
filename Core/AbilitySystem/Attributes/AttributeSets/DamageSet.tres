@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DamageSet" load_steps=4 format=3 uid="uid://b6wge84vjo5rb"]
+
+[ext_resource type="Script" uid="uid://dlagt8kqflp2s" path="res://Core/AbilitySystem/Attributes/Resource/AttributeData.gd" id="1_ngur0"]
+[ext_resource type="Script" uid="uid://cbx5n3qnxxr7m" path="res://Core/AbilitySystem/Attributes/AttributeSets/DamageSet.gd" id="2_5chfk"]
+
+[sub_resource type="Resource" id="Resource_ngur0"]
+script = ExtResource("1_ngur0")
+base_value = 100.0
+metadata/_custom_type_script = "uid://dlagt8kqflp2s"
+
+[resource]
+script = ExtResource("2_5chfk")
+set_name = "Damage"
+attributes = Dictionary[String, ExtResource("1_ngur0")]({
+"MaxDamage": SubResource("Resource_ngur0")
+})
+metadata/_custom_type_script = "uid://cbx5n3qnxxr7m"

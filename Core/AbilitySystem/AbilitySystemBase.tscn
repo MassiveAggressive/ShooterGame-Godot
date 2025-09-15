@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqvc3a8o77sg6"]
+
+[ext_resource type="Script" uid="uid://cth5v4ekj8c7k" path="res://Core/AbilitySystem/AbilitySystemBase.gd" id="1_ljw6b"]
+
+[node name="AbilitySystemBase" type="Node"]
+script = ExtResource("1_ljw6b")
+metadata/_custom_type_script = "uid://cth5v4ekj8c7k"

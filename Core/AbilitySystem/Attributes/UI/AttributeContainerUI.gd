@@ -4,7 +4,7 @@ extends VBoxContainer
 @export var exhibited_attributes: Array[String]
 @export var exhibited_attributes_data: Dictionary[String, String]
 
-var owner_attribute_container: AttributeManagerBase
+var owner_attribute_container: AttributeSetBase
 
 @export var attribute_ui_scene: PackedScene = preload("uid://bax61lplxphv3")
 var attribute_uis: Dictionary[String, AttributeUI]
@@ -14,7 +14,6 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	owner_attribute_container.AttributesChanged.connect(OnAttributeChanged)
-	SetAttributesUI(owner_attribute_container.attributes)
 
 func OnAttributeChanged(new_attributes: Dictionary[String, float]) -> void:
 	SetAttributesUI(new_attributes)

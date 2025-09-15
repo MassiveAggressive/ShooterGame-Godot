@@ -1,14 +1,12 @@
-class_name AttributesDriver
-extends Node
+class_name AttributesDriver extends Node
 
 var attributes: Dictionary[String, Attribute]
 @export var raw_name: String = "Attributes"
 @export var initialized_attributes: Array[String]
 
-var attribute_container: AttributeManagerBase
+var attribute_container: AttributeSetBase
 
 func _ready() -> void:
-	attribute_container = get_parent().find_children("", "AttributeManagerBase")[0]
 	attribute_container.AttributeChanged.connect(OnAttributeChanged)
 	attribute_container.AttributeChangedByEffect.connect(OnAttributeChangedByEffect)
 	attribute_container.AttributesCalculated.connect(OnAttributesCalculated)

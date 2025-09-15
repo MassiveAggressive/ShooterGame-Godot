@@ -1,14 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwuhdxhpkap1s"]
+[gd_scene load_steps=2 format=3 uid="uid://bwuhdxhpkap1s"]
 
 [ext_resource type="Script" uid="uid://pp7m2ikw5vxj" path="res://Game/Maps/deneme.gd" id="1_kpowp"]
-[ext_resource type="Script" uid="uid://ngx2tjlguhy3" path="res://Core/AbilitySystem/Effect/Modifier/AttributeModifierInfo.gd" id="2_q4leo"]
-[ext_resource type="Script" uid="uid://bojo40kf3arv2" path="res://Core/Attributes/Aggregator/Aggregator.gd" id="3_v1dfk"]
-
-[sub_resource type="Resource" id="Resource_vj3qy"]
-script = ExtResource("3_v1dfk")
-modifiers = Array[ExtResource("2_q4leo")]([])
-metadata/_custom_type_script = "uid://bojo40kf3arv2"
 
 [node name="Deneme" type="Node2D"]
 script = ExtResource("1_kpowp")
-aggregator = SubResource("Resource_vj3qy")

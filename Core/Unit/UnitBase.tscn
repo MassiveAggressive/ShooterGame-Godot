@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://vrcrhslc5j5c" path="res://Core/Unit/UnitBase.gd" id="1_p5y2w"]
 [ext_resource type="Script" uid="uid://cpb46fljmvpjc" path="res://Core/Tools/DynamicPolygon/DynamicPolygon.gd" id="3_do01s"]
 [ext_resource type="Script" uid="uid://c1covtipjhbn4" path="res://Core/Tools/Arm/Arm2D.gd" id="7_do01s"]
-[ext_resource type="PackedScene" uid="uid://dj0iijr4loy28" path="res://Core/Attributes/Drivers/HealthDriver/UI/HealthBar.tscn" id="7_uafw8"]
+[ext_resource type="PackedScene" uid="uid://dj0iijr4loy28" path="res://Core/AbilitySystem/Attributes/Drivers/HealthDriver/UI/HealthBar.tscn" id="7_uafw8"]
 [ext_resource type="Script" uid="uid://cpt47vk0efiph" path="res://Core/MovementComponent/MovementComponent.gd" id="10_jdhvu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s225"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3lmepbe2tb0x"]
 
-[ext_resource type="Script" uid="uid://dtbr15qp562q4" path="res://Core/Attributes/Drivers/LevelDriver/LevelAttributesDriver.gd" id="1_2aap2"]
+[ext_resource type="Script" uid="uid://dtbr15qp562q4" path="res://Core/AbilitySystem/Attributes/Drivers/LevelDriver/LevelAttributesDriver.gd" id="1_2aap2"]
 
 [node name="LevelAttributesDriver" type="Node"]
 script = ExtResource("1_2aap2")

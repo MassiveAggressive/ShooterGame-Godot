@@ -55,11 +55,13 @@ func AddNewItem(new_item: Item) -> int:
 func IsInventoryAvailable() -> bool:
 	return true
 
-func AddItemToInventory(item_id: int) -> void:
+func AddItemToInventory(item_id: int) -> bool:
 	inventory.append(item_id)
 	items[item_id].item_location = Util.EItemLocation.ININVENTORY
 	
 	ItemAddedToInventory.emit(items[item_id])
+	
+	return true
 
 func IsEquipmentAvailableForItemType(item_type: Util.EItemPrimaryType) -> bool:
 	return equipment[item_type].size() < equipment_slot_sizes[item_type]
@@ -149,5 +151,4 @@ func Load() -> void:
 			MoveItem(new_item_id, Util.EItemLocation.keys().find(item_data["item_location"]))
 
 func OnSceneAboutToChange() -> void:
-	DataCarrier.data["items"] = items.values()
-	DataCarrier.data["equipment_slot_sizes"] = equipment_slot_sizes
+	pass

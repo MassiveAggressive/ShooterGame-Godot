@@ -1,0 +1,1 @@
+class_name MenuAttributeContainer extends AttributeSetBase

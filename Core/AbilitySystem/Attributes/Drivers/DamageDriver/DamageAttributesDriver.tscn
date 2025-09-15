@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://6kyvda1ujhub"]
 
-[ext_resource type="Script" uid="uid://dqxhtb5vykrhv" path="res://Core/Attributes/Drivers/DamageDriver/DamageAtributesDriver.gd" id="1_0bx0h"]
+[ext_resource type="Script" uid="uid://dqxhtb5vykrhv" path="res://Core/AbilitySystem/Attributes/Drivers/DamageDriver/DamageAtributesDriver.gd" id="1_0bx0h"]
 
 [node name="DamageAttributesDriver" type="Node"]
 script = ExtResource("1_0bx0h")

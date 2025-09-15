@@ -1,8 +1,10 @@
-class_name AttributeManagerBase extends Node
+class_name AttributeSetBase extends Resource
 
 signal AttributesCalculated(new_attributes: Dictionary[String, float])
 signal AttributeChanged(name: String, value: float)
 signal AttributeChangedByEffect(name: String, value: float, effect: EffectBase)
+
+@export var set_name: String
 
 @export var attributes: Dictionary[String, Attribute]
 var aggregators: Dictionary[String, Aggregator]
@@ -11,7 +13,7 @@ func InitializeAttribute(attribute_name: String, value: float = 0.0) -> Attribut
 	if attributes.has(attribute_name):
 		return attributes[attribute_name]
 	else:
-		var new_attribute: Attribute = Attribute.new(attribute_name, value)
+		var new_attribute: Attribute = Attribute.new(value)
 		
 		attributes[attribute_name] = new_attribute
 		

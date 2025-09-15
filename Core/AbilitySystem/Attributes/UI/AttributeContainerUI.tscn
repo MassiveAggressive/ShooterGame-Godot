@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bha33oov7gjix"]
 
-[ext_resource type="Script" uid="uid://csm8k4tqo5gsj" path="res://Core/Attributes/UI/AttributeContainerUI.gd" id="1_xyjw6"]
+[ext_resource type="Script" uid="uid://csm8k4tqo5gsj" path="res://Core/AbilitySystem/Attributes/UI/AttributeContainerUI.gd" id="1_xyjw6"]
 
 [node name="AttributeContainerUI" type="VBoxContainer"]
 offset_right = 40.0

@@ -3,14 +3,10 @@
 [ext_resource type="Script" uid="uid://1qqt4e44k25f" path="res://Core/WindowsManager/UI/WindowsManagerUI.gd" id="1_00nrs"]
 
 [node name="WindowsManagerUI" type="HBoxContainer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = -200.0
-offset_bottom = -200.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 480.0
+offset_bottom = 120.0
+size_flags_horizontal = 8
 theme_override_constants/separation = 20
 script = ExtResource("1_00nrs")

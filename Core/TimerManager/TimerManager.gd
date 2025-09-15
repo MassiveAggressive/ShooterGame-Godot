@@ -5,10 +5,14 @@ var intervals: Dictionary[int, Interval]
 var timer_holder: Node
 
 func _ready() -> void:
-	timer_holder = Node.new()
-	get_tree().current_scene.add_child(timer_holder)
+	CreateTimerHolder()
 	
 	SceneManager.SceneChanged.connect(OnSceneChanged)
+
+func CreateTimerHolder() -> void:
+	timer_holder = Node.new()
+	timer_holder.name = "TimerHolder"
+	get_tree().current_scene.add_child(timer_holder)
 
 func CreateNewID() -> int:
 	if intervals.is_empty():
@@ -18,7 +22,6 @@ func CreateNewID() -> int:
 
 func CreateInterval(_owner: Object, method: Callable, duration: float, one_shot: bool = true) -> int:
 	var new_interval: Interval = Interval.new()
-	
 	new_interval.owner = _owner
 	new_interval.method = method
 	new_interval.duration = duration
@@ -42,8 +45,7 @@ func CreateInterval(_owner: Object, method: Callable, duration: float, one_shot:
 	return new_id
 
 func OnSceneChanged() -> void:
-	timer_holder = Node.new()
-	get_tree().current_scene.add_child(timer_holder)
+	CreateTimerHolder()
 
 func OnTimerTimeout(id: int) -> void:
-	pass
+	intervals[id].method.call()

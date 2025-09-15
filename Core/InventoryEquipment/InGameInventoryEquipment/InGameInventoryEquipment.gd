@@ -1,25 +1,27 @@
 class_name InGameInventoryEquipment extends InventoryEquipmentBase
 
+var inventory_equipment_ui_scene: PackedScene = preload("uid://cma6hfh4v44w3")
+var inventory_equipment_ui: InventoryEquipmentUI
+
 var inventory_equipment_effect: EffectBase
 
 func _ready() -> void:
 	super._ready()
-	var item_array: Array[Item] = DataCarrier.data["items"]
-	equipment_slot_sizes = DataCarrier.data["equipment_slot_sizes"]
 	
-	for item in item_array:
-		var new_item_id: int = AddNewItem(item)
-		
-		match item.item_location:
-			Util.EItemLocation.ININVENTORY:
-				AddItemToInventory(new_item_id)
-			Util.EItemLocation.INEQUIPMENT:
-				AddItemToEquipment(new_item_id)
+	inventory_equipment_ui = inventory_equipment_ui_scene.instantiate()
+	inventory_equipment_ui.owner_inventory_equipment = self
+	WindowsManager.AddWindow("Inventory Equipment", inventory_equipment_ui)
 	
 	GameManager.PlayerReady.connect(CreateItemScenes)
 	
-	await get_tree().create_timer(7.5).timeout
-	super.MoveItem(1, Util.EItemLocation.ININVENTORY)
+	Load()
+
+func AddItemToInventory(item_id: int) -> bool:
+	super.AddItemToInventory(item_id)
+	
+	Save()
+	
+	return true
 
 func AddItemToEquipment(item_id: int) -> bool:
 	if IsEquipmentAvailableForItemType(items[item_id].item_info.primary_type):
@@ -28,6 +30,8 @@ func AddItemToEquipment(item_id: int) -> bool:
 		super.AddItemToEquipment(item_id)
 		CalculateAttributes()
 		
+		Save()
+		
 		return true
 	return false
 
@@ -35,9 +39,6 @@ func RemoveItemFromEquipment(item_id: int) -> void:
 	super.RemoveItemFromEquipment(item_id)
 	
 	CalculateAttributes()
-
-func MoveItem(item_id: int, new_item_location: Util.EItemLocation) -> bool:
-	return false
 
 func CreateItemScene(item_id: int) -> void:
 	var item_info: ItemInfo = items[item_id].item_info
@@ -59,7 +60,9 @@ func CalculateAttributes() -> void:
 	
 	if inventory_equipment_effect == null:
 		inventory_equipment_effect = EffectBase.new()
-		inventory_equipment_effect.duration_policy = Util.EDurationPolicy.INFINITE
+	
+	inventory_equipment_effect.duration_policy = Util.EDurationPolicy.DURATION
+	inventory_equipment_effect.duration = 5
 	
 	inventory_equipment_effect.ClearModifiers()
 	

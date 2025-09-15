@@ -1,6 +1,6 @@
 class_name InventoryEquipmentUI extends HBoxContainer
 
-var owner_inventory_equipment: MenuInventoryEquipment
+var owner_inventory_equipment: InventoryEquipmentBase
 
 @onready var equipment_ui: EquipmentUI = %EquipmentUI
 @onready var inventory_ui: InventoryUI = %InventoryUI

@@ -2,6 +2,8 @@ class_name AbilitySystemBase extends Node
 
 var owner_node: Node
 
+@export var attribute_sets: Dictionary[String, AttributeSetBase]
+
 var active_effects: Array[EffectBase]
 
 func _ready() -> void:
