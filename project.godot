@@ -27,7 +27,10 @@ Global="*res://Core/GameManagementSystem/Global/Global.gd"
 WindowsManager="*res://Core/WindowsManager/WindowsManager.gd"
 SpawnPoints="*res://Core/Tools/SpawnPoint/SpawnPointHandler.gd"
 SaveManager="*res://Core/SaveManager/SaveManager.gd"
+<<<<<<< HEAD
 TimerManager="*res://Core/TimerManager/TimerManager.gd"
+=======
+>>>>>>> parent of 13ece42 (Güncelleme)
 
 [display]
 

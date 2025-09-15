@@ -4,8 +4,6 @@ var effect_owner: Node
 var effect_target: Node
 
 @export var duration_policy: Util.EDurationPolicy
-var duration: float
-
 @export var modifiers: Dictionary[String, AttributeModifierInfoArray]
 
 var aggregators: Dictionary[String, Aggregator]
@@ -28,6 +26,7 @@ func ClearModifiers() -> void:
 	modifiers.clear()
 
 func ApplyEffect() -> void:
+<<<<<<< HEAD
 #	var target_attribute_manager: AttributeSetBase = effect_target.find_children("", "AttributeSetBase")[0]
 #	
 #	for attribute_name in modifiers:
@@ -67,3 +66,38 @@ func ApplyEffect() -> void:
 
 func EndEffect() -> void:
 	pass
+=======
+	var target_attribute_manager: AttributeManagerBase = effect_target.find_children("", "AttributeManagerBase")[0]
+	
+	for attribute_name in modifiers:
+		if target_attribute_manager.HasAttribute(attribute_name):
+			for modifier in modifiers[attribute_name].array:
+				var aggregator: Aggregator
+				
+				match duration_policy:
+					Util.EDurationPolicy.INSTANT:
+						aggregator = Aggregator.new(target_attribute_manager.GetAttribute(attribute_name))
+						aggregator.AddModifier(modifier)
+						
+						target_attribute_manager.SetAttributeBaseValue(attribute_name, aggregator.Calculate())
+					Util.EDurationPolicy.DURATION:
+						if target_attribute_manager.HasAggregator(attribute_name):
+							aggregator = target_attribute_manager.GetAggregator(attribute_name)
+							aggregator.AddModifier(modifier)
+						else:
+							aggregator = target_attribute_manager.CreateAggregator(attribute_name) 
+							aggregator.AddModifier(modifier)
+							
+							target_attribute_manager.SetAttributeCurrentValue(attribute_name, aggregator.Calculate())
+					Util.EDurationPolicy.INFINITE:
+						if target_attribute_manager.HasAggregator(attribute_name):
+							aggregator = target_attribute_manager.GetAggregator(attribute_name)
+							aggregator.AddModifier(modifier)
+						else:
+							aggregator = target_attribute_manager.CreateAggregator(attribute_name) 
+							aggregator.AddModifier(modifier)
+							
+						target_attribute_manager.SetAttributeCurrentValue(attribute_name, aggregator.Calculate())
+				
+				aggregators[attribute_name] = aggregator
+>>>>>>> parent of 13ece42 (Güncelleme)
